@@ -68,127 +68,129 @@ const HALFTONE_PRESETS = {
 
 export default function Ranking() {
     return (
-        <div className="ranking">
-            <div className="ranking-head">
-                <h2>Player Rankings</h2>
-                <div className="">Updated on 20/10/2025</div>
-            </div>
-            <div className="ranking-list-cont">
-                <div className="ranking-list">
-
-                    <HalftoneBackground
-                        gradient={HALFTONE_PRESETS.orange}
-                        dotColor="rgba(0, 0, 0, 0.2)"
-                        dotSpacing={10}
-                        className="ranking-card"
-                    >
-                        <div className="ranking-info">
-                            <img src={rank_1} alt="" />
-                            <div className="ranking-position">
-                                1<sup>ST</sup>
-                            </div>
-                            <div className="ranking-player">
-                                <div className="player-name">Stephen <b>Curry</b></div>
-                            </div>
-                        </div>
-                        <div className="ranking-points">421 <small>PTS</small> </div>
-                    </HalftoneBackground>
-
-                    <HalftoneBackground
-                        gradient={HALFTONE_PRESETS.blue}
-                        dotColor="rgba(255, 255, 255, 0.15)"
-                        dotSpacing={8}
-                        dotOpacity={0.7}
-                        className="ranking-card"
-                    >
-                        <div className="ranking-info">
-                            <img src={rank_2} alt="" />
-                            <div className="ranking-position">
-                                2<sup>ND</sup>
-                            </div>
-                            <div className="ranking-player">
-                                <div className="player-name">Stephen <b>Curry</b></div>
-                            </div>
-                        </div>
-                        <div className="ranking-points">421 <small>PTS</small> </div>
-                    </HalftoneBackground>
-
-                    <HalftoneBackground
-                        gradient={HALFTONE_PRESETS.darkOrange}
-                        dotColor="rgba(0, 0, 0, 0.25)"
-                        dotSpacing={9}
-                        className="ranking-card"
-                    >
-                        <div className="ranking-info">
-                            <img src={rank_3} alt="" />
-                            <div className="ranking-position">
-                                3<sup>RD</sup>
-                            </div>
-                            <div className="ranking-player">
-                                <div className="player-name">Stephen <b>Curry</b></div>
-                            </div>
-                        </div>
-                        <div className="ranking-points">421 <small>PTS</small> </div>
-                    </HalftoneBackground>
-
+        <div className="ranking-cont">
+            <div className="ranking">
+                <div className="ranking-head">
+                    <h2>Player Rankings</h2>
+                    <div className="">Updated on 20/10/2025</div>
                 </div>
-                <div className="ranking-list">
+                <div className="ranking-list-cont">
+                    <div className="ranking-list">
 
-                    <HalftoneBackground
-                        gradient={HALFTONE_PRESETS.orange}
-                        dotColor="rgba(0, 0, 0, 0.2)"
-                        dotSpacing={10}
-                        className="ranking-card"
-                    >
-                        <div className="ranking-info">
-                            <img src={rank_4} alt="" />
-                            <div className="ranking-position">
-                                1<sup>ST</sup>
+                        <HalftoneBackground
+                            gradient={HALFTONE_PRESETS.orange}
+                            dotColor="rgba(0, 0, 0, 0.2)"
+                            dotSpacing={10}
+                            className="ranking-card"
+                        >
+                            <div className="ranking-info">
+                                <img src={rank_1} alt="" />
+                                <div className="ranking-position">
+                                    1<sup>ST</sup>
+                                </div>
+                                <div className="ranking-player">
+                                    <div className="player-name">Stephen <b>Curry</b></div>
+                                </div>
                             </div>
-                            <div className="ranking-player">
-                                <div className="player-name">Stephen <b>Curry</b></div>
-                            </div>
-                        </div>
-                        <div className="ranking-points">421 <small>PTS</small> </div>
-                    </HalftoneBackground>
+                            <div className="ranking-points">421 <small>PTS</small> </div>
+                        </HalftoneBackground>
 
-                    <HalftoneBackground
-                        gradient={HALFTONE_PRESETS.blue}
-                        dotColor="rgba(255, 255, 255, 0.15)"
-                        dotSpacing={8}
-                        dotOpacity={0.7}
-                        className="ranking-card"
-                    >
-                        <div className="ranking-info">
-                            <img src={rank_5} alt="" />
-                            <div className="ranking-position">
-                                2<sup>ND</sup>
+                        <HalftoneBackground
+                            gradient={HALFTONE_PRESETS.blue}
+                            dotColor="rgba(255, 255, 255, 0.15)"
+                            dotSpacing={8}
+                            dotOpacity={0.7}
+                            className="ranking-card"
+                        >
+                            <div className="ranking-info">
+                                <img src={rank_2} alt="" />
+                                <div className="ranking-position">
+                                    2<sup>ND</sup>
+                                </div>
+                                <div className="ranking-player">
+                                    <div className="player-name">Stephen <b>Curry</b></div>
+                                </div>
                             </div>
-                            <div className="ranking-player">
-                                <div className="player-name">Stephen <b>Curry</b></div>
-                            </div>
-                        </div>
-                        <div className="ranking-points">421 <small>PTS</small> </div>
-                    </HalftoneBackground>
+                            <div className="ranking-points">421 <small>PTS</small> </div>
+                        </HalftoneBackground>
 
-                    <HalftoneBackground
-                        gradient={HALFTONE_PRESETS.darkOrange}
-                        dotColor="rgba(0, 0, 0, 0.25)"
-                        dotSpacing={9}
-                        className="ranking-card"
-                    >
-                        <div className="ranking-info">
-                            <img src={rank_6} alt="" />
-                            <div className="ranking-position">
-                                3<sup>RD</sup>
+                        <HalftoneBackground
+                            gradient={HALFTONE_PRESETS.darkOrange}
+                            dotColor="rgba(0, 0, 0, 0.25)"
+                            dotSpacing={9}
+                            className="ranking-card"
+                        >
+                            <div className="ranking-info">
+                                <img src={rank_3} alt="" />
+                                <div className="ranking-position">
+                                    3<sup>RD</sup>
+                                </div>
+                                <div className="ranking-player">
+                                    <div className="player-name">Stephen <b>Curry</b></div>
+                                </div>
                             </div>
-                            <div className="ranking-player">
-                                <div className="player-name">Stephen <b>Curry</b></div>
-                            </div>
-                        </div>
-                        <div className="ranking-points">421 <small>PTS</small> </div>
-                    </HalftoneBackground>
+                            <div className="ranking-points">421 <small>PTS</small> </div>
+                        </HalftoneBackground>
 
+                    </div>
+                    <div className="ranking-list">
+
+                        <HalftoneBackground
+                            gradient={HALFTONE_PRESETS.orange}
+                            dotColor="rgba(0, 0, 0, 0.2)"
+                            dotSpacing={10}
+                            className="ranking-card"
+                        >
+                            <div className="ranking-info">
+                                <img src={rank_4} alt="" />
+                                <div className="ranking-position">
+                                    1<sup>ST</sup>
+                                </div>
+                                <div className="ranking-player">
+                                    <div className="player-name">Stephen <b>Curry</b></div>
+                                </div>
+                            </div>
+                            <div className="ranking-points">421 <small>PTS</small> </div>
+                        </HalftoneBackground>
+
+                        <HalftoneBackground
+                            gradient={HALFTONE_PRESETS.blue}
+                            dotColor="rgba(255, 255, 255, 0.15)"
+                            dotSpacing={8}
+                            dotOpacity={0.7}
+                            className="ranking-card"
+                        >
+                            <div className="ranking-info">
+                                <img src={rank_5} alt="" />
+                                <div className="ranking-position">
+                                    2<sup>ND</sup>
+                                </div>
+                                <div className="ranking-player">
+                                    <div className="player-name">Stephen <b>Curry</b></div>
+                                </div>
+                            </div>
+                            <div className="ranking-points">421 <small>PTS</small> </div>
+                        </HalftoneBackground>
+
+                        <HalftoneBackground
+                            gradient={HALFTONE_PRESETS.darkOrange}
+                            dotColor="rgba(0, 0, 0, 0.25)"
+                            dotSpacing={9}
+                            className="ranking-card"
+                        >
+                            <div className="ranking-info">
+                                <img src={rank_6} alt="" />
+                                <div className="ranking-position">
+                                    3<sup>RD</sup>
+                                </div>
+                                <div className="ranking-player">
+                                    <div className="player-name">Stephen <b>Curry</b></div>
+                                </div>
+                            </div>
+                            <div className="ranking-points">421 <small>PTS</small> </div>
+                        </HalftoneBackground>
+
+                    </div>
                 </div>
             </div>
         </div>

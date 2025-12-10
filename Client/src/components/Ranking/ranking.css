@@ -1,7 +1,14 @@
+.ranking-cont {
+    background: black;
+    font-family: Arial, sans-serif;
+    padding-bottom: 1rem 1rem 2.26rem;
+}
+
 .ranking {
     background: #0f0f1e;
-    font-family: Arial, sans-serif;
-    padding-bottom: 2.26rem;
+    margin: 0rem 3rem;
+    border-radius: 0.5rem;
+    padding-bottom: 2rem;
 }
 
 .ranking-head {
@@ -86,7 +93,7 @@
     font-size: 2.26rem;
 }
 
-.player-name p{
+.player-name p {
     margin: 0;
 }
 
