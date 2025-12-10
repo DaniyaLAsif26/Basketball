@@ -1,0 +1,39 @@
+.tournament-home {
+    background-color: black;
+    padding: 1.5rem 3rem;
+}
+
+.tournament-cont {
+    position: relative;
+    background-color: #e10600;
+    color: white;
+    border-radius: 0.5rem;
+    min-height: 23rem;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+.tournament-info h2 {
+    font-size: 3rem;
+    margin: 0.5rem 0rem;
+}
+
+.tournament-info {
+    position: absolute;
+    bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.tournament-info p{
+    margin: 0rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.tournament-btn{
+    background-color: white;
+    border-radius: 2.26rem;
+    font-size: 1rem;
+    padding:  0.5rem 1rem;
+    margin: 1rem 0rem 0rem;
+}
