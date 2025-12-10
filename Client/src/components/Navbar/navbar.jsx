@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="logo">
-        <img src={logo} alt="" />
+       <a href="/"> <img src={logo} alt="" /></a>
       </div>
       <div className="nav-right">
         <div className="options">
@@ -13,8 +13,7 @@ export default function Navbar() {
             <li><a href="">EVENTS</a></li>
             <li><a href="">NEWS</a></li>
             <li><a href="">RANKING</a></li>
-            <li><a href="">PLAYERS</a></li>
-            <li><a href="">DISTRICTS</a></li>
+            <li><a href="/districts">DISTRICTS</a></li>
             <li><a href="">ABOUT US</a></li>
             <li><a href="">GALLERY</a></li>
           </ul>
