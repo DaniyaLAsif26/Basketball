@@ -55,7 +55,7 @@
     z-index: 10;
     max-height: 6rem;
     width: 100%;
-    background: #0f0f1e9f;
+    background: #0f0f1ea9;
     margin: 0rem;
     padding: 0rem;
     list-style: none;
@@ -72,6 +72,7 @@
 
 .sort-select li {
     padding: 0.5rem 1rem;
+    border-top: 1px solid white;
 }
 
 .sort-label {
@@ -119,7 +120,11 @@
     background-color: black;
 }
 
-.event-results{
+.event-results {
     background: #0f0f1e;
     min-height: 40rem;
+}
+
+.selected {
+    background-color: #e10600;
 }

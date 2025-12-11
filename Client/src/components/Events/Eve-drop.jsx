@@ -28,7 +28,9 @@ export default function EveDrop({ drop }) {
                                     <ul className='sort-select'>
                                         {item.list.map((li, index) =>
                                             <>
-                                                <li onClick={()=> item.setSelected(li)}>{li}</li>
+                                                <li className={
+                                                    item.selected === li ? 'selected' : ''
+                                                } onClick={()=> item.setSelected(li)}>{li}</li>
                                             </>
                                         )}
                                     </ul>
