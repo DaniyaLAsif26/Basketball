@@ -1,0 +1,125 @@
+.events {
+    min-height: 7rem;
+    width: 100%;
+}
+
+.events-search-form {
+    height: 3.69rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: red;
+    border-bottom: 0.5px solid white;
+}
+
+.events-search-form .evt-search input {
+    background: #0f0f1e9f;
+    color: #fff;
+    min-width: 24rem;
+    border: none;
+    height: 100%;
+    padding: 0rem 1.5rem;
+    border-right: 1px solid white;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+}
+
+.evt-sort-wrapper {
+    flex-grow: 1;
+    height: 100%;
+    width: auto;
+    position: relative;
+    background: #0f0f1e9f;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 0.5rem;
+    border-right: 1px solid white;
+}
+
+.drop-list {
+    background-color: red;
+    max-height: 6rem;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+}
+
+.sort-select {
+    /* display: none; */
+    z-index: 10;
+    max-height: 6rem;
+    width: 100%;
+    background: #0f0f1e9f;
+    margin: 0rem;
+    padding: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sort-select::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+.sort-select li {
+    padding: 0.5rem 1rem;
+}
+
+.sort-label {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.69rem;
+}
+
+.sort-label-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.sort-text-head {
+    font-size: 0.8rem;
+    color: rgb(222, 222, 222);
+    font-weight: 500;
+}
+
+.sort-text-selected {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.drop-icon {
+    position: relative;
+    top: 0.8rem;
+}
+
+.evt-sort-wrapper-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 3.5rem;
+    border-right: none;
+}
+
+.event-result-cont {
+    min-height: 40rem;
+    padding: 3rem 2rem;
+    background-color: black;
+}
+
+.event-results{
+    background: #0f0f1e;
+    min-height: 40rem;
+}

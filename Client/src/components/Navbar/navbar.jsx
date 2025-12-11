@@ -10,7 +10,7 @@ export default function Navbar() {
       <div className="nav-right">
         <div className="options">
           <ul>
-            <li><a href="">EVENTS</a></li>
+            <li><a href="/events">EVENTS</a></li>
             <li><a href="">NEWS</a></li>
             <li><a href="">RANKING</a></li>
             <li><a href="/districts">DISTRICTS</a></li>
