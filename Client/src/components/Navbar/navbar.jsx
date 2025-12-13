@@ -11,8 +11,8 @@ export default function Navbar() {
         <div className="options">
           <ul>
             <li><a href="/events">EVENTS</a></li>
-            <li><a href="">NEWS</a></li>
-            <li><a href="">RANKING</a></li>
+            <li><a href="/news">NEWS</a></li>
+            <li><a href="/rankings">RANKING</a></li>
             <li><a href="/districts">DISTRICTS</a></li>
             <li><a href="">ABOUT US</a></li>
             <li><a href="">GALLERY</a></li>
