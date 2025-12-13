@@ -7,11 +7,25 @@ import { PiStepsFill } from "react-icons/pi";
 import { FaBasketball } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
+import event_1 from '../../assets/event-1.webp'
+import event_2 from '../../assets/event-2.webp'
+import event_3 from '../../assets/event-3.jpeg'
+
 import EveInput from './Eve-input.jsx';
 import EveDrop from './Eve-drop.jsx';
 import EveSearch from './Eve-search.jsx';
+import EveResults from './Eve-results.jsx';
 
 import { useEffect, useState } from 'react';
+
+const searchResults = [
+    { img: event_1, name: "ATHLEMA By MVSR", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+    { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+    { img: event_3, name: "SANKETIKA Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+    { img: event_1, name: "ATHLEMA By MVSR", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+    { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+    { img: event_3, name: "SANKETIKA Sports Fest aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+]
 
 export default function Events() {
 
@@ -146,9 +160,8 @@ export default function Events() {
 
                 </form>
             </div>
-            <div className="event-result-cont">
-                <div className="event-results"></div>
-            </div>
+            <EveResults searchResults={searchResults} />
+
         </div>
     )
 }

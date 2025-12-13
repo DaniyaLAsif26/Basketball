@@ -10,12 +10,12 @@
     flex-direction: row;
     justify-content: space-between;
     box-sizing: border-box;
-    background-color: red;
+    background-color: rgb(229 25 55);
     border-bottom: 0.5px solid white;
 }
 
 .events-search-form .evt-search input {
-    background: #0f0f1e9f;
+    background-color: rgb(229 25 55);
     color: #fff;
     min-width: 24rem;
     border: none;
@@ -31,7 +31,6 @@
     height: 100%;
     width: auto;
     position: relative;
-    background: #0f0f1e9f;
     color: white;
     box-sizing: border-box;
     display: flex;
@@ -39,10 +38,11 @@
     align-items: center;
     padding: 0rem 0.5rem;
     border-right: 1px solid white;
+    background-color: rgb(229 25 55);
 }
 
 .drop-list {
-    background-color: red;
+    background-color: rgb(229 25 55);
     max-height: 6rem;
     width: 100%;
     position: absolute;
@@ -50,12 +50,15 @@
     left: 0px;
 }
 
+.selected {
+    background-color: rgb(255, 103, 126);
+}
+
 .sort-select {
-    /* display: none; */
     z-index: 10;
     max-height: 6rem;
     width: 100%;
-    background: #0f0f1ea9;
+    /* background: #0f0f1e80; */
     margin: 0rem;
     padding: 0rem;
     list-style: none;
@@ -115,16 +118,51 @@
 }
 
 .event-result-cont {
-    min-height: 40rem;
-    padding: 3rem 2rem;
+    height: 100%;
+    padding: 2rem;
     background-color: black;
+    padding-bottom: 5rem;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
 .event-results {
-    background: #0f0f1e;
-    min-height: 40rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    row-gap: 3rem;
+    height: 100%;
+    background: white;
+    padding: 2.5rem 2rem ;
 }
 
-.selected {
-    background-color: #e10600;
+.event-result {
+    min-height: 31.5rem;
+    max-height: 32rem;
+    width: 23rem;
+    background-color: beige;
+    border-radius: 1rem;
+      box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+}
+
+.event-result img {
+    border-radius: 1rem 1rem 0rem 0rem;
+    height: 21rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.event-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0rem 1rem 1rem;
+}
+
+.event-head {
+    grid-column: span 2;
+    margin: 0.2rem 0rem 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ba0c2f;
 }
