@@ -14,18 +14,25 @@
 
 .news {
     padding: 1rem 1rem 0rem 1rem;
+    margin: 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.26rem;
+}
+
+.news-row {
+    gap: 1.26rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.26rem;
-    row-gap: 2rem;
-    margin: 0rem 1rem;
 }
 
 .news-box {
     height: 24rem;
     min-width: 21rem;
     background-color: white;
-    border-radius: 1rem;
+    border-radius: 1.26rem;
     background-color: #15151e;
     position: relative;
     box-shadow: 2.6px 9px 15px rgba(0, 0, 0, 0.26);
@@ -61,12 +68,13 @@
 }
 
 .news-big img {
+    border-radius: 1.26rem;
     grid-column: span 2;
     height: 100%;
     object-fit: cover;
 }
 
-.news-big .news-txt-head{
-position: absolute;
-bottom: 10px;
+.news-big .news-txt-head {
+    position: absolute;
+    bottom: 10px;
 }
