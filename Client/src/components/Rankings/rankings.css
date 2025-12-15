@@ -1,0 +1,98 @@
+.rankings-cont {
+    background-color: black;
+    padding-bottom: 3rem;
+    width: 100%;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
+}
+
+.rankings-head {
+    position: relative;
+    background-color: #e10600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    overflow: hidden;
+}
+
+.ranking-heading {
+    color: white;
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+
+.rankings-head img {
+    height: 3.5rem;
+}
+
+.rankings {
+    padding: 2rem;
+    margin: 1rem 2rem;
+    color: white;
+}
+
+.rankings-res-head {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.5rem;
+}
+
+.rankings-options {
+    border-bottom: 1px solid white;
+}
+
+.rankings-options ul {
+    margin: 0rem;
+    color: white;
+    list-style: none;
+    padding: 1rem 0rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: start;
+    gap: 1.26rem;
+    width: 100%;
+}
+
+.rankings-options ul li {
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.rankings-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rankings-how button {
+    color: black;
+    background-color: white;
+    padding: 0.5rem;
+}
+
+.ranking-options ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 2rem 4rem 0rem;
+    padding-left: 1.5rem;
+}
+
+.ranking-options ul li {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* border-bottom: 2px ; */
+    cursor: pointer;
+}
+
+.selected-cat {
+    color: #ff140b;
+    border-bottom: 4px solid #e10600;
+    margin-bottom: -1px;
+}

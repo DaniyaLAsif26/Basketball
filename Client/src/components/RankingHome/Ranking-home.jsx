@@ -4,7 +4,7 @@ import rank_3 from '../../assets/rank-3.png';
 import rank_4 from '../../assets/rank-4.png';
 import rank_5 from '../../assets/rank-5.avif';
 import rank_6 from '../../assets/rank-6.png';
-import './ranking.css';
+import './ranking-home.css';
 
 const HalftoneBackground = ({
     gradient,
