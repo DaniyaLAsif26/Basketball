@@ -15,7 +15,7 @@ export default function Navbar() {
             <li><a href="/rankings">RANKING</a></li>
             <li><a href="/districts">DISTRICTS</a></li>
             <li><a href="/about">ABOUT US</a></li>
-            <li><a href="">GALLERY</a></li>
+            <li><a href="/gallery">GALLERY</a></li>
           </ul>
         </div>
         <div className="login">

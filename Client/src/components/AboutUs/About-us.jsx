@@ -18,6 +18,7 @@ const members =[
     {name : "A. Vishnu Kumar Goud" , role : "Joint Secretary"},
     {name : "Sukumar Francis" , role : "Associate Secretary"},
     {name : "Hyder Mohammed" , role : "Associate Secretary"},
+    {name : "Prem Kumar Yadav" , role : "Head, Technical committee"},
 ]
 
     return (
