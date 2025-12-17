@@ -7,6 +7,7 @@ import NewsPage from '../Pages/NewsPage.jsx';
 import RankingPage from '../Pages/RankingPage.jsx';
 import AboutUsPage from '../Pages/AboutUsPage.jsx'
 import GalleryPage from '../Pages/GalleryPage.jsx';
+import Login from '../components/LogIn/Login.jsx';
 
 function AppRoutes() {
     return (
@@ -25,6 +26,8 @@ function AppRoutes() {
             <Route path='/about' element={<AboutUsPage />} />
 
             <Route path='/gallery' element={<GalleryPage />} />
+
+            <Route path='/login' element={<Login />} />
         </Routes>
     )
 }

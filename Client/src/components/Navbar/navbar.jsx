@@ -1,11 +1,20 @@
 import './navbar.css';
 import logo from '../../assets/red.png';
+import { useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
+
+  const navigate = useNavigate()
+
+  const logInRedirect = (e) => {
+    e.preventDefault()
+    navigate('/login')
+  }
+
   return (
     <nav>
       <div className="logo">
-       <a href="/"> <img src={logo} alt="" /></a>
+        <a href="/"> <img src={logo} alt="" /></a>
       </div>
       <div className="nav-right">
         <div className="options">
@@ -19,7 +28,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="login">
-          <button className='login-btn'>Log In</button>
+          <button className='login-btn' onClick={logInRedirect}>Log In</button>
         </div>
       </div>
     </nav>

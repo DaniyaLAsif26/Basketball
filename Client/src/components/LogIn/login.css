@@ -1,0 +1,10 @@
+.log-in-cont{
+    min-height: 100vh;
+    background-color: aqua;
+    padding-top: 3rem;
+}
+
+.log-in-form{
+    background-color: white;
+    min-height: 30rem;
+}
