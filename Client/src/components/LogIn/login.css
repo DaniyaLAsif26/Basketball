@@ -1,10 +1,102 @@
-.log-in-cont{
+.log-in-cont {
     min-height: 100vh;
-    background-color: aqua;
+    background: rgb(216, 216, 216);
     padding-top: 3rem;
+    position: relative;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
-.log-in-form{
+.bb-img-1 {
+    position: absolute;
+    height: 20rem;
+
+}
+
+.log-in-form-cont {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
     background-color: white;
     min-height: 30rem;
+    width: 21rem;
+    margin: 0px auto;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    /* z-index: 1; */
+}
+
+.form-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-logo img {
+    height: 4.5rem;
+}
+
+.log-continue {
+    padding-top: 1rem;
+}
+
+.log-in-form-head {
+    margin-bottom: 1rem;
+}
+
+.log-in-from {
+    width: 19rem;
+}
+
+.log-in-from-form {
+    width: 100%;
+}
+
+.log-in-email {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+#email-input,
+#email-pass {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    border: 1.2px solid black;
+    color: black;
+    box-sizing: border-box;
+}
+
+.log-in-email-pass {
+    margin-top: 0.69rem;
+}
+
+.email-input-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.email-input-label sup {
+    color: red;
+    font-size: 1rem;
+}
+
+.cont-btn {
+    background-color: #53d4ff;
+    width: 100%;
+    border-radius: 0rem;
+    margin-top: 1rem;
+}
+
+.cont-btn:hover {
+    background-color: #80dfff;
+}
+
+.log-in-options {
+    margin: 2rem 0rem;
+    font-weight: bold;
+    color: gray;
 }

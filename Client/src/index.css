@@ -51,9 +51,6 @@ p{
   margin: 0;
 }
 
-input::placeholder{
-  color: white;
-}
 
 .events-search-form .evt-search input:focus {
     outline: none;
