@@ -1,0 +1,152 @@
+.about-us-cont {
+  position: relative;
+  background-color: black;
+  padding-bottom: 4rem;
+  border-radius: 0rem 0rem 2.69rem 2.69rem;
+}
+
+.about-us-head {
+  background-color: red;
+  padding: 1rem 0rem;
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0rem 0rem 2.69rem 2.69rem;
+}
+
+/* Common flip item */
+.flip-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  transform-origin: center bottom;
+  opacity: 0;
+  animation: flipClock 7s infinite;
+}
+
+.flip-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Timing */
+.flip-item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.flip-item:nth-child(2) {
+  animation-delay: 2.25s;
+}
+
+.flip-item:nth-child(3) {
+  animation-delay: 4.5s;
+}
+
+/* Text styling */
+.flip-name h2 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+  color: white;
+}
+
+/* Logo styling */
+.flip-img img {
+  height: 100%;
+  height: 5rem;
+}
+
+.about-us {
+  background-color: #252534;
+  color: white;
+  min-height: 9rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 2.69rem 2.69rem 0rem 0rem;
+  margin-top: 3rem;
+  padding: 2rem 3rem 5rem;
+}
+
+.abt-pres {
+  background-color: #252534;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: center;
+}
+
+.abt-sec {
+  padding: 2.5rem 4rem;
+  grid-template-columns: 2fr 1fr;
+  border-radius: 0rem 0rem 2.69rem 2.69rem ;
+
+}
+
+.pres-img img {
+  height: 13rem;
+  min-width: 13rem;
+}
+
+.pres-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pres-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0rem;
+}
+
+.pres-head h2 {
+  margin: 0rem;
+}
+
+.pres-msg{
+  font-size: 1.1rem;
+}
+
+
+
+/* Flip clock animation */
+@keyframes flipClock {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+
+  10% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+
+  30% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+
+  40% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

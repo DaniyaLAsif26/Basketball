@@ -4,7 +4,8 @@ import HomePage from '../Pages/Home.jsx';
 import DistrictPage from '../Pages/DistrictPage.jsx';
 import EventsPage from '../Pages/EventsPage.jsx';
 import NewsPage from '../Pages/NewsPage.jsx';
-import Rankings from '../components/Rankings/Rankings.jsx';
+import RankingPage from '../Pages/RankingPage.jsx';
+import AboutUsPage from '../Pages/AboutUsPage.jsx'
 
 function AppRoutes() {
     return (
@@ -18,7 +19,9 @@ function AppRoutes() {
 
             <Route path='/news' element={<NewsPage />} />
             
-            <Route path='/rankings' element={<Rankings />} />
+            <Route path='/rankings' element={<RankingPage />} />
+
+            <Route path='/about' element={<AboutUsPage />} />
         </Routes>
     )
 }

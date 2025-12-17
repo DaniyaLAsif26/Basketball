@@ -14,7 +14,7 @@ export default function Navbar() {
             <li><a href="/news">NEWS</a></li>
             <li><a href="/rankings">RANKING</a></li>
             <li><a href="/districts">DISTRICTS</a></li>
-            <li><a href="">ABOUT US</a></li>
+            <li><a href="/about">ABOUT US</a></li>
             <li><a href="">GALLERY</a></li>
           </ul>
         </div>

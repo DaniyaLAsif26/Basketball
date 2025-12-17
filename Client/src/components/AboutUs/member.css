@@ -1,0 +1,46 @@
+.other-members{
+    margin-top: 3rem;
+    background-color: #252534;
+    color: white;
+    border-radius: 2.69rem;
+    padding-bottom: 2.26rem;
+}
+
+.other-members-head {
+    padding: 2rem 3rem 1rem;
+}
+
+.other-members-head h2{
+    width: max-content;
+    margin: 0;
+    font-size: 2rem;
+    padding-bottom: 0.26rem;
+    border-bottom: 4px solid yellow;
+}
+
+.others-cont {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 3rem;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
+    gap: 1rem;
+    row-gap: 2rem;
+    justify-items: center;
+}
+
+.member h3 {
+    margin: 0;
+}
+
+.member {
+    background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
+    padding:  2rem;
+    text-align: center;
+    border-radius: 1.26rem;
+    min-width: 15rem;
+    max-width: 17rem;
+}
+
+.member-role{
+    font-size: 1.1rem;
+}
