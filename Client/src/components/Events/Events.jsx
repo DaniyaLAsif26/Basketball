@@ -152,6 +152,7 @@ export default function Events() {
 
     return (
         <div className="events">
+
             <div className="events-search">
                 <form action="" className='events-search-form'>
                     <EveInput search={search} setSearch={setSearch} />
@@ -161,7 +162,6 @@ export default function Events() {
                 </form>
             </div>
             <EveResults searchResults={searchResults} />
-
         </div>
     )
 }

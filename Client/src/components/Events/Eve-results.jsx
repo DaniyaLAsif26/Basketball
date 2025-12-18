@@ -1,4 +1,5 @@
 import './events.css'
+import { IoMdAdd } from "react-icons/io";
 
 export default function EveResults({ searchResults }) {
     return (
@@ -17,6 +18,9 @@ export default function EveResults({ searchResults }) {
                         </div>
                     </div>
                 )}
+                <div className="add-evt-btn">
+                    <a href="/add-event"><IoMdAdd style={{ fontSize: '2rem' }} /></a>
+                </div>
             </div>
         </div>
     )
