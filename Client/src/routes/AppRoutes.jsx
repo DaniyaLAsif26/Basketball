@@ -8,6 +8,7 @@ import RankingPage from '../Pages/RankingPage.jsx';
 import AboutUsPage from '../Pages/AboutUsPage.jsx'
 import GalleryPage from '../Pages/GalleryPage.jsx';
 import Login from '../components/LogIn/Login.jsx';
+import AddEventPage from '../Pages/AddEventPage.jsx';
 
 function AppRoutes() {
     return (
@@ -28,6 +29,8 @@ function AppRoutes() {
             <Route path='/gallery' element={<GalleryPage />} />
 
             <Route path='/login' element={<Login />} />
+
+            <Route path='/add-event' element={<AddEventPage />} />
         </Routes>
     )
 }
