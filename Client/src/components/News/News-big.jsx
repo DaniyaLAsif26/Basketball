@@ -1,4 +1,4 @@
-import './news.css'
+import './news-box.css'
 
 export default function NewsBig({data}) {
 
