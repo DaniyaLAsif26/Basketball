@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import './news-box.css'
-=======
 import './news-small.css'
->>>>>>> 2f0969b2aab89dded7cc693c3d3b7afa7c202a90
 
 export default function NewsBig({data}) {
 
