@@ -5,7 +5,7 @@
     border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
-.news-row {
+.news-page .news-row {
     gap: 1.26rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

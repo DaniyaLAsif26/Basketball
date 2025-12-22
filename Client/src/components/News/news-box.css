@@ -1,11 +1,36 @@
 .news-box {
+    position: relative;
     height: 24rem;
     min-width: 21rem;
     background-color: white;
     border-radius: 1.26rem;
     background-color: #15151e;
-    position: relative;
     box-shadow: 2.6px 9px 15px rgba(0, 0, 0, 0.26);
+    overflow: hidden;
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 30%,
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 1.26rem 1.26rem 0rem 0rem;
 }
 
 .news-box img {
@@ -15,6 +40,7 @@
     object-fit: cover;
     background-color: black;
     opacity: 0.8;
+    display: block;
 }
 
 .news-txt {
@@ -30,6 +56,8 @@
     font-size: 1rem;
     text-align: start;
     font-weight: 500;
+    position: relative;
+    z-index: 2;
 }
 
 .news-big {
@@ -37,14 +65,31 @@
     position: relative;
 }
 
-.news-big img {
+.news-big .img-wrapper {
     border-radius: 1.26rem;
     grid-column: span 2;
     height: 100%;
-    object-fit: cover;
+    position: relative;
+}
+
+.news-big .img-wrapper::before {
+    border-radius: 1.26rem;
+}
+
+.news-big .img-wrapper img {
+    height: 100%;
+    border-radius: 1.26rem;
 }
 
 .news-big .news-txt-head {
     position: absolute;
     bottom: 10px;
+}
+
+.news-box:hover img {
+    transform: scale(1.1); /* Scale up by 10% */
+}
+.news-box:hover  {
+    background-color: #262631;
+    cursor: pointer;
 }
