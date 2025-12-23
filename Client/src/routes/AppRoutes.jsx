@@ -9,6 +9,7 @@ import AboutUsPage from '../Pages/AboutUsPage.jsx'
 import GalleryPage from '../Pages/GalleryPage.jsx';
 import Login from '../components/LogIn/Login.jsx';
 import AddEventPage from '../Pages/AddEventPage.jsx';
+import ViewEventPage from '../Pages/ViewEventPage.jsx';
 
 function AppRoutes() {
     return (
@@ -31,6 +32,8 @@ function AppRoutes() {
             <Route path='/login' element={<Login />} />
 
             <Route path='/add-event' element={<AddEventPage />} />
+
+            <Route path='/view-event' element={<ViewEventPage />} />
         </Routes>
     )
 }
