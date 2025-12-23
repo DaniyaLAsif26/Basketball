@@ -1,5 +1,103 @@
-.gallery-cont{
+.gallery-cont {
     min-height: 40rem;
     background-color: black;
     border-radius: 0rem 0rem 2.69rem 2.69rem;
+    color: white;
+    transition: filter 0.3s ease;
+}
+
+.gallery-cont.blurred {
+    filter: blur(1.26px);
+}
+
+.gallery-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+}
+
+.gallery-head h2 {
+    margin: 1rem 1rem 2rem;
+    border-bottom: 5px solid yellow;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    justify-items: center;
+    padding: 1rem 2.5rem 7.5rem;
+    gap: 2rem;
+    row-gap: 2.26rem;
+}
+
+.gallery img {
+    display: block;
+    height: 21rem;
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(58, 58, 58, 0.82);
+    backdrop-filter: blur(1.26px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    max-width: 126rem;
+    min-height: 80%;
+    max-height: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 2.26rem;
+    color: red;
+    cursor: pointer;
+}
+
+.close-btn svg {
+    background-color: black;
+    border-radius: 50%;
+
+}
+
+.gallery-btn {
+    color: white;
+    background-color: red;
+    font-size: 2rem;
+    padding: 2.26rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-btn {
+    left: 2rem;
+}
+
+.next-btn {
+    right: 2rem;
+}
+
+.gallery-btn:hover svg{
+    transform: scale(1.2);
 }
