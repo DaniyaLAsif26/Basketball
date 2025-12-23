@@ -2,6 +2,7 @@ import AppRoutes from './routes/AppRoutes.jsx'
 
 import Navbar from './components/Navbar/navbar'
 import Footer from './components/Footer/Footer.jsx'
+import ScrollToTop from './components/ScrollTop/ScrollToTop.jsx'
 import './App.css'
 
 import { useLocation } from 'react-router-dom'
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       {!checkRoute && <Navbar />}
       <AppRoutes />
       <Footer />
