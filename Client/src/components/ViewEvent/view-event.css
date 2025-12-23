@@ -1,6 +1,12 @@
+.view-event-cont {
+    background: linear-gradient(90deg, rgb(254, 65, 65) 0%, rgba(225, 0, 0, 1) 69%);
+    color: white;
+    padding-bottom: 3rem;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
+}
+
 .view-event-head {
     min-height: 25rem;
-    background-color: red;
     display: flex;
     align-items: start;
     gap: 1.5rem;
@@ -21,7 +27,6 @@
 .view-event-details {
     width: 100%;
     margin: 1rem;
-    color: white;
     font-size: 1.2rem;
     display: flex;
     flex-direction: column;
@@ -53,7 +58,7 @@
 
 .event-type {
     display: inline-block;
-    padding: 0.7rem 0.5rem 0.26rem 0rem;
+    padding: 0.3rem 0.5rem 0.26rem 0rem;
     font-weight: bold;
 }
 
@@ -63,12 +68,8 @@
     justify-self: center;
 }
 
-.event-add-info {
-    color: white;
-    background-color: red;
-}
-
-.event-add-info-head , .event-details-cont-head{
+.event-add-info-head,
+.event-details-cont-head {
     padding: 0.7rem 2.5rem 1rem;
 
 }
@@ -84,7 +85,7 @@
     padding: 0.26rem 3rem 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 2.26rem;
+    column-gap: 3.5rem;
     font-size: 1.2rem;
 }
 
@@ -94,16 +95,12 @@
     padding-bottom: 0.5rem;
 }
 
-.add-event-col a{
+.add-event-col a {
     color: white;
     text-decoration: underline;
     font-size: 1.05rem;
 }
 
-.event-details-cont{
-    color: white;
-    background-color: red;
+.event-details-cont {
     min-height: 26rem;
-    padding-bottom: 3rem;
-    border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
