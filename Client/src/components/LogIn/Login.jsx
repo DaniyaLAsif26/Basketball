@@ -1,6 +1,6 @@
 import './login.css'
 import logo from '../../assets/red.png'
-import video from '../../assets/video.mp4'
+import video from '../../assets/login-video.mp4'
 
 export default function Login() {
     return (
