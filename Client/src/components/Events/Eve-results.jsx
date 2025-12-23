@@ -11,7 +11,9 @@ export default function EveResults({ searchResults }) {
             <div className="event-results">
                 {searchResults.map((item, index) =>
                     <div className="event-result" onClick={()=> navigate('/view-event')}>
+                        <div className="event-reult-img">
                         <img src={item.img} alt="" />
+                        </div>
                         <div className="event-details">
                             <div className="event-head">{item.name}</div>
                             <div className=""><b>Level :</b> {item.level}</div>
