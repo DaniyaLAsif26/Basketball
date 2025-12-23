@@ -5,7 +5,12 @@ import { FaYoutube } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
+import { useNavigate } from 'react-router-dom';
+
 export default function Footer() {
+
+
+    
     return (
         <footer>
             <div className="footer">
@@ -42,6 +47,9 @@ export default function Footer() {
                 </div>
                 <div className="fot-right">
                     <button>log In</button>
+                  <ul>
+                        <li><a href="/admin">ADMIN</a></li>   
+                    </ul>
                 </div>
             </div>
             <div className="develop">

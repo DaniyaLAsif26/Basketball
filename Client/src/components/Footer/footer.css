@@ -44,20 +44,36 @@
     padding: 0.5rem 1rem;
 }
 
-.copyright{
+.copyright {
     margin-top: 5rem;
     font-weight: 500;
     color: rgb(27, 27, 27);
 }
 
-.develop a{
+.develop a {
     font-weight: 500;
     color: rgb(27, 27, 27);
 }
 
-.develop{
+.develop {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 1.5rem 0rem 2rem;
+}
+
+.fot-right ul {
+    padding: 1rem 0rem;
+}
+
+.fot-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fot-right a{
+    color: black;
+    font-weight: bold;
 }

@@ -10,6 +10,7 @@ import GalleryPage from '../Pages/GalleryPage.jsx';
 import Login from '../components/LogIn/Login.jsx';
 import AddEventPage from '../Pages/AddEventPage.jsx';
 import ViewEventPage from '../Pages/ViewEventPage.jsx';
+import AdminPage from '../Pages/AdminPage.jsx';
 
 function AppRoutes() {
     return (
@@ -34,6 +35,8 @@ function AppRoutes() {
             <Route path='/add-event' element={<AddEventPage />} />
 
             <Route path='/view-event' element={<ViewEventPage />} />
+
+            <Route path='/admin' element={<AdminPage />} />
         </Routes>
     )
 }
