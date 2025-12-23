@@ -93,3 +93,7 @@
     background-color: #262631;
     cursor: pointer;
 }
+
+.news-box img {
+    transition: transform 0.3s ease;
+}
