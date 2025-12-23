@@ -1,12 +1,12 @@
 .dist-cont {
     background-color: #0f0f1e;
-    min-height: 40rem;
-    padding:  3rem;
+    padding:  3rem 3rem 5rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: auto;
     align-items: center;
     gap: 1.26rem;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
 .district {
