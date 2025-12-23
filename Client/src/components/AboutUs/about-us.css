@@ -1,7 +1,7 @@
 .about-us-cont {
   position: relative;
   background-color: black;
-  padding-bottom: 4rem;
+  padding-bottom:5rem;
   border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
@@ -90,7 +90,7 @@
 .abt-sec {
   padding: 2.5rem 4rem;
   grid-template-columns: 2fr 1fr;
-  border-radius: 0rem 0rem 2.69rem 2.69rem ;
+  border-radius: 0rem 0rem 2.69rem 2.69rem;
 
 }
 
@@ -118,7 +118,7 @@
   margin: 0rem;
 }
 
-.pres-msg{
+.pres-msg {
   font-size: 1.1rem;
 }
 
