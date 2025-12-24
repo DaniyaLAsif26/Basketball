@@ -1,6 +1,10 @@
 import './options-head.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function OptionsHead({ head }) {
+
+const navigate = useNavigate()
+
     return (
         <div className="options-head-cont">
             <div className="options-head">
@@ -21,7 +25,7 @@ export default function OptionsHead({ head }) {
                     {head.rankedOptions.ranked ? "All Players" : "Ranked Players"}
                 </div>
             }
-            <button>{head.btn}</button>
+            <button onClick={()=> navigate(head.url)}>{head.btn}</button>
         </div>
     )
 }
