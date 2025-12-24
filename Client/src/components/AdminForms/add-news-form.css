@@ -1,0 +1,71 @@
+.add-news {
+    background-color: black;
+    padding: 2.69rem 2rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
+}
+
+.add-news-cont {
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0rem 5rem 2rem;
+    width: max-content;
+    border-radius: 1rem;
+}
+
+.add-news-head {
+    margin: 1.26rem 0rem;
+}
+
+.add-news-head h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.news-form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-form-div label {
+    font-weight: bold;
+    padding: 0rem 0.7rem;
+}
+
+.news-form-div textarea {
+    height: 6.9rem;
+    width: 21rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+}
+
+.add-news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-input {
+    background-color: #fff;
+    color: black;
+    width: 24rem;
+}
+
+.add-news-btn {
+    margin: 1rem 0rem 0rem;
+}
+
+.add-news-btn button {
+    color: white;
+    background-color: green;
+}
