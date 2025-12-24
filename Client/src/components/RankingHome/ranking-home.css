@@ -1,14 +1,14 @@
 .ranking-cont {
     background: black;
     font-family: Arial, sans-serif;
-    padding-bottom: 1rem 1rem 2.26rem;
+    padding: 2.6rem 0rem 2rem;
 }
 
 .ranking {
     background: #0f0f1e;
     margin: 0rem 5rem;
     border-radius: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
 }
 
 .ranking-head {
@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2.5rem 1rem;
 }
 
 .ranking-head h2 {
