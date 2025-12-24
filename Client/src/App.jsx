@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom'
 function App() {
   const location = useLocation()
 
-  const route = ['/login']
+  const route = ['/login' , '/admin']
   const checkRoute = route.includes(location.pathname)
 
   return (
