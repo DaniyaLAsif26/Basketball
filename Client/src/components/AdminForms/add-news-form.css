@@ -56,10 +56,12 @@
     justify-content: center;
 }
 
-.form-input {
+.event-form-input {
+    box-sizing: border-box;
     background-color: #fff;
     color: black;
     width: 24rem;
+    padding: 0.55rem 0.26rem;
 }
 
 .add-news-btn {

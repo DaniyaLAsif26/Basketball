@@ -62,7 +62,7 @@ export default function AddNewsForm() {
                                 name="image"
                                 accept='image/png, image/jpeg, image/jpg'
                                 required
-                                className="form-input"
+                                className="event-form-input"
                             />
                         </div>
                         <div className="add-news-btn">

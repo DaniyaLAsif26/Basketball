@@ -12,8 +12,8 @@ import { useLocation } from 'react-router-dom'
 function App() {
   const location = useLocation()
 
-  const route = ['/login', '/admin' , '/admin/add-news']
-  const adminRoutes = ['/admin' , '/admin/add-news']
+  const route = ['/login', '/admin' , '/admin/add-news' , '/admin/add-event']
+  const adminRoutes = ['/admin' , '/admin/add-news' , '/admin/add-event']
 
   const checkRoute = route.includes(location.pathname)
   const checkAdminRoute = adminRoutes.includes(location.pathname)

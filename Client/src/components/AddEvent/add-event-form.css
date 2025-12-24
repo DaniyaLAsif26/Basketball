@@ -7,6 +7,12 @@
   top: -8rem;
 }
 
+.admin-form-container {
+  min-height: 100vh;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
 /* Form Wrapper */
 .form-wrapper {
   margin: 0 2.6rem 2.2rem;
@@ -18,12 +24,20 @@
 
 /* Header */
 .form-header {
+  position: relative;
   background-color: #2563eb;
   color: #ffffff;
   padding: 1.5rem 1rem;
   text-align: center;
   height: 5rem;
   box-sizing: border-box;
+}
+
+.form-header svg{
+  position: absolute;
+  font-size: 2rem;
+  left: 2rem;
+  color: white;
 }
 
 .form-title {
@@ -151,19 +165,19 @@
     flex-direction: column;
     gap: 0;
   }
-  
+
   .form-container {
     padding: 10px;
   }
-  
+
   .form-content {
     padding: 20px;
   }
-  
+
   .form-header {
     padding: 20px;
   }
-  
+
   .form-title {
     font-size: 24px;
   }

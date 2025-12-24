@@ -1,8 +1,17 @@
 import './add-event-form.css'
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
+
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export default function AddEventForm() {
+
+    const location = useLocation()
+    const admin = ['/admin/add-event']
+    const checkAdmin = location.pathname.includes(admin)
+
     const [formData, setFormData] = useState({
+        type: '',
         title: '',
         format: '',
         category: '',
@@ -96,6 +105,7 @@ export default function AddEventForm() {
 
         // Reset form
         setFormData({
+            type: '',
             title: '',
             format: '',
             category: '',
@@ -122,7 +132,8 @@ export default function AddEventForm() {
     const handleClearDraft = () => {
         sessionStorage.removeItem('tournamentDraft');
         setFormData({
-     title: '',
+            type: '',
+            title: '',
             format: '',
             category: '',
             ageGroup: '',
@@ -142,13 +153,32 @@ export default function AddEventForm() {
     };
 
     return (
-        <div className="form-container">
+        <div className={` ${!checkAdmin ? 'form-container' : 'admin-form-container'}`}>
             <div className="form-wrapper">
                 <div className="form-header">
+                    {checkAdmin &&
+                        <a href="/admin"><IoMdArrowRoundBack /></a>
+                    }
                     <h1 className="form-title">Host a Basketball Tournament</h1>
                 </div>
 
                 <div className="form-content">
+                    {checkAdmin &&
+                        <div className="form-row">
+                            <label className="form-label">Tournament type</label>
+                            <select
+                                name="type"
+                                value={formData.type}
+                                onChange={handleChange}
+                                required
+                                className="form-select"
+                            >
+                                <option value="">Select Type</option>
+                                <option value="un-official">Un-Official</option>
+                                <option value="official">Official</option>
+                            </select>
+                        </div>
+                    }
                     <div className="form-row">
                         <div className="form-group">
                             <label className="form-label">Tournament Title *</label>

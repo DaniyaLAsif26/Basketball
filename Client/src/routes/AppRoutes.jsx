@@ -13,6 +13,7 @@ import ViewEventPage from '../Pages/ViewEventPage.jsx';
 
 import AdminPage from '../Pages/AdminPage.jsx';
 import AddNewsPage from '../Pages/AddNewsPage.jsx';
+import AdminAddEventForm from '../components/AdminForms/AdminAddEventForm.jsx';
 
 function AppRoutes() {
     return (
@@ -42,6 +43,8 @@ function AppRoutes() {
             <Route path='/admin' element={<AdminPage />} />
 
             <Route path='/admin/add-news' element={<AddNewsPage />} />
+            
+            <Route path='/admin/add-event' element={<AdminAddEventForm />} />
         </Routes>
     )
 }
