@@ -10,7 +10,9 @@ import GalleryPage from '../Pages/GalleryPage.jsx';
 import Login from '../components/LogIn/Login.jsx';
 import AddEventPage from '../Pages/AddEventPage.jsx';
 import ViewEventPage from '../Pages/ViewEventPage.jsx';
+
 import AdminPage from '../Pages/AdminPage.jsx';
+import AddNewsPage from '../Pages/AddNewsPage.jsx';
 
 function AppRoutes() {
     return (
@@ -36,7 +38,10 @@ function AppRoutes() {
 
             <Route path='/view-event' element={<ViewEventPage />} />
 
+            {/* admin */}
             <Route path='/admin' element={<AdminPage />} />
+
+            <Route path='/admin/add-news' element={<AddNewsPage />} />
         </Routes>
     )
 }
