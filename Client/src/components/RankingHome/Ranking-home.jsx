@@ -212,6 +212,9 @@ export default function Ranking() {
 
                     </div>
                 </div>
+                <div className="view-all-rankings">
+                   <a href="/rankings">View All</a> 
+                </div>
             </div>
         </div>
     );
