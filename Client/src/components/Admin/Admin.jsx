@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 import AdminOption from './Admin-options';
 import AllUsers from './AllUsers';
+import AllEvents from './AllEvents';
+import AdminNews from './AdminNews';
 
 import { IoMdHome } from "react-icons/io";
 import { IoLogOutOutline } from "react-icons/io5";
@@ -33,6 +35,8 @@ export default function Admin() {
     }, [option])
 
     const userTable = ["No", "Name", "Ranking", "Points"]
+    const eventTable = ["No", "Name", "Category", "Date"]
+    const newsTable = ["No", "Title", "date", 'img']
 
     return (
         <div className="admin-cont">
@@ -48,7 +52,10 @@ export default function Admin() {
             <div className="admin-body">
                 <AdminOption options={AdminOptions} selectedOption={option} setOption={setOption} />
                 <div className="admin-opt-results">
+
                     {option === 'PLAYERS' && <AllUsers table={userTable} />}
+                    {option === 'EVENTS' && <AllEvents table={eventTable} />}
+                    {option === 'NEWS' && <AdminNews table={newsTable} />}
 
                 </div>
             </div>

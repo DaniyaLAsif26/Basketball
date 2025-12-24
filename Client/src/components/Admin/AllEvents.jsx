@@ -1,23 +1,24 @@
+import './all-events.css'
 import './all-users.css'
-import { useState, useEffect } from 'react'
 import OptionsHead from './OptionHead'
+import { useState } from 'react'
 
-export default function AllUsers({ table }) {
+export default function AllEvents({table}) {
 
     const [search, setSearch] = useState('')
-    const [ranked, setRanked] = useState(false)
 
-    const OptHead = {
-        heading: "All Users",
-        placeholder: "Search Users",
+        const OptHead = {
+        heading: "All Events",
+        placeholder: "Search Events",
         search: setSearch,
-        btn: "Add User",
-        url: '/admin/add-user',
-        rankedOptions: { ranked: ranked, showRanked: setRanked }
+        btn: "Add Event",
+        url: '/admin/add-event',
+        // rankedOptions: { ranked: ranked, showRanked: setRanked }
     }
+
     return (
-        <div className="all-users-cont">
-            <OptionsHead head={OptHead} />
+        <div className="all-events cont">
+            <OptionsHead head={OptHead}/>
             <div className="all-users">
                 <div className="all-users-table-cont">
                     <table className='all-users-table'>

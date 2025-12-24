@@ -1,22 +1,23 @@
+import './admin-news.css'
 import './all-users.css'
-import { useState, useEffect } from 'react'
 import OptionsHead from './OptionHead'
 
-export default function AllUsers({ table }) {
+import { useState } from 'react'
+
+export default function AdminNews({ table }) {
 
     const [search, setSearch] = useState('')
-    const [ranked, setRanked] = useState(false)
 
     const OptHead = {
-        heading: "All Users",
-        placeholder: "Search Users",
+        heading: "All News",
+        placeholder: "Search News",
         search: setSearch,
-        btn: "Add User",
-        url: '/admin/add-user',
-        rankedOptions: { ranked: ranked, showRanked: setRanked }
+        btn: "Add news",
+        url: '/admin/add-news',
     }
+
     return (
-        <div className="all-users-cont">
+        <div className="admin-news-cont">
             <OptionsHead head={OptHead} />
             <div className="all-users">
                 <div className="all-users-table-cont">

@@ -13,12 +13,14 @@ export default function OptionsHead({ head }) {
                     onChange={(e) => head.search(e.target.value)}
                 />
             </form>
-            <div
-                className="ranked-players"
-                onClick={() => head.rankedOptions.showRanked(prev => !prev)}
-            >
-                {head.rankedOptions.ranked ? "All Players" : "Ranked Players" }
-            </div>
+            {head.rankedOptions &&
+                <div
+                    className="ranked-players"
+                    onClick={() => head.rankedOptions.showRanked(prev => !prev)}
+                >
+                    {head.rankedOptions.ranked ? "All Players" : "Ranked Players"}
+                </div>
+            }
             <button>{head.btn}</button>
         </div>
     )
