@@ -1,6 +1,8 @@
 import './add-news-form.css'
 import { useState, useEffect, useRef } from 'react'
 
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 export default function AddNewsForm() {
 
     const imageRef = useRef(null)
@@ -34,6 +36,7 @@ export default function AddNewsForm() {
     return (
         <div className="add-news">
             <div className="add-news-cont">
+                <a href="/admin"><IoMdArrowRoundBack /></a>
                 <div className="add-news-head">
                     <h2>Add News</h2>
                 </div>
