@@ -1,6 +1,6 @@
 .tournament-home {
     background-color: black;
-    padding: 2rem 3rem 5rem;
+    padding: 3.5rem 3rem 5.5rem;
     border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
@@ -25,16 +25,16 @@
     padding-bottom: 0.5rem;
 }
 
-.tournament-info p{
+.tournament-info p {
     margin: 0rem;
     font-size: 1rem;
     font-weight: 500;
 }
 
-.tournament-btn{
+.tournament-btn {
     background-color: white;
     border-radius: 2.26rem;
     font-size: 1rem;
-    padding:  0.5rem 1rem;
+    padding: 0.5rem 1rem;
     margin: 1rem 0rem 0rem;
 }
