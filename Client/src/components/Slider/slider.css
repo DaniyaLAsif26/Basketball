@@ -1,42 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
+
 .slider-cont {
     height: calc(100vh - 5.5rem);
     width: 100%;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
+}
+
+.slider-cont-head {
+    padding: 1.5rem 3rem 2.5rem ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.slider-cont-head a  {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+}
+.slider-cont-head .gallery-more {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slider-cont-head h2 {
+    width: max-content;
+    font-size: 2rem;
+    margin: 0;
+    background-color: transparent;
+    border-bottom: 5px solid red;
+    font-family: "BBH Bartle", sans-serif;
 }
 
 .slider-img {
     width: 100%;
     position: absolute;
     background-color: black;
-    height: calc(100vh - 5rem);
+    height: 53rem
 }
 
 .slider-img img {
     width: 100%;
-    height: calc(100vh - 5rem);
+    height: 53rem;
     opacity: 0.4;
     object-fit: cover;
 }
 
 .slider {
-    width: max-content; 
-    position: absolute;
+    width: max-content;
+    /* position: absolute; */
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 2.26rem;
-    overflow: visible; 
+    overflow: visible;
     margin: auto;
-    top: 5.5rem;
-    animation: slideHorizontal 26s linear infinite; 
+    bottom: 2.5rem;
+    animation: slideHorizontal 26s linear infinite;
 }
 
 .slider img {
     height: 33rem;
     width: 26rem;
     border-radius: 1.69rem;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .slider-img::before {
@@ -59,6 +96,7 @@
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }

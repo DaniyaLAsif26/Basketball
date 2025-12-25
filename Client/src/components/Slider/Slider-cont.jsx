@@ -1,6 +1,8 @@
 import './slider.css';
 import { useRef } from 'react';
 
+import { GrFormNext } from "react-icons/gr";
+
 import Slider_img from '../../assets/home-bg.jpg';
 import slide_1 from '../../assets/slide-1.jpg';
 import slide_2 from '../../assets/slide-2.jpg';
@@ -27,6 +29,10 @@ export default function SliderCont() {
         <div className="slider-cont">
             <div className="slider-img">
                 <img src={Slider_img} alt="Background" />
+            </div>
+            <div className="slider-cont-head">
+                <h2>GALLERY</h2>
+                <div className="gallery-more"><a href="/gallery">See More </a><GrFormNext /></div>
             </div>
             <div className="slider"
                 ref={SlideRef}
