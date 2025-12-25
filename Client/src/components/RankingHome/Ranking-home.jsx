@@ -6,6 +6,8 @@ import rank_5 from '../../assets/rank-5.avif';
 import rank_6 from '../../assets/rank-6.png';
 import './ranking-home.css';
 
+import { MdNavigateNext } from "react-icons/md";
+
 const HalftoneBackground = ({
     gradient,
     dotColor = 'rgba(0, 0, 0, 0.2)',
@@ -213,7 +215,7 @@ export default function Ranking() {
                     </div>
                 </div>
                 <div className="view-all-rankings">
-                   <a href="/rankings">View All</a> 
+                   <a href="/rankings">View All <MdNavigateNext /> </a> 
                 </div>
             </div>
         </div>

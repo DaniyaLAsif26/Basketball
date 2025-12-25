@@ -121,7 +121,7 @@
     bottom: 1rem;
 }
 
-.view-all-rankings a{
+.view-all-rankings a {
     width: auto;
     font-size: 1.2rem;
     color: white;
@@ -132,7 +132,7 @@
     font-family: "Oswald", sans-serif;
 }
 
-.view-all-rankings a:hover{
+.view-all-rankings a:hover {
     transform: scale(1.1);
 }
 
