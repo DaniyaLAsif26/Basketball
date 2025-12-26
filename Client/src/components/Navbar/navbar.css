@@ -5,7 +5,7 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
     box-sizing: border-box;
 }
 
@@ -45,6 +45,24 @@ nav ul li {
     margin-left: 2rem;
 }
 
-.login-btn{
-    color: white;
+.login-btn  {
+  background: #fbca1f;
+  font-family: inherit;
+  padding: 0.4rem 1rem;
+  font-weight: bolder;
+  font-size: 1rem;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+
+.login-btn:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
 }
