@@ -1,12 +1,13 @@
 .about-us-cont {
   position: relative;
   background-color: black;
-  padding-bottom:5rem;
+  padding-bottom: 5rem;
   border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
 .about-us-head {
   background-color: red;
+  background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
   padding: 1rem 0rem;
   position: relative;
   width: 100%;

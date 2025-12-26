@@ -1,7 +1,7 @@
 .counter-element {
     min-height: 10rem;
     min-width: 13rem;
-    background-color: red;
+    background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
     color: white;
     border-radius: 1rem;
     display: flex;
