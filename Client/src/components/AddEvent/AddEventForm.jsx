@@ -156,8 +156,11 @@ export default function AddEventForm() {
         <div className='form-container'>
             <div className="form-wrapper">
                 <div className="form-header">
-                    {checkAdmin &&
+                    {checkAdmin ?
                         <a href="/admin"><IoMdArrowRoundBack /></a>
+                        :
+                        <a href="/events"><IoMdArrowRoundBack /></a>
+
                     }
                     <h1 className="form-title">Host a Basketball Tournament</h1>
                 </div>
