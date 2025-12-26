@@ -1,13 +1,5 @@
 .add-event-cont {
     position: relative;
-    background: linear-gradient(to right, #414345, #232526);
+    background-color: #e74c3c;
     border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
-
-.add-event-head {
-    min-height: 11rem;
-    background-color: red;
-    background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
-}
-
-

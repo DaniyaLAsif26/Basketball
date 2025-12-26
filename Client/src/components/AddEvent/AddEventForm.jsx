@@ -153,7 +153,7 @@ export default function AddEventForm() {
     };
 
     return (
-        <div className={` ${!checkAdmin ? 'form-container' : 'admin-form-container'}`}>
+        <div className='form-container'>
             <div className="form-wrapper">
                 <div className="form-header">
                     {checkAdmin &&
