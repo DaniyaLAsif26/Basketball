@@ -130,29 +130,6 @@
     border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
-.add-evt-btn {
-    background-color: aqua;
-    border-radius: 50%;
-    width: max-content;
-    padding: 0.5rem;
-    cursor: pointer;
-    border: 2px solid black;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
-    position: sticky;
-    bottom: 2rem;
-    left: 100%;
-    right: 0r;
-    margin-right: -1.1rem;
-}
-
-.add-evt-btn a {
-    color: black;
-}
-
-.add-evt-btn:hover {
-    transform: scale(1.1);
-}
-
 .event-results {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -203,4 +180,76 @@
 
 .event-result:hover {
     transform: scale(1.03);
+}
+
+.add-evt-btn {
+    bottom: 2.5rem;
+    left: 100%;
+    right: 0r;
+    margin-right: -1.26rem;
+    position: sticky;
+}
+
+.plusButton {
+    /* Config start */
+    --plus_sideLength: 3rem;
+    --plus_topRightTriangleSideLength: 0.9rem;
+    /* Config end */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    width: var(--plus_sideLength);
+    height: var(--plus_sideLength);
+    background-color: #000000;
+    overflow: hidden;
+    transition: transform 0.26s ease;
+}
+
+.plusButton::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+}
+
+.plusButton:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.plusButton:hover::before {
+    --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton:focus-visible::before {
+    --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+.plusButton>.plusIcon {
+    fill: white;
+    width: calc(var(--plus_sideLength) * 0.7);
+    height: calc(var(--plus_sideLength) * 0.7);
+    z-index: 1;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+}
+
+.plusButton:hover>.plusIcon {
+    fill: white;
+    transform: rotate(180deg);
+}
+
+.plusButton:focus-visible>.plusIcon {
+    fill: black;
+    fill: white;
+    transform: rotate(180deg);
 }
