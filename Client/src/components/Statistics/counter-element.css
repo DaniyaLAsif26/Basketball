@@ -1,6 +1,6 @@
 .counter-element {
-    min-height: 11rem;
-    min-width: 15rem;
+    min-height: 10rem;
+    min-width: 13rem;
     background-color: red;
     color: white;
     border-radius: 1rem;
@@ -33,11 +33,11 @@
 }
 
 .counter-label {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
     color: yellow;
 }
 
 .counter-count {
     font-weight: bold;
-    font-size: 1.85rem;
+    font-size: 1.7rem;
 }
