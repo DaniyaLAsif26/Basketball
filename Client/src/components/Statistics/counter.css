@@ -1,0 +1,30 @@
+.counter{
+    background-color: black;
+    padding: 3rem 2.5rem 0rem;
+}
+
+.counter-cont{
+    min-height: 11rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.counter-cont-head{
+    padding: 1.5rem 3rem 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter-cont-head h2{
+    margin: 0;
+}
+
+.counter-elements-cont{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;   
+    gap: 2.5rem; 
+    padding: 0.5rem 2rem 2.26rem;
+}

@@ -1,0 +1,43 @@
+.counter-element {
+    min-height: 11rem;
+    min-width: 15rem;
+    background-color: red;
+    color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.counter-element:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.counter-element svg {
+    font-size: 2.5rem;
+}
+
+.small svg {
+    font-size: 2rem;
+}
+
+.counter-label {
+    font-size: 1.45rem;
+    color: yellow;
+}
+
+.counter-count {
+    font-weight: bold;
+    font-size: 1.85rem;
+}
