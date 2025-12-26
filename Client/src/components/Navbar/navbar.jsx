@@ -28,7 +28,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="login">
-          <button className='login-btn' >Log in</button>
+          <button className='login-btn' onClick={logInRedirect} >Log in</button>
         </div>
       </div>
     </nav>
