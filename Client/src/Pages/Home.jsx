@@ -4,6 +4,7 @@ import Ranking from '../components/RankingHome/Ranking-home.jsx'
 import Tournament from '../components/Tournament/Tournament.jsx'
 import Intro from '../components/Into/Intro.jsx'
 import Counter from '../components/Statistics/Counter.jsx'
+import SocialMedia from '../components/SocialMedia/SocialMedia.jsx'
 
 export default function HomePage() {
     return (
@@ -13,6 +14,7 @@ export default function HomePage() {
             <Counter />
             <Ranking />
             <SliderCont />
+            <SocialMedia />
             <Tournament />
         </>
     )
