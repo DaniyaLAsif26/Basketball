@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap');
 
-.social-media-cont{
+.social-media-cont {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #e91e63;
-    padding: 1rem 0rem 2.26rem;
+    padding: 1.5rem 0rem 3.5rem;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
 .social-media-cont ul {
@@ -81,7 +82,7 @@
     box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
 }
 
-.social-media-cont ul li:hover a svg{
+.social-media-cont ul li:hover a svg {
     color: white;
 }
 

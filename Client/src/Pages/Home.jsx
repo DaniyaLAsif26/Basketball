@@ -14,8 +14,8 @@ export default function HomePage() {
             <Counter />
             <Ranking />
             <SliderCont />
-            <SocialMedia />
             <Tournament />
+            <SocialMedia />
         </>
     )
 }
