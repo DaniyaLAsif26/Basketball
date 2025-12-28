@@ -12,7 +12,8 @@ export default function Navbar() {
   }
 
   return (
-    <nav>
+    <nav className='navbar'>
+
       <div className="logo">
         <a href="/"> <img src={logo} alt="" /></a>
       </div>
@@ -28,9 +29,12 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="login">
-          <button className='login-btn' onClick={logInRedirect} >Log in</button>
+          <button className='login-btn' onClick={logInRedirect}>
+            <div><span>Log in</span></div>
+          </button>
         </div>
       </div>
+
     </nav>
   );
 }

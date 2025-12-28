@@ -13,6 +13,7 @@
     cursor: pointer;
     border: 3px solid #000000;
     box-shadow: 12px 12px 0 #000000;
+    /* box-shadow: 12px 12px 0 white; */
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 

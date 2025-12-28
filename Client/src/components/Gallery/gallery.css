@@ -98,6 +98,6 @@
     right: 2rem;
 }
 
-.gallery-btn:hover svg{
+.gallery-btn:hover svg {
     transform: scale(1.2);
 }

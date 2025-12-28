@@ -54,12 +54,14 @@
     left: 2.5rem;
     display: flex;
     flex-direction: column;
+    text-shadow: 2.5px 2px 2.5px #000000, 5px 4px 5px #000000, 7.5px 6px 7.5px #000000, 10px 8px 10px #000000, 12.5px 10px 12.5px #000000;
 }
 
 .intro-head p {
     font-size: 1.2rem;
     font-weight: bold;
     padding: 2.26rem 1.5rem 1rem;
+    text-shadow: 1px 1px 2px #000000, 2px 2px 4px #000000, 3px 3px 6px #000000, 4px 4px 8px #000000;
 }
 
 .intro-head h1 {
@@ -76,6 +78,7 @@
     align-items: center;
     gap: 2rem;
     margin: 3.5rem 1rem 1.5rem;
+    
 }
 
 /* CSS */

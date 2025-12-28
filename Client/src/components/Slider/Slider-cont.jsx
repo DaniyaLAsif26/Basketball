@@ -27,27 +27,29 @@ export default function SliderCont() {
 
     return (
         <div className="slider-cont">
-            <div className="slider-img">
-                <img src={Slider_img} alt="Background" />
-            </div>
-            <div className="slider-cont-head">
-                <h2>GALLERY</h2>
-                <div className="gallery-more"><a href="/gallery">See More </a><GrFormNext /></div>
-            </div>
-            <div className="slider"
-                ref={SlideRef}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-            >
-                <img src={slide_1} alt="Slide 1" />
-                <img src={slide_2} alt="Slide 2" />
-                <img src={slide_3} alt="Slide 3" />
-                <img src={slide_4} alt="Slide 4" />
-                {/* Duplicate for seamless loop */}
-                <img src={slide_1} alt="Slide 1" />
-                <img src={slide_2} alt="Slide 2" />
-                <img src={slide_3} alt="Slide 3" />
-                <img src={slide_4} alt="Slide 4" />
+            <div className="gallery-slider">
+                <div className="slider-img">
+                    <img src={Slider_img} alt="Background" />
+                </div>
+                <div className="slider-cont-head">
+                    <h2>GALLERY</h2>
+                    <div className="gallery-more"><a href="/gallery">See More </a><GrFormNext /></div>
+                </div>
+                <div className="slider"
+                    ref={SlideRef}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    <img src={slide_1} alt="Slide 1" />
+                    <img src={slide_2} alt="Slide 2" />
+                    <img src={slide_3} alt="Slide 3" />
+                    <img src={slide_4} alt="Slide 4" />
+                    {/* Duplicate for seamless loop */}
+                    <img src={slide_1} alt="Slide 1" />
+                    <img src={slide_2} alt="Slide 2" />
+                    <img src={slide_3} alt="Slide 3" />
+                    <img src={slide_4} alt="Slide 4" />
+                </div>
             </div>
         </div>
     );
