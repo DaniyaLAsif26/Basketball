@@ -23,8 +23,8 @@ const searchResults = [
     { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
     { img: event_3, name: "SANKETIKA Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
     { img: event_1, name: "ATHLEMA By MVSR", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
-    { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
-    { img: event_3, name: "SANKETIKA Sports Fest AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
+    { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Women' },
+    { img: event_3, name: "SANKETIKA Sports Fest AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", level: "College", format: "5X5", age: 'U-23', category: 'Women' },
 ]
 
 export default function Events() {
