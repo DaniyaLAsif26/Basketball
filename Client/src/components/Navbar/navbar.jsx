@@ -2,6 +2,8 @@ import './navbar.css';
 import logo from '../../assets/red.png';
 import { useNavigate } from 'react-router-dom'
 
+import { FaPlus } from "react-icons/fa6";
+
 export default function Navbar() {
 
   const navigate = useNavigate()
@@ -9,6 +11,11 @@ export default function Navbar() {
   const logInRedirect = (e) => {
     e.preventDefault()
     navigate('/login')
+  }
+
+  const eventRedirect = (e) => {
+    e.preventDefault()
+    navigate('/add-event')
   }
 
   return (
@@ -28,10 +35,21 @@ export default function Navbar() {
             <li><a href="/gallery">GALLERY</a></li>
           </ul>
         </div>
-        <div className="login">
-          <button className='login-btn' onClick={logInRedirect}>
-            <div><span>Log in</span></div>
-          </button>
+        <div className="nav-btns">
+          <div className="add-event">
+            <button className="add-event-btn" onClick={eventRedirect}>
+              <span class="shadow"></span>
+              <span class="edge"></span>
+              <span class="front text">
+                Host <FaPlus />
+              </span>
+            </button>
+          </div>
+          <div className="login">
+            <button className='login-btn' onClick={logInRedirect}>
+              <div><span>Log in</span></div>
+            </button>
+          </div>
         </div>
       </div>
 
