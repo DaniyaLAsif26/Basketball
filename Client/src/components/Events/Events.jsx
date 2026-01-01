@@ -31,11 +31,11 @@ export default function Events() {
 
     // Type
     const [search, setSearch] = useState(() => {
-        return sessionStorage.getItem('search') || '';
+        return sessionStorage.getItem('eventSearch') || '';
     })
 
     useEffect(() => {
-        sessionStorage.setItem('search', search)
+        sessionStorage.setItem('eventSearch', search)
     }, [search])
 
     // Type
