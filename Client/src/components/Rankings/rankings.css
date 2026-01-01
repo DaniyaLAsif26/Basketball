@@ -1,5 +1,5 @@
 .rankings-cont {
-    background-color: black;
+    background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
     padding-bottom: 3rem;
     width: 100%;
     border-radius: 0rem 0rem 2.69rem 2.69rem;
@@ -66,10 +66,9 @@
     gap: 1rem;
 }
 
-.rankings-how button {
-    color: black;
-    background-color: white;
-    padding: 0.5rem;
+.rankings-how .tournament-btn {
+    padding: 0.7rem;
+    margin: 0.5rem 0rem;
 }
 
 .ranking-options ul {
@@ -92,7 +91,8 @@
 }
 
 .selected-cat {
-    color: #ff140b;
-    border-bottom: 4px solid #e10600;
+    color: #ff0800;
+    background-color: rgb(218, 218, 218);
+    border-bottom: 5px solid #e10600;
     margin-bottom: -1px;
 }

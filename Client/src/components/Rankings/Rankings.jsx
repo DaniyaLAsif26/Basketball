@@ -38,7 +38,7 @@ export default function Rankings() {
                         Updated on 20/10/2025
                     </div>
                     <div className="rankings-how">
-                        <button>How it works</button>
+                        <button className='tournament-btn'>How it works</button>
                     </div>
                 </div>
                 <div className="ranking-options">
