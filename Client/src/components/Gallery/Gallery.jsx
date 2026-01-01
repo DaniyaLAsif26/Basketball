@@ -24,8 +24,8 @@ export default function Gallery() {
     return (
         <>
             <div className={`gallery-cont ${index !== null ? "blurred" : ""}`}>
-                <div className="gallery-head">
-                    <h2>Gallery</h2>
+                <div className="gallery-head news-head">
+                    <h1>Gallery</h1>
                 </div>
                 <div className="gallery">
                     {images.map((img, index) => (

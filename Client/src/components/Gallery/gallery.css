@@ -1,6 +1,7 @@
 .gallery-cont {
     min-height: 40rem;
     background-color: black;
+    background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
     border-radius: 0rem 0rem 2.69rem 2.69rem;
     color: white;
     transition: filter 0.3s ease;
@@ -15,11 +16,14 @@
     justify-content: center;
     align-items: center;
     font-size: 1.7rem;
+    padding: 1.7rem 0rem 2.26rem;
 }
 
-.gallery-head h2 {
-    margin: 1rem 1rem 2rem;
-    border-bottom: 5px solid yellow;
+.gallery-head h1 {
+    border-bottom: 5px solid red;
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.17),
+        0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .gallery {
@@ -38,6 +42,9 @@
     border-radius: 1rem;
     object-fit: cover;
     transition: transform 0.3s ease;
+        box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.17),
+        0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .gallery img:hover {
@@ -47,6 +54,7 @@
 
 .modal {
     position: fixed;
+    z-index: 30;
     top: 0;
     left: 0;
     height: 100%;
