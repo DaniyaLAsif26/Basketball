@@ -1,12 +1,29 @@
 .dist-cont {
     background-color: #0f0f1e;
-    padding:  3rem 3rem 5rem;
+    padding: 0rem 3rem 7rem;
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
+}
+
+.dist-cont-head {
+    color: white;
+    padding: 2rem 0rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dist-cont-head h1 {
+    margin: 0;
+    font-size: 2.3rem;
+}
+
+.dist-cont-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     align-items: center;
     gap: 1.26rem;
-    border-radius: 0rem 0rem 2.69rem 2.69rem;
+    row-gap: 2.26rem;
 }
 
 .district {
@@ -28,17 +45,18 @@
     font-weight: bolder;
 }
 
-.dist-sec-name{
+.dist-sec-name {
     font-size: 1.35rem;
     color: black;
     font-weight: bold;
 }
 
-.dist-role{
-    margin: 1.6rem 0rem ;
+.dist-role {
+    margin: 1.6rem 0rem;
 }
 
-.dist-email , .dist-no {
+.dist-email,
+.dist-no {
     display: flex;
     justify-content: center;
     align-items: center;

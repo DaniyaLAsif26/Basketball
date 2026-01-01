@@ -13,7 +13,12 @@ const districts = [
 export default function DistrictCont() {
     return (
         <div className="dist-cont">
-            <District district={districts} />
+            <div className="dist-cont-head news-head">
+                <h1>DISTRICTS</h1>
+            </div>
+            <div className="dist-cont-grid">
+                <District district={districts} />
+            </div>
         </div>
     )
 }
