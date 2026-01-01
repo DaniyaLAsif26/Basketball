@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
 
+.home-news {
+    background-color: rgba(0, 0, 0, 0.487);
+    border-color: rgba(220, 38, 38, 0.3);
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.17),
+        0 20px 40px rgba(0, 0, 0, 0.2);
+    margin: 2rem 2.5rem 0rem;
+    border-radius: 1rem;
+}
+
 .news-cont {
     position: relative;
-    /* background-color: rgba(218, 26, 23, 0.882); */
-    background-color: black;
 }
 
 .news-head {
@@ -21,7 +29,7 @@
 }
 
 .news {
-    padding: 1rem 1.5rem 0rem;
+    padding: 1rem 1.5rem 3rem;
     margin: 0rem 1rem;
     display: flex;
     flex-direction: column;

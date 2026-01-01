@@ -1,7 +1,7 @@
 .counter-element {
     min-height: 10rem;
     min-width: 13rem;
-    background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
+    background-color: rgba(229, 25, 56, 0.776);
     color: white;
     border-radius: 1rem;
     display: flex;
@@ -12,14 +12,13 @@
     box-sizing: border-box;
     cursor: pointer;
     border: 3px solid #000000;
-    box-shadow: 12px 12px 0 #000000;
-    /* box-shadow: 12px 12px 0 white; */
+    box-shadow: 12px 12px 0 rgb(0, 0, 0);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .counter-element:hover {
     transform: translateY(-9px);
-    box-shadow: 12px 12px 0 #000000;
+    box-shadow: 12px 12px 0 lightcoral;
 }
 
 .counter-element svg {

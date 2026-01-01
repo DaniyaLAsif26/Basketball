@@ -1,13 +1,17 @@
 .counter {
-    background-color: black;
     padding: 3rem 2.5rem 0rem;
+    
 }
 
 .counter-cont {
     min-height: 11rem;
     background-color: white;
-    background: #27272d;
+    background: radial-gradient(ellipse at top left, rgba(220, 38, 38, 0.06) 0%, transparent 40%),
+        linear-gradient(135deg, #2a2229 0%, #27272d 50%, #2a2229 100%);
     border-radius: 1rem;
+        box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.17),
+        0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .counter-cont-head {

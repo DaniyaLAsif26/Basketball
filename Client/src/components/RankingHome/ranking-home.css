@@ -2,15 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 .ranking-cont {
-    background: black;
     font-family: Arial, sans-serif;
     padding: 2.6rem 0rem 2rem;
 }
 
 .ranking {
     background: #0f0f1e;
-    background: #27272d;
-    margin: 0rem 5rem;
+        box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.17),
+        0 20px 40px rgba(0, 0, 0, 0.2);
+    margin: 0rem 2.5rem;
     border-radius: 1rem;
     padding-bottom: 1rem;
 }

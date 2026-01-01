@@ -4,18 +4,18 @@ import Ranking from '../components/RankingHome/Ranking-home.jsx'
 import Tournament from '../components/Tournament/Tournament.jsx'
 import Intro from '../components/Into/Intro.jsx'
 import Counter from '../components/Statistics/Counter.jsx'
-import SocialMedia from '../components/SocialMedia/SocialMedia.jsx'
 
 export default function HomePage() {
     return (
         <>
-            <Intro />
-            <News />
-            <Counter />
-            <Ranking />
-            <SliderCont />
-            <Tournament />
-            <SocialMedia />
+            <div className="home-bg">
+                <Intro />
+                <News />
+                <Counter />
+                <Ranking />
+                <SliderCont />
+                <Tournament />
+            </div>
         </>
     )
 }

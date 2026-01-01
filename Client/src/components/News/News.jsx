@@ -22,20 +22,22 @@ const row2 = newsData.slice(3, 6)
 
 export default function News() {
     return (
-        <div className="news-cont">
-            <div className="news-head">
-                <h1>NEWS</h1>
-            </div>
-            <div className="news">
-                <div className="news-row">
-                    <NewsBig data={row1[0]} />
-                    <NewsSmall data={row1[1]} />
-                    <NewsSmall data={row1[2]} />
+        <div className="home-news">
+            <div className="news-cont">
+                <div className="news-head">
+                    <h1>NEWS</h1>
                 </div>
-                <div className="news-row">
-                    <NewsBig data={row2[0]} />
-                    <NewsSmall data={row2[1]} />
-                    <NewsSmall data={row2[2]} />
+                <div className="news">
+                    <div className="news-row">
+                        <NewsBig data={row1[0]} />
+                        <NewsSmall data={row1[1]} />
+                        <NewsSmall data={row1[2]} />
+                    </div>
+                    <div className="news-row">
+                        <NewsBig data={row2[0]} />
+                        <NewsSmall data={row2[1]} />
+                        <NewsSmall data={row2[2]} />
+                    </div>
                 </div>
             </div>
         </div>

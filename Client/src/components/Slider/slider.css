@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
 
-.slider-cont{
-    background-color: black;
-}
-
 .gallery-slider {
-    /* width: 100%; */
     background-color: black;
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.17),
+        0 20px 40px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
     margin: 0rem 2.5rem;
@@ -49,13 +47,13 @@
     font-family: "BBH Bartle", sans-serif;
 }
 
-.slider-img {
+.slider-bg-img {
     width: 100%;
     position: absolute;
     background-color: black;
 }
 
-.slider-img img {
+.slider-bg-img img {
     width: 100%;
     opacity: 0.4;
     object-fit: cover;
@@ -79,7 +77,7 @@
     flex-shrink: 0;
 }
 
-.slider-img::before {
+.slider-bg-img::before {
     content: '';
     position: absolute;
     top: 0;
