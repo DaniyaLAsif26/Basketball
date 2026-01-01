@@ -2,7 +2,6 @@
     min-height: 40rem;
     background-color: black;
     background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
-    border-radius: 0rem 0rem 2.69rem 2.69rem;
     color: white;
     transition: filter 0.3s ease;
 }

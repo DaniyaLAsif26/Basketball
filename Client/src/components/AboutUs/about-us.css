@@ -1,7 +1,6 @@
 .about-page {
   background: #27272d;
   min-height: 100vh;
-  border-radius: 0rem 0rem 2.69rem 2.69rem;
 }
 
 /* Hero Section */
@@ -392,9 +391,9 @@
 .cta-section {
   padding: 3rem 0rem 5rem;
   background:
-    radial-gradient(circle at center, rgba(220, 38, 38, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at center, rgba(220, 38, 38, 0.5) 0%, transparent 90%),
     #27272d;
-  border-radius: 0rem 0rem 2.69rem 2.69rem;
+border-bottom: 2px solid rgba(220, 38, 38, 0.5);
 }
 
 .cta-content {
