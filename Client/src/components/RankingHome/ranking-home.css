@@ -124,7 +124,6 @@
 }
 
 .view-all-rankings a {
-    width: auto;
     font-size: 1.2rem;
     color: white;
     display: flex;
@@ -135,7 +134,7 @@
 }
 
 .view-all-rankings a:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
