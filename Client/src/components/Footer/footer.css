@@ -1,79 +1,302 @@
 .footer {
-    /* min-height: 26rem; */
-    background-color: white;
-    padding: 7rem 5rem 2rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: start;
+    background: #27272d;
+    color: #d1d5db;
 }
 
-.fot-basic {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.footer-container {
+    margin: 0 auto;
+    padding: 1rem 3rem 0rem;
 }
 
-.fot-basic img {
-    height: 3.26rem;
+/* Main Footer */
+.footer-main {
+    padding: 5rem 0 3rem;
+    background:
+        radial-gradient(circle at top right, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #2a2328 0%, #27272d 45%, #2a2328 90%, #27272d 100%);
 }
 
-.socials {
-    margin: 0rem 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    justify-items: center;
 }
 
-.footer ul {
-    margin: 0rem;
-    list-style: none;
+.footer-column {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.footer li {
-    font-weight: bold;
-    font-size: 1.1rem;
+/* Brand Column */
+.footer-column.brand {
+    gap: 2rem;
 }
 
-.fot-right button {
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo-icon {
+    height: 4rem;
+    color: #dc2626;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
     color: white;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
 }
 
-.copyright {
-    margin-top: 5rem;
-    font-weight: 500;
-    color: rgb(27, 27, 27);
+.brand-description {
+    color: #9ca3af;
+    line-height: 1.7;
+    font-size: 0.9375rem;
 }
 
-.develop a {
-    font-weight: 500;
-    color: rgb(27, 27, 27);
-}
-
-.develop {
+.social-links {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.5rem 0rem 2rem;
+    gap: 1rem;
 }
 
-.fot-right ul {
-    padding: 1rem 0rem;
-}
-
-.fot-right {
+.social-link {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    color: #9ca3af;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.social-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Footer Heading */
+.footer-heading {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
     flex-direction: column;
+    gap: 0.875rem;
 }
 
-.fot-right a{
-    color: black;
-    font-weight: bold;
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #dc2626;
+    transform: translateX(5px);
+}
+
+.link-icon {
+    width: 1rem;
+    height: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.footer-link:hover .link-icon {
+    opacity: 1;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #dc2626;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.contact-text p,
+.contact-text a {
+    color: #9ca3af;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-text a:hover {
+    color: #dc2626;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    padding: 2rem 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.copyright p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.legal-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.developer-links {
+    color: #6b7280;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.developer-links a{
+    color: #6b7280;
+}
+
+.legal-link:hover {
+    color: #dc2626;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .footer-column.brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-newsletter {
+        padding: 2rem 0;
+    }
+
+    .newsletter-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2rem;
+    }
+
+    .newsletter-text {
+        text-align: center;
+    }
+
+    .newsletter-title {
+        font-size: 1.5rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .footer-main {
+        padding: 3rem 0 2rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer-column.brand {
+        grid-column: auto;
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .developer-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .newsletter-input,
+    .newsletter-btn {
+        padding: 0.875rem 1.25rem;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+    }
+
+    .legal-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
 }

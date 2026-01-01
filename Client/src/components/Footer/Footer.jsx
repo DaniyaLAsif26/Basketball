@@ -1,60 +1,152 @@
-import './footer.css'
-import logo from '../../assets/red.png'
-import { FaInstagram } from "react-icons/fa6";
-import { FaYoutube } from "react-icons/fa";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import {
+    Mail,
+    Phone,
+    MapPin,
+    Facebook,
+    Twitter,
+    Instagram,
+    Youtube,
+    Linkedin,
+    Trophy,
+    ChevronRight
+} from 'lucide-react';
+import './footer.css';
 
-import { useNavigate } from 'react-router-dom';
+import whiteLogo from '../../assets/white.png';
 
 export default function Footer() {
+    const quickLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'About Us', path: '/about' },
+        { name: 'Tournaments', path: '/events' },
+        { name: 'Rankings', path: '/rankings' },
+        { name: 'News', path: '/news' }
+    ];
 
+    const resources = [
+        { name: 'Player Registration', path: '/login' },
+        { name: 'Host Event', path: '/add-event' },
+        { name: 'Districts', path: '/districts' },
+        { name: 'Working of Rankings', path: '/training' },
+        { name: 'Contact Us', path: '/faq' }
+    ];
 
-    
+    const socialLinks = [
+        { icon: Facebook, name: 'Facebook', url: 'https://facebook.com' },
+        { icon: Twitter, name: 'Twitter', url: 'https://twitter.com' },
+        { icon: Instagram, name: 'Instagram', url: 'https://instagram.com' },
+        { icon: Youtube, name: 'Youtube', url: 'https://youtube.com' },
+        { icon: Linkedin, name: 'LinkedIn', url: 'https://linkedin.com' }
+    ];
+
     return (
-        <footer>
-            <div className="footer">
-                <div className="fot-basic-cont">
-                    <div className="fot-basic">
-                        <img src={logo} alt="" />
-                        <div className="socials">
-                            <FaInstagram style={{ fontWeight: 'bolder', fontSize: '2.2rem' }} />
-                            <FaYoutube style={{ fontWeight: 'bolder', fontSize: '2.26rem' }} />
-                            <FaFacebookSquare style={{ fontWeight: 'bolder', fontSize: '2rem' }} />
-                            <FaSquareXTwitter style={{ fontWeight: 'bolder', fontSize: '2rem' }} />
+        <footer className="footer">
+
+            {/* Main Footer Content */}
+            <div className="footer-main">
+                <div className="footer-container">
+                    <div className="footer-grid">
+
+                        {/* Brand Column */}
+                        <div className="footer-column brand">
+                            <div className="footer-logo">
+                                <img src={whiteLogo} className="logo-icon" />
+                                <span className="logo-text">Telangana Basketball Association</span>
+                            </div>
+                            <p className="brand-description">
+                                Building the future of basketball in Telangana through excellence, integrity, and community.
+                                Join thousands of players in the most competitive basketball platform.
+                            </p>
+                            <div className="social-links">
+                                {socialLinks.map((social, index) => (
+                                    <a
+                                        key={index}
+                                        href={social.url}
+                                        className="social-link"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={social.name}
+                                    >
+                                        <social.icon className="social-icon" />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Quick Links */}
+                        <div className="footer-column">
+                            <h4 className="footer-heading">Quick Links</h4>
+                            <ul className="footer-links">
+                                {quickLinks.map((link, index) => (
+                                    <li key={index}>
+                                        <a href={link.path} className="footer-link">
+                                            <ChevronRight className="link-icon" />
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Resources */}
+                        <div className="footer-column">
+                            <h4 className="footer-heading">Player Links</h4>
+                            <ul className="footer-links">
+                                {resources.map((link, index) => (
+                                    <li key={index}>
+                                        <a href={link.path} className="footer-link">
+                                            <ChevronRight className="link-icon" />
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="footer-column">
+                            <h4 className="footer-heading">Contact Us</h4>
+                            <div className="contact-info">
+                                <div className="contact-item">
+                                    <MapPin className="contact-icon" />
+                                    <div className="contact-text">
+                                        <p>Telangana Olympic Association</p>
+                                        <p>Sports Authority of Telangana</p>
+                                    </div>
+                                </div>
+                                <div className="contact-item">
+                                    <Phone className="contact-icon" />
+                                    <div className="contact-text">
+                                        <a href="tel:+15551234567">+91 9966807432</a>
+                                    </div>
+                                </div>
+                                <div className="contact-item">
+                                    <Mail className="contact-icon" />
+                                    <div className="contact-text">
+                                        <a href="mailto:info@basketball.com">telanganabasketballassociation@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="footer-bottom">
+                <div className="footer-container">
+                    <div className="footer-bottom-content">
+                        <div className="copyright">
+                            <p>&copy; 2026 Telangana Basketball Association. All rights reserved.</p>
+                        </div>
+                        <div className="developer-links">
+                            Developed by <a href=""><b>Daniyal Asif</b></a>
                         </div>
                     </div>
-                    <div className="copyright">
-                        <p>© 2025 Telangana Basketball Association. </p>
-                        <p>All rights reserved.</p>
-                    </div>
-                </div>
-                <div className="fot-left">
-                    <ul>
-                        <li>EVENTS</li>
-                        <li>NEWS</li>
-                        <li>RANKING</li>
-                        <li>DISTRICTS</li>
-                    </ul>
-                </div>
-                <div className="fot-center">
-                    <ul>
-                        <li>ABOUT US</li>
-                        <li>GALLERY</li>
-                        <li>EMPLOYMENT</li>
-                        <li>CONTACT US</li>
-                    </ul>
-                </div>
-                <div className="fot-right">
-                    <button>log In</button>
-                  <ul>
-                        <li><a href="/admin">ADMIN</a></li>   
-                    </ul>
                 </div>
             </div>
-            <div className="develop">
-                <p>Developed by <a href="">Daniyal Asif</a></p>
-            </div>
+
         </footer>
-    )
+    );
 }
