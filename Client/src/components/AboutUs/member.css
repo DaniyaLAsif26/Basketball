@@ -1,21 +1,27 @@
-.other-members{
-    margin-top: 3rem;
-    background-color: #252534;
+.other-members-cont {
+    background: #27272d;
     color: white;
-    border-radius: 2.69rem;
+    padding: 0rem 2rem;
+}
+
+.other-members {
+    margin-top: 3rem;
+    border-radius: 1.5rem;
     padding-bottom: 2.26rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .other-members-head {
     padding: 2rem 3rem 1rem;
 }
 
-.other-members-head h2{
+.other-members-head h2 {
     width: max-content;
     margin: 0;
     font-size: 2rem;
     padding-bottom: 0.26rem;
-    border-bottom: 4px solid yellow;
+    border-bottom: 4px solid red;
 }
 
 .others-cont {
@@ -34,13 +40,13 @@
 
 .member {
     background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
-    padding:  2rem;
+    padding: 2rem;
     text-align: center;
     border-radius: 1.26rem;
     min-width: 15rem;
     max-width: 17rem;
 }
 
-.member-role{
+.member-role {
     font-size: 1.1rem;
 }
