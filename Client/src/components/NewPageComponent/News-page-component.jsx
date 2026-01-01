@@ -29,6 +29,9 @@ export default function Gallery() {
 
     return (
         <div className="news-page">
+            <div className="news-page-head news-head">
+                <h1>NEWS</h1>
+            </div>
             {rows.map((row, index) => (
                 <div key={index} className="news-row">
                     {index % 2 === 0 ? (
