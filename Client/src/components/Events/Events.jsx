@@ -29,6 +29,35 @@ const searchResults = [
 
 export default function Events() {
 
+    const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
+    const [events, setEvents] = useState([])
+
+    useEffect(() => {
+        const allEvents = async () => {
+            try {
+                const res = await fetch(`${BackEndRoute}/api/event/all-events`, {
+                    method: "GET"
+                })
+
+                const data = await res.json()
+
+                if (data.success === true) {
+                    setEvents(data.data)
+                }
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        allEvents()
+    }, [])
+
+    useEffect(() => {
+  console.log("Updated events:", events)
+}, [events])
+
+
     // Type
     const [search, setSearch] = useState(() => {
         return sessionStorage.getItem('eventSearch') || '';
@@ -161,7 +190,7 @@ export default function Events() {
 
                 </form>
             </div>
-            <EveResults searchResults={searchResults} />
+            <EveResults searchResults={events} />
         </div>
     )
 }

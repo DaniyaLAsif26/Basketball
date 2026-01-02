@@ -6,8 +6,12 @@ export default function EveResults({ searchResults }) {
     return (
         <div className="event-result-cont">
             <div className="event-results">
-                {searchResults.map((item, index) =>
-                    <EventCard event={item} />
+                {searchResults.length > 0 ? (
+                    searchResults.map((item, index) =>
+                        <EventCard key={index} event={item} />
+                    )
+                ) : (
+                    <div className="event-error-msg">No Tournaments currently being hosted</div>
                 )}
             </div>
         </div>

@@ -162,3 +162,15 @@
     padding: 3rem 2rem 7rem;
     position: relative;
 }
+
+.event-error-msg{
+    width: 100%;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+}

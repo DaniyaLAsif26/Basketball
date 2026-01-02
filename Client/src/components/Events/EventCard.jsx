@@ -6,9 +6,27 @@ import { GiAges } from "react-icons/gi";
 import { FaBasketball } from "react-icons/fa6";
 import { FaMapPin } from "react-icons/fa";
 
-export default function EventCard({event}) {
+export default function EventCard({ event }) {
 
-      const navigate = useNavigate()
+  const navigate = useNavigate()
+
+  const formatedDate = (start, end) => {
+    const s = new Date(start)
+    const e = new Date(end)
+
+    const sameMonth = s.getMonth() === e.getMonth()
+    const sameYear = s.getFullYear() === e.getFullYear()
+
+    if (sameMonth && sameYear) {
+      return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()} - ${e.getDate()}, ${s.getFullYear()}`
+    }
+
+    if (sameYear) {
+      return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()} - ${e.toLocaleString('en-US', { month: "long" })} ${e.getDate()}, ${e.getFullYear()}}`
+    }
+
+    return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()},${s.getFullYear()} - ${e.toLocaleString('en-US', { month: 'long' })} ${e.getDate()},${e.getFullYear()}`
+  }
 
   return (
     <div className="event-wrapper" >
@@ -19,7 +37,7 @@ export default function EventCard({event}) {
           {/* Image Section */}
           <div className="event-image">
             <img
-              src={event.img}
+              src={event.tournamentImage}
               // src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80"
               alt="Basketball Tournament"
               className="event-img"
@@ -35,7 +53,7 @@ export default function EventCard({event}) {
 
             {/* Level Badge */}
             <div className="level-badge">
-              UN-OFFICIAL
+              {event.type}
             </div>
           </div>
 
@@ -45,11 +63,21 @@ export default function EventCard({event}) {
             {/* Tournament Name */}
             <div className="event-header">
               <h2 className="event-title">
-                {event.name}
+                {event.tournamentName}
               </h2>
-              <div className="event-date">
-                {/* <Calendar className="icon-sm" /> */}
-                <span>March 15-20, 2024</span>
+              <div className="event-date-details">
+                <div className="event-date">
+                  {/* <Calendar className="icon-sm" /> */}
+                  <span>{formatedDate(event.startDate, event.endDate)}</span>
+                </div>
+                <div className="event-deadline">
+                  {/* <Calendar className="icon-sm" /> */}
+                  <span>Deadline : {new Date(event.registrationDeadline).toLocaleString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}</span>
+                </div>
               </div>
             </div>
 
@@ -72,7 +100,8 @@ export default function EventCard({event}) {
                 </div>
                 <div className="detail-content">
                   <span className="detail-label">Age Category</span>
-                  <span className="detail-value">U-23</span>
+                  <span className="detail-value">{event.ageCategory}</span>
+                  <span className="detail-value"></span>
                 </div>
               </div>
 
@@ -82,7 +111,8 @@ export default function EventCard({event}) {
                 </div>
                 <div className="detail-content">
                   <span className="detail-label">Format</span>
-                  <span className="detail-value">5X5</span>
+                  <span className="detail-value">                  <span className="detail-value">{event.format}</span>
+                  </span>
                 </div>
               </div>
 
@@ -92,7 +122,8 @@ export default function EventCard({event}) {
                 </div>
                 <div className="detail-content">
                   <span className="detail-label">DISTRICT</span>
-                  <span className="detail-value">Bhadradri Kothagudem</span>
+                  <span className="detail-value">{event.district}</span>
+                  <span className="detail-value"></span>
                 </div>
               </div>
 
@@ -100,7 +131,7 @@ export default function EventCard({event}) {
 
             {/* Action Button */}
             <div className="event-actions">
-              <button className="btn-details" onClick={()=> navigate('/view-event')}>
+              <button className="btn-details" onClick={() => navigate('/view-event')}>
                 View Details
               </button>
             </div>

@@ -99,13 +99,22 @@
   line-height: 1.2;
 }
 
-.event-date {
+.event-date-details{
+  height: 100%;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+ justify-content: center;
+  flex-wrap: wrap;
+}
+
+.event-date , .event-deadline {
   color: #f87171;
   font-size: 0.875rem;
   font-weight: 500;
+}
+
+.event-deadline{
+  color: yellow;
 }
 
 /* Event Details Grid */
