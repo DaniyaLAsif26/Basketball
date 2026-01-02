@@ -1,7 +1,7 @@
 import './add-event-form.css';
 import { useEffect, useState } from 'react';
 
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -110,11 +110,17 @@ const eventSchema = z.object({
         }
     )
 
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
 export default function AddEventForm() {
+
+    const navigate = useNavigate()
 
     const location = useLocation()
     const isAdmin = ['/admin/add-event']
     const checkAdmin = location.pathname.includes(isAdmin)
+
+    const [loading, setLoading] = useState(false)
 
     const districts = [
         "Hyderabad",
@@ -217,20 +223,6 @@ export default function AddEventForm() {
         return () => clearTimeout(timeOutId)
     }, [formValues])
 
-    const onSubmit = (data) => {
-        // Prepare data for MongoDB
-        const eventData = {
-            ...data,
-            tournamentImage: data.tournamentImage[0],
-            highlightsList: data.highlights.split('\n').filter(h => h.trim()),
-            createdAt: new Date(),
-            updatedAt: new Date()
-        };
-
-        console.log('Event Data to send to MongoDB:', eventData);
-
-        alert('Form submitted! Check console for data structure.');
-    };
 
     const handleClear = (e) => {
         e.preventDefault()
@@ -238,6 +230,60 @@ export default function AddEventForm() {
         sessionStorage.removeItem('tournamentDraft');
         reset()
     }
+
+    const onSubmit = async (data) => {
+
+        if (loading) return;
+
+        try {
+            setLoading(true)
+
+            const formData = new FormData()
+
+            Object.entries(data).forEach(([key, value]) => {
+                if (key === 'tournamentImage') {
+                    if (value && value.length > 0) {
+                        formData.append('tournamentImage', value[0]) // ✅ FILE
+                    }
+                }
+                else if (key === 'highlights') {
+                    const highlightList = value.split('\n').filter(h => h.trim());
+                    formData.append('highlights', JSON.stringify(highlightList))
+                }
+                else if (value !== undefined && value !== '') {
+                    formData.append(key, value)
+                }
+            })
+
+            formData.append('createdAt', new Date().toISOString())
+            formData.append('updatedAt', new Date().toISOString())
+
+            const res = await fetch(`${BackEndRoute}/api/event/create`, {
+                method: 'POST',
+                credentials: 'include',
+                body: formData
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === false) {
+                alert(dataRes.message)
+            }
+
+            if (dataRes.success === true) {
+                // handleClear()
+                navigate('/events')
+                alert(dataRes.message)
+            }
+        }
+        catch (err) {
+            alert(`Failed to create tournament: ${err.message}`);
+            return console.log(err)
+        }
+        finally {
+            setLoading(false)
+        }
+    };
 
     const ErrorMessage = ({ error }) => {
         if (!error) return null;
@@ -275,7 +321,7 @@ export default function AddEventForm() {
                             <div className="form-group full-width">
                                 <label className="form-label">
                                     <Image className="label-icon" />
-                                    Tournament Image *
+                                    Tournament Image
                                 </label>
                                 <input
                                     type="file"
@@ -502,6 +548,9 @@ export default function AddEventForm() {
                                 <label className="form-label">Entry Fee (per team)</label>
                                 <input
                                     type="number"
+                                    min="0"
+                                    step="1"
+                                    onWheel={(e) => e.target.blur()}
                                     {...register('entryFee')}
                                     className={`form-input ${errors.entryFee ? 'error' : ''}`}
                                     placeholder="250"
