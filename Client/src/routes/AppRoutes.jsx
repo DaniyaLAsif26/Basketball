@@ -37,7 +37,7 @@ function AppRoutes() {
 
             <Route path='/add-event' element={<AddEventPage />} />
 
-            <Route path='/view-event' element={<ViewEventPage />} />
+            <Route path='/view-event/:id' element={<ViewEventPage />} />
 
             {/* admin */}
             <Route path='/admin' element={<AdminPage />} />

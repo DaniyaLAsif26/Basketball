@@ -1,7 +1,6 @@
 import './view-event.css'
-import { useNavigate } from 'react-router-dom'
-
-import { FaBasketball } from "react-icons/fa6";
+import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react';
 
 import {
     Calendar,
@@ -19,17 +18,78 @@ import {
 
 export default function ViewEvent() {
 
+    const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
     const navigate = useNavigate()
+
+    const { id } = useParams()
+    const [event, setEvent] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchEvent = async () => {
+            try {
+
+
+                const res = await fetch(`${BackEndRoute}/api/event/${id}`)
+
+                const data = await res.json()
+
+                if (data.success === true) {
+                    setEvent(data.data)
+                }
+            }
+            catch (err) {
+                console.log(err)
+            }
+            finally {
+                setLoading(false)
+            }
+        }
+
+        fetchEvent()
+    }, [id])
+
+    const formatedDate = (start, end) => {
+        const s = new Date(start)
+        const e = new Date(end)
+
+        const sameMonth = s.getMonth() === e.getMonth()
+        const sameYear = s.getFullYear() === e.getFullYear()
+
+        if (sameMonth && sameYear) {
+            return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()} - ${e.getDate()}, ${s.getFullYear()}`
+        }
+
+        if (sameYear) {
+            return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()} - ${e.toLocaleString('en-US', { month: "long" })} ${e.getDate()}, ${e.getFullYear()}}`
+        }
+
+        return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()},${s.getFullYear()} - ${e.toLocaleString('en-US', { month: 'long' })} ${e.getDate()},${e.getFullYear()}`
+    }
+
+    const deleteEvent = () => {
+
+    }
+
+    if (loading) return <p>Loading...</p>
+    if (!event) return <p>Event not found</p>
 
     return (
         <div className="page-wrapper">
 
             {/* Header Section */}
             <div className="page-header">
-                <button className="back-btn" onClick={() => navigate('/events')}>
-                    <ArrowLeft className="icon-sm" />
-                    Back to Events
-                </button>
+                <div className="event-page-back">
+                    <button className="back-btn" onClick={() => navigate('/events')}>
+                        <ArrowLeft className="icon-sm" />
+                        Back to Events
+                    </button>
+                </div>
+                <div className="event-page-edit-del">
+                    <button></button>
+                    <button></button>
+                </div>
             </div>
 
             <div className="page-container">
@@ -37,7 +97,7 @@ export default function ViewEvent() {
                 {/* Hero Image Section */}
                 <div className="hero-section">
                     <img
-                        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&q=80"
+                        src={event.tournamentImage}
                         alt="Basketball Tournament"
                         className="hero-img"
                     />
@@ -45,19 +105,26 @@ export default function ViewEvent() {
 
                     <div className="hero-content">
                         <div className="hero-badges">
-                            <span className="hero-badge type">COLLEGE</span>
-                            <span className="hero-badge level">UN-OFFICIAL</span>
+                            <span className="hero-badge type">{event.level}</span>
+                            <span className="hero-badge level">{event.type}</span>
                         </div>
-                        <h1 className="hero-title">National Basketball Championship 2024</h1>
+                        <h1 className="hero-title">{event.tournamentName}</h1>
                         <div className="hero-meta">
                             <div className="meta-item">
                                 <Calendar className="icon-sm" />
-                                <span>March 15-20, 2024</span>
+                                <span>{formatedDate(event.startDate, event.endDate)}</span>
                             </div>
                             <div className="meta-item">
                                 <MapPin className="icon-sm" />
-                                <span>Madison Square Garden, New York</span>
+                                <span>{event.venueName}, {event.city}</span>
                             </div>
+                        </div>
+                        <div className="event-deadline">
+                            <span>Deadline : {new Date(event.registrationDeadline).toLocaleString('en-US', {
+                                month: 'long',
+                                day: 'numeric',
+                                year: 'numeric'
+                            })}</span>
                         </div>
                     </div>
                 </div>
@@ -78,7 +145,7 @@ export default function ViewEvent() {
                                 </div>
                                 <div className="info-text">
                                     <span className="info-label">Category</span>
-                                    <span className="info-value">MEN</span>
+                                    <span className="info-value">{event.category}</span>
                                 </div>
                             </div>
 
@@ -88,7 +155,7 @@ export default function ViewEvent() {
                                 </div>
                                 <div className="info-text">
                                     <span className="info-label">Age Category</span>
-                                    <span className="info-value">OPEN</span>
+                                    <span className="info-value">{event.ageCategory}</span>
                                 </div>
                             </div>
 
@@ -98,7 +165,7 @@ export default function ViewEvent() {
                                 </div>
                                 <div className="info-text">
                                     <span className="info-label">Format</span>
-                                    <span className="info-value">5X5</span>
+                                    <span className="info-value">{event.format}</span>
                                 </div>
                             </div>
 
@@ -108,7 +175,7 @@ export default function ViewEvent() {
                                 </div>
                                 <div className="info-text">
                                     <span className="info-label">district</span>
-                                    <span className="info-value">Kumuram Bheem Asifabad</span>
+                                    <span className="info-value">{event.district}</span>
                                 </div>
                             </div>
 
@@ -119,19 +186,14 @@ export default function ViewEvent() {
                             <h2 className="section-title">Tournament Details</h2>
                             <div className="section-content">
                                 <p className="detail-text">
-                                    Join us for the most prestigious college basketball tournament of the year!
-                                    The National Basketball Championship brings together the best college teams
-                                    from across the country for an intense week of competition.
+                                    {event.description}
                                 </p>
                                 <div className="highlights">
                                     <h3 className="highlights-title">Tournament Highlights:</h3>
                                     <ul className="highlights-list">
-                                        <li>Professional referees and scoring system</li>
-                                        <li>Live streaming of all matches</li>
-                                        <li>Prize money for top 3 teams</li>
-                                        <li>Individual player awards (MVP, Top Scorer)</li>
-                                        <li>Official tournament merchandise available</li>
-                                        <li>Food and beverage stalls on-site</li>
+                                        {event.highlights.map((item, index) => {
+                                            return <li key={index}>{item}</li>
+                                        })}
                                     </ul>
                                 </div>
                             </div>
@@ -145,11 +207,12 @@ export default function ViewEvent() {
                             </h2>
                             <div className="section-content">
                                 <div className="location-info">
-                                    <h3 className="location-venue">Madison Square Garden</h3>
+                                    <h3 className="location-venue">{event.venueName}</h3>
                                     <p className="location-address">
-                                        4 Pennsylvania Plaza
-                                        New York, NY 10001
-                                        United States
+                                        <p>{event.address}</p>
+                                        <p>{event.district} District,</p>
+                                        <p>{event.city}</p>
+                                        <p>{event.zipCode}</p>
                                     </p>
                                 </div>
                             </div>
@@ -168,7 +231,7 @@ export default function ViewEvent() {
                             </div>
                             <div className="price-amount">
                                 <span className="currency"><IndianRupee /></span>
-                                <span className="amount">2600</span>
+                                <span className="amount">{event.entryFee}</span>
                                 <span className="per-team">per team</span>
                             </div>
                         </div>
@@ -184,7 +247,7 @@ export default function ViewEvent() {
                                 <div className="contact-text">
                                     <span className="contact-label">Phone 1</span>
                                     <a href="tel:+15551234567" className="contact-link">
-                                        7382049545
+                                        {event.phone1}
                                     </a>
                                 </div>
                             </div>
@@ -195,7 +258,7 @@ export default function ViewEvent() {
                                 <div className="contact-text">
                                     <span className="contact-label">Phone 2</span>
                                     <a href="tel:+15551234567" className="contact-link">
-                                        7659929021
+                                        {event.phone2 || '-'}
                                     </a>
                                 </div>
                             </div>
@@ -207,7 +270,7 @@ export default function ViewEvent() {
                                 <div className="contact-text">
                                     <span className="contact-label">Email</span>
                                     <a href="mailto:info@nbc2024.com" className="contact-link">
-                                        info@nbc2024.com
+                                        {event.email || '-'}
                                     </a>
                                 </div>
                             </div>
@@ -218,8 +281,9 @@ export default function ViewEvent() {
                                 </div>
                                 <div className="contact-text">
                                     <span className="contact-label">Instagram</span>
-                                    <a href="https://instagram.com/nbc2024" target="_blank" rel="noopener noreferrer" className="contact-link">
-                                        @nbc2024
+                                    <a href={event.inatagramLink || null} target="_blank" rel="noopener noreferrer" className="contact-link">
+                                        @ {event.inatagram || '-'}
+
                                     </a>
                                 </div>
                             </div>
@@ -234,23 +298,40 @@ export default function ViewEvent() {
                             <div className="awards-list">
                                 <div className="award-item">
                                     <span className="award-place">1st Place</span>
-                                    <span className="award-prize">&#8377;2600</span>
+                                    <span className="award-prize">
+                                        &#8377;                                        {event.firstPrize ?? '-'}
+                                    </span>
                                 </div>
                                 <div className="award-item">
                                     <span className="award-place">2nd Place</span>
-                                    <span className="award-prize">&#8377;1600</span>
+                                    <span className="award-prize">
+                                        &#8377;
+                                        {event.secondPrize ?? '-'}</span>
                                 </div>
                                 <div className="award-item">
                                     <span className="award-place">3rd Place</span>
-                                    <span className="award-prize">&#8377;1000</span>
+                                    <span className="award-prize">
+                                        &#8377;
+                                        {event.thirdPrize ?? '-'}
+                                    </span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
-
+                <div className="event-page-edit-del">
+                    <button
+                        className='event-edit-btn'
+                        onClick={() => navigate(`/event/edit/${event._id}`)}>
+                        Edit
+                    </button>
+                    <button
+                        className='event-edit-btn event-delete-btn'
+                        onClick={deleteEvent}
+                    >Delete
+                    </button>
+                </div>
             </div>
 
         </div>

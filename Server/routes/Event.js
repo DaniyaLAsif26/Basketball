@@ -67,4 +67,29 @@ router.get('/all-events', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.id)
+
+        if (!event) {
+            return res.status(404).json({
+                success: false,
+                message: "Event Not Found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            data: event
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+})
+
 export default router

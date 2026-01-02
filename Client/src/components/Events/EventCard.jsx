@@ -38,7 +38,6 @@ export default function EventCard({ event }) {
           <div className="event-image">
             <img
               src={event.tournamentImage}
-              // src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80"
               alt="Basketball Tournament"
               className="event-img"
             />
@@ -131,7 +130,7 @@ export default function EventCard({ event }) {
 
             {/* Action Button */}
             <div className="event-actions">
-              <button className="btn-details" onClick={() => navigate('/view-event')}>
+              <button className="btn-details" onClick={() => navigate(`/view-event/${event._id}`)}>
                 View Details
               </button>
             </div>
