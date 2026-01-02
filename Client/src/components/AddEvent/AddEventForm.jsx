@@ -27,9 +27,10 @@ const eventSchema = z.object({
         .max(69, "Tournament Name to big"),
 
     tournamentImage: z.instanceof(FileList)
-        .refine(files => files?.length === 1, "Image required")
-        .refine(files => files?.[0]?.size <= 5 * 1024 * 1024, "Image must be less than 5MB")
-        .refine(files => ['image/jpeg', 'image/jpg', 'image/png'].includes(files?.[0]?.type), "Image must be less than 5MB"),
+        .optional()
+        .refine(files => !files || files.length === 0 || files.length === 1, "Upload only 1 image")
+        .refine(files => !files || files.length === 0 || files[0].size <= 5 * 1024 * 1024, "Image must be less than 5MB")
+        .refine(files => !files || files.length === 0 || ['image/jpeg', 'image/jpg', 'image/png'].includes(files?.[0]?.type), "Image must be less than 5MB"),
 
     type: z.string().min(1, "Type required"),
     category: z.string().min(1, "Category required"),
