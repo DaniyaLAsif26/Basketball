@@ -10,115 +10,115 @@ const EventSchema = new Schema({
         type: String,
         default: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&q=80"
     },
-    tournamentType: {
+    type: {
         type: String,
         default: "UN-OFFICIAL",
         required: true
     },
-    tournamentCategory: {
+    category: {
         type: String,
         required: true
     },
-    tournamentLevel: {
+    level: {
         type: String,
         required: true
     },
-    tournamentAge: {
+    ageCategory: {
         type: String,
         required: true
     },
-    tournamentFormat: {
+    format: {
         type: String,
         required: true
     },
-    tournamentGender: {
+    gender: {
         type: String,
         required: true
     },
 
     //Date&Time
-    tournamentStartDate: {
+    startDate: {
         type: Date,
         required: true
     },
-    tournamentEndDate: {
+    endDate: {
         type: Date,
         required: true
     },
-    tournamentRegistrationDeadline: {
+    registrationDeadline: {
         type: Date,
         required: true
     },
 
     //location
-    tournamentVenue: {
+    venueName: {
         type: String,
         required: true
     },
-    tournamentAddress: {
+    address: {
         type: String,
         required: true
     },
-    tournamentCity: {
+    city: {
         type: String,
         required: true
     },
-    tournamentDistrict: {
+    district: {
         type: String,
         required: true
     },
-    tournamentZipCode: {
+    zipCode: {
         type: String,
         required: true
     },
 
     //EntryFee
-    tournamentEntryFee: {
+    entryFee: {
         type: Number,
         default: null
     },
-    tournamentFirstPrize: {
+    firstPrize: {
         type: Number,
         default: null
     },
-    tournamentSecondPrize: {
+    secondPrize: {
         type: Number,
         default: null
     },
-    tournamentThirdPrize: {
+    thirdPrize: {
         type: Number,
         default: null
     },
 
     //contact info
-    tournamentNumber1: {
+    phone1: {
         type: Number,
         required: true
     },
-    tournamentNumber2: {
+    phone2: {
         type: Number,
         default: null
     },
-    tournamentEmail: {
+    email: {
         type: String,
         default: null
     },
-    tournamentInstaHandle: {
+    instagram: {
         type: String,
         default: null
     },
-    tournamentInstaHandleUrl: {
+    instagramLink: {
         type: String,
         default: null
     },
 
     //details
-    tournamentDescription: {
+    description: {
         type: String,
         required: true
     },
-    tournamentHighlights: {
-        type: String,
+    highlights: {
+        type: [String],
         required: true
     },
 
@@ -133,4 +133,4 @@ const EventSchema = new Schema({
 )
 
 export default mongoose.models.Event ||
-  mongoose.model("Event", EventSchema);
+    mongoose.model("Event", EventSchema);
