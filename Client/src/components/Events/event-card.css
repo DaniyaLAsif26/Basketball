@@ -29,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease; 
+  transition: transform 0.5s ease;
 }
 
 .event-container:hover .event-img {
@@ -99,22 +99,24 @@
   line-height: 1.2;
 }
 
-.event-date-details{
+.event-date-details {
   height: 100%;
   display: flex;
   flex-direction: column;
- justify-content: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.event-date , .event-deadline {
+.event-date,
+.event-deadline {
   color: #f87171;
   font-size: 0.875rem;
   font-weight: 500;
 }
 
-.event-deadline{
+.event-deadline {
   color: yellow;
+  font-size: 0.8rem;
 }
 
 /* Event Details Grid */
@@ -230,8 +232,6 @@
 }
 
 .type-badge,
-.level-badge
-  .detail-value
-  {
-text-transform: uppercase;
+.level-badge .detail-value {
+  text-transform: uppercase;
 }

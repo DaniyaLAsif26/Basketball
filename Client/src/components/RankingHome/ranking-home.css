@@ -3,16 +3,14 @@
 
 .ranking-cont {
     font-family: Arial, sans-serif;
-    padding: 2.6rem 0rem 2rem;
+    padding: 3rem 0rem 0rem;
 }
 
 .ranking {
     background: #0f0f1e;
-        box-shadow:
+    box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.17),
         0 20px 40px rgba(0, 0, 0, 0.2);
-    margin: 0rem 2.5rem;
-    border-radius: 1rem;
     padding-bottom: 1rem;
 }
 
@@ -22,7 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2.5rem 1rem;
+    padding: 1.5rem 2.5rem 2rem;
 }
 
 .ranking-head h2 {
@@ -45,14 +43,15 @@
 .ranking-list {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     gap: 2rem;
 }
 
 .ranking-card {
-    width: 27.5rem;
+    width: 25rem;
     height: 13.5rem;
     border-radius: 1rem;
     padding: 1rem;
@@ -61,6 +60,19 @@
     justify-content: space-between;
     color: white;
 }
+
+.ranking-card-1 {
+    height: 17.5rem;
+}
+
+.ranking-card-2 {
+    height: 15.5rem;
+}
+
+.ranking-card-3 {
+    /* height: 15rem; */
+}
+
 
 .ranking-info {
     display: flex;
@@ -123,18 +135,25 @@
     bottom: 1rem;
 }
 
+.view-all-rankings{
+    overflow: hidden;
+}
+
 .view-all-rankings a {
+    width: auto;
+    overflow: hidden;
     font-size: 1.2rem;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 1rem 1rem;
+    margin: 2.5rem 0rem 1rem;
     font-family: "Oswald", sans-serif;
+    transition: transform 0.2s ease;
 }
 
 .view-all-rankings a:hover {
-    transform: scale(1.05);
+    transform: scale(1.026);
 }
 
 @media (max-width: 768px) {

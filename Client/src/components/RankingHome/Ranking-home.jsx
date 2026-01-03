@@ -83,7 +83,7 @@ export default function Ranking() {
                             gradient={HALFTONE_PRESETS.orange}
                             dotColor="rgba(0, 0, 0, 0.2)"
                             dotSpacing={10}
-                            className="ranking-card"
+                            className="ranking-card ranking-card-1"
                         >
                             <div className="ranking-info">
                                 <img src={rank_1} alt="" />
@@ -107,7 +107,7 @@ export default function Ranking() {
                             dotColor="rgba(255, 255, 255, 0.15)"
                             dotSpacing={8}
                             dotOpacity={0.7}
-                            className="ranking-card"
+                            className="ranking-card ranking-card-2"
                         >
                             <div className="ranking-info">
                                 <img src={rank_2} alt="" />
@@ -128,7 +128,7 @@ export default function Ranking() {
                             gradient={HALFTONE_PRESETS.darkOrange}
                             dotColor="rgba(0, 0, 0, 0.25)"
                             dotSpacing={9}
-                            className="ranking-card"
+                            className="ranking-card ranking-card-3"
                         >
                             <div className="ranking-info">
                                 <img src={rank_3} alt="" />
@@ -146,7 +146,7 @@ export default function Ranking() {
                         </HalftoneBackground>
 
                     </div>
-                    <div className="ranking-list">
+                    {/* <div className="ranking-list">
 
                         <HalftoneBackground
                             gradient={HALFTONE_PRESETS.orange}
@@ -212,10 +212,10 @@ export default function Ranking() {
                             <div className="ranking-points">421 <small>PTS</small> </div>
                         </HalftoneBackground>
 
-                    </div>
+                    </div> */}
                 </div>
                 <div className="view-all-rankings">
-                   <a href="/rankings">View All <MdNavigateNext /> </a> 
+                    <a href="/rankings">View All <MdNavigateNext /> </a>
                 </div>
             </div>
         </div>

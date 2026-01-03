@@ -1,6 +1,5 @@
 .counter {
     padding: 3rem 2.5rem 0rem;
-    
 }
 
 .counter-cont {
@@ -9,13 +8,13 @@
     background: radial-gradient(ellipse at top left, rgba(220, 38, 38, 0.06) 0%, transparent 40%),
         linear-gradient(135deg, #2a2229 0%, #27272d 50%, #2a2229 100%);
     border-radius: 1rem;
-        box-shadow:
+    box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.17),
         0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .counter-cont-head {
-    padding: 1rem 3rem;
+    padding: 1.5rem 3rem 1.7rem;
     font-size: 1.4rem;
     display: flex;
     justify-content: center;
@@ -32,5 +31,5 @@
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     gap: 2.5rem;
-    padding: 0.5rem 2rem 2.26rem;
+    padding: 0.26rem 2rem 2.5rem;
 }

@@ -6,8 +6,10 @@
     box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.17),
         0 20px 40px rgba(0, 0, 0, 0.2);
-    margin: 2rem 2.5rem 0rem;
-    border-radius: 1rem;
+    padding: 0rem 0rem 1.5rem ;
+
+    border-radius: 0rem 0rem 2.69rem 2.69rem;
+
 }
 
 .news-cont {
@@ -17,7 +19,7 @@
 .news-head {
     display: flex;
     justify-content: start;
-    padding: 1.5rem 3rem 1rem;
+    padding: 2rem 3rem 1.26rem;
 }
 
 .news-head h1 {
