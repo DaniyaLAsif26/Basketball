@@ -112,7 +112,7 @@ const eventSchema = z.object({
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-export default function AddEventForm() {
+export default function AddEventForm({ eventData = null, isEditMode = false }) {
 
     const navigate = useNavigate()
 
@@ -121,6 +121,7 @@ export default function AddEventForm() {
     const checkAdmin = location.pathname.includes(isAdmin)
 
     const [loading, setLoading] = useState(false)
+    const [existingImage, setExistingImage] = useState(null)
 
     const districts = [
         "Hyderabad",
@@ -158,16 +159,58 @@ export default function AddEventForm() {
         "Yadadri Bhuvanagiri"
     ]
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-        reset,
-        watch,
-        setValue
-    } = useForm({
-        resolver: zodResolver(eventSchema),
-        defaultValues: {
+    const prepareEventDataForForm = (event) => {
+        if (!event) return;
+
+        return {
+            type: event.type || 'UN-OFFICIAL',
+            tournamentName: event.tournamentName || '',
+            category: event.category || '',
+            level: event.level || '',
+            ageCategory: event.ageCategory || '',
+            format: event.format || '',
+            gender: event.gender || '',
+            startDate: event.startDate || '',
+            endDate: event.endDate || '',
+            registrationDeadline: event.registrationDeadline || '',
+            venueName: event.venueName || '',
+            address: event.address || '',
+            city: event.city || '',
+            district: event.district || '',
+            zipCode: event.zipCode || '',
+            entryFee: event.entryFee?.toString() || '',
+            firstPrize: event.firstPrize?.toString() || '',
+            secondPrize: event.secondPrize?.toString() || '',
+            thirdPrize: event.thirdPrize?.toString() || '',
+            phone1: event.phone1 || '',
+            phone2: event.phone2 || '',
+            email: event.email || '',
+            instagram: event.instagram || '',
+            instagramLink: event.instagramLink || '',
+            description: event.description || '',
+            highlights: Array.isArray(event.highlights)
+                ? event.highlights.join('\n')
+                : event.highlights || '',
+
+        }
+    }
+
+    const getIntitialValues = () => {
+        if (eventData && isEditMode) {
+            return (prepareEventDataForForm * eventData)
+        }
+
+        const draft = sessionStorage.getItem('tournamentDraft')
+        if (draft) {
+            try {
+                return JSON.parse(draft)
+            }
+            catch (e) {
+                console.error('Failed to parse draft', e)
+            }
+        }
+
+        return {
             type: 'UN-OFFICIAL',
             tournamentName: '',
             category: '',
@@ -195,38 +238,73 @@ export default function AddEventForm() {
             description: '',
             highlights: '',
         }
+    }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+        watch,
+        setValue
+    } = useForm({
+        resolver: zodResolver(eventSchema),
+        defaultValues: getIntitialValues()
     });
 
-    // Watch form values for draft saving
     const formValues = watch();
 
     useEffect(() => {
-        const draft = sessionStorage.getItem('tournamentDraft')
-        if (draft) {
-            const parseDraft = JSON.parse(draft)
-            Object.keys(parseDraft).forEach(key => {
-                if (key !== "tournamentImage") {
-                    setValue(key, parseDraft[key])
-                }
+        if (isEditMode && eventData) {
+            const formatedData = prepareEventDataForForm(eventData)
+            Object.keys(formatedData).forEach(key => {
+                setValue(key, formatedData[key])
             })
+
+            if (eventData.tournamentImage) {
+                setExistingImage(eventData.tournamentImage)
+            }
+
+            sessionStorage.removeItem('tournamentDraft')
         }
-    }, [setValue])
+
+        else if (!isEditMode) {
+            const draft = sessionStorage.getItem('tournamentDraft')
+
+            if (draft) {
+                try {
+
+                    const parseDraft = JSON.parse(draft)
+                    Object.keys(parseDraft).forEach(key => {
+                        if (key !== tournamentImage) {
+                            setValue(key, parseDraft[key])
+                        }
+                    })
+                }
+                catch (e) {
+                    console.error("failed to load draft", e)
+                }
+            }
+        }
 
 
+    }, [isEditMode, eventData, setValue])
 
     useEffect(() => {
+
+        if (isEditMode) return;
+
         const timeOutId = setTimeout(() => {
             const { tournamentImage, ...draftData } = formValues
             sessionStorage.setItem('tournamentDraft', JSON.stringify(draftData))
         }, 500)
 
         return () => clearTimeout(timeOutId)
-    }, [formValues])
+    }, [formValues, isEditMode])
 
 
     const handleClear = (e) => {
         e.preventDefault()
-
         sessionStorage.removeItem('tournamentDraft');
         reset()
     }
@@ -294,8 +372,12 @@ export default function AddEventForm() {
         <div className="form-wrapper">
             <div className="form-container">
                 <div className="form-header">
-                    <h1 className="form-title">Create Basketball Event</h1>
-                    <p className="form-subtitle">Fill in the details to create a new tournament</p>
+                    <h1 className="form-title">
+                        {isEditMode ? 'Edit Basketball Event ' : 'Create Basketball Event'}
+                    </h1>
+                    <p className="form-subtitle">
+                        {isEditMode ? 'Update Basketball Event details' : 'Fill in the details to create a new tournament'}
+                    </p>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="event-form">
@@ -321,8 +403,31 @@ export default function AddEventForm() {
                             <div className="form-group full-width">
                                 <label className="form-label">
                                     <Image className="label-icon" />
-                                    Tournament Image
+                                    Tournament Image &nbsp;{isEditMode && ' (Leave empty to keep existing)'}
                                 </label>
+                                {isEditMode && existingImage && (
+                                    <div style={{ 
+                                        marginBottom: '10px', 
+                                        padding: '10px', 
+                                        border: '1px solid #ddd', 
+                                        borderRadius: '4px',
+                                        backgroundColor: '#f9f9f9'
+                                    }}>
+                                        <p style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>
+                                            Current Image:
+                                        </p>
+                                        <img 
+                                            src={existingImage} 
+                                            alt="Current tournament" 
+                                            style={{ 
+                                                maxWidth: '200px', 
+                                                maxHeight: '150px', 
+                                                objectFit: 'cover',
+                                                borderRadius: '4px'
+                                            }} 
+                                        />
+                                    </div>
+                                )}
                                 <input
                                     type="file"
                                     {...register('tournamentImage')}
