@@ -7,10 +7,6 @@ import { PiStepsFill } from "react-icons/pi";
 import { FaBasketball } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-import event_1 from '../../assets/event-1.webp'
-import event_2 from '../../assets/event-2.webp'
-import event_3 from '../../assets/event-3.jpeg'
-
 import EveInput from './Eve-input.jsx';
 import EveDrop from './Eve-drop.jsx';
 import EveSearch from './Eve-search.jsx';
@@ -18,24 +14,18 @@ import EveResults from './Eve-results.jsx';
 
 import { useEffect, useState } from 'react';
 
-const searchResults = [
-    { img: event_1, name: "ATHLEMA By MVSR", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
-    { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
-    { img: event_3, name: "SANKETIKA Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
-    { img: event_1, name: "ATHLEMA By MVSR", level: "College", format: "5X5", age: 'U-23', category: 'Male' },
-    { img: event_2, name: "Anurag Sports Fest", level: "College", format: "5X5", age: 'U-23', category: 'Women' },
-    { img: event_3, name: "SANKETIKA Sports Fest AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", level: "College", format: "5X5", age: 'U-23', category: 'Women' },
-]
-
 export default function Events() {
 
     const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
     const [events, setEvents] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const allEvents = async () => {
+            if (loading) return;
             try {
+                setLoading(true)
                 const res = await fetch(`${BackEndRoute}/api/event/all-events`, {
                     method: "GET"
                 })
@@ -49,13 +39,16 @@ export default function Events() {
             catch (err) {
                 console.log(err)
             }
+            finally {
+                setLoading(false)
+            }
         }
         allEvents()
     }, [])
 
     useEffect(() => {
-  console.log("Updated events:", events)
-}, [events])
+        console.log("Updated events:", events)
+    }, [events])
 
 
     // Type
@@ -190,7 +183,7 @@ export default function Events() {
 
                 </form>
             </div>
-            <EveResults searchResults={events} />
+            <EveResults searchResults={events} loading={loading} />
         </div>
     )
 }
