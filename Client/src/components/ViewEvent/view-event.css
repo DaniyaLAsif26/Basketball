@@ -479,17 +479,78 @@
 }
 
 .event-edit-btn {
-    color: black;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 2px solid black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100px;
+    height: 2.6rem;
+    border: none;
+    padding: 0px 20px;
     background-color: yellow;
-    padding: 0.6rem 1rem;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px black;
+    transition-duration: .3s;
 }
 
-.event-delete-btn {
+.event-edit-btn .svg {
+    width: 13px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    fill: black;
+    transition-duration: .3s;
+}
+
+.event-edit-btn:hover {
+    color: transparent;
+}
+
+.event-edit-btn:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: .3s;
+}
+
+.event-edit-btn:active {
+    transform: translate(3px, 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0px black;
+}
+
+.event-delete-btn{
+    width: 126px;
     background-color: red;
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-delete-btn svg {
+    font-size: 1.26rem;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    fill: white;
+    transition-duration: .3s;
+}
+
+.event-edit-btn:hover {
+    color: transparent;
+}
+
+.event-delete-btn:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: .3s;
 }
 
 /* Responsive */
