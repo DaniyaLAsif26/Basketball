@@ -162,6 +162,12 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
     const prepareEventDataForForm = (event) => {
         if (!event) return;
 
+        const formatDate = (dateString) => {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toISOString().split('T')[0];
+        };
+
         return {
             type: event.type || 'UN-OFFICIAL',
             tournamentName: event.tournamentName || '',
@@ -170,9 +176,9 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
             ageCategory: event.ageCategory || '',
             format: event.format || '',
             gender: event.gender || '',
-            startDate: event.startDate || '',
-            endDate: event.endDate || '',
-            registrationDeadline: event.registrationDeadline || '',
+            startDate: formatDate(event.startDate) || '',
+            endDate: formatDate(event.endDate) || '',
+            registrationDeadline: formatDate(event.registrationDeadline) || '',
             venueName: event.venueName || '',
             address: event.address || '',
             city: event.city || '',
@@ -182,8 +188,8 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
             firstPrize: event.firstPrize?.toString() || '',
             secondPrize: event.secondPrize?.toString() || '',
             thirdPrize: event.thirdPrize?.toString() || '',
-            phone1: event.phone1 || '',
-            phone2: event.phone2 || '',
+            phone1: event.phone1?.toString() || '',
+            phone2: event.phone2?.toString() || '',
             email: event.email || '',
             instagram: event.instagram || '',
             instagramLink: event.instagramLink || '',
@@ -304,7 +310,7 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
 
 
     const handleClear = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         sessionStorage.removeItem('tournamentDraft');
         reset()
     }
@@ -321,7 +327,7 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
             Object.entries(data).forEach(([key, value]) => {
                 if (key === 'tournamentImage') {
                     if (value && value.length > 0) {
-                        formData.append('tournamentImage', value[0]) // ✅ FILE
+                        formData.append('tournamentImage', value[0])
                     }
                 }
                 else if (key === 'highlights') {
@@ -333,11 +339,17 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
                 }
             })
 
-            formData.append('createdAt', new Date().toISOString())
-            formData.append('updatedAt', new Date().toISOString())
+            const endPoint = isEditMode
+                ? `${BackEndRoute}/api/event/edit/${eventData._id}`
+                : `${BackEndRoute}/api/event/create`
 
-            const res = await fetch(`${BackEndRoute}/api/event/create`, {
-                method: 'POST',
+            const method = isEditMode
+                ? 'PUT'
+                : 'POST'
+
+
+            const res = await fetch(endPoint, {
+                method: method,
                 credentials: 'include',
                 body: formData
             })
@@ -349,14 +361,21 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
             }
 
             if (dataRes.success === true) {
-                // handleClear()
-                navigate('/events')
-                alert(dataRes.message)
+                if (isEditMode) {
+                    alert(dataRes.message)
+                    navigate(`/view-event/${dataRes.data._id}`)
+                    handleClear()
+
+                } else {
+                    navigate('/events')
+                    alert(dataRes.message)
+                    // handleClear()
+                }
             }
         }
         catch (err) {
-            alert(`Failed to create tournament: ${err.message}`);
-            return console.log(err)
+            alert(`Failed to ${isEditMode ? 'update' : 'create'} tournament: ${err.message}`);
+            console.log(err);
         }
         finally {
             setLoading(false)
@@ -406,25 +425,25 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
                                     Tournament Image &nbsp;{isEditMode && ' (Leave empty to keep existing)'}
                                 </label>
                                 {isEditMode && existingImage && (
-                                    <div style={{ 
-                                        marginBottom: '10px', 
-                                        padding: '10px', 
-                                        border: '1px solid #ddd', 
+                                    <div style={{
+                                        marginBottom: '10px',
+                                        padding: '10px',
+                                        border: '1px solid #ddd',
                                         borderRadius: '4px',
                                         backgroundColor: '#f9f9f9'
                                     }}>
                                         <p style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>
                                             Current Image:
                                         </p>
-                                        <img 
-                                            src={existingImage} 
-                                            alt="Current tournament" 
-                                            style={{ 
-                                                maxWidth: '200px', 
-                                                maxHeight: '150px', 
+                                        <img
+                                            src={existingImage}
+                                            alt="Current tournament"
+                                            style={{
+                                                maxWidth: '200px',
+                                                maxHeight: '150px',
                                                 objectFit: 'cover',
                                                 borderRadius: '4px'
-                                            }} 
+                                            }}
                                         />
                                     </div>
                                 )}
@@ -825,7 +844,9 @@ Prize money for top 3 teams"
                             className="submit-btn"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Creating...' : 'Create Tournament'}
+                            {isSubmitting
+                                ? (isEditMode ? 'Updating...' : 'Creating...')
+                                : (isEditMode ? 'Update Tournament' : 'Create Tournament')}
                         </button>
                         <button
                             type="button"
