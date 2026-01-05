@@ -258,6 +258,9 @@
     padding-left: 1.5rem;
     position: relative;
     color: #d1d5db;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 .highlights-list li:before {

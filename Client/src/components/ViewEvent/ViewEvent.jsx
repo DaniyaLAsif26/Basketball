@@ -86,10 +86,6 @@ export default function ViewEvent() {
                         Back to Events
                     </button>
                 </div>
-                <div className="event-page-edit-del">
-                    <button></button>
-                    <button></button>
-                </div>
             </div>
 
             <div className="page-container">
@@ -208,12 +204,13 @@ export default function ViewEvent() {
                             <div className="section-content">
                                 <div className="location-info">
                                     <h3 className="location-venue">{event.venueName}</h3>
-                                    <p className="location-address">
+                                    <div className="location-address">
                                         <p>{event.address}</p>
                                         <p>{event.district} District,</p>
                                         <p>{event.city}</p>
                                         <p>{event.zipCode}</p>
-                                    </p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -282,7 +279,7 @@ export default function ViewEvent() {
                                 <div className="contact-text">
                                     <span className="contact-label">Instagram</span>
                                     <a href={event.inatagramLink || null} target="_blank" rel="noopener noreferrer" className="contact-link">
-                                        @ {event.inatagram || '-'}
+                                        @ {event.instagram || '-'}
 
                                     </a>
                                 </div>
