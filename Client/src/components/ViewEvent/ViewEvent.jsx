@@ -30,8 +30,6 @@ export default function ViewEvent() {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-
-
                 const res = await fetch(`${BackEndRoute}/api/event/${id}`)
 
                 const data = await res.json()
@@ -51,6 +49,23 @@ export default function ViewEvent() {
         fetchEvent()
     }, [id])
 
+    const deleteEvent = async (id) => {
+        console.log(id)
+        const res = await fetch(`${BackEndRoute}/api/event/delete/${id}`, {
+            method: 'DELETE',
+            Credential: 'include'
+        })
+
+        const data = await res.json()
+
+        if (data.success === false) {
+            return alert(`${data.message}`)
+        }
+
+        alert(`${data.message}`)
+        navigate('/events')
+    }
+
     const formatedDate = (start, end) => {
         const s = new Date(start)
         const e = new Date(end)
@@ -67,10 +82,6 @@ export default function ViewEvent() {
         }
 
         return `${s.toLocaleString('en-US', { month: 'long' })} ${s.getDate()},${s.getFullYear()} - ${e.toLocaleString('en-US', { month: 'long' })} ${e.getDate()},${e.getFullYear()}`
-    }
-
-    const deleteEvent = () => {
-
     }
 
     if (loading) return <p>Loading...</p>
@@ -329,7 +340,7 @@ export default function ViewEvent() {
 
                     <button
                         className="event-edit-btn event-delete-btn"
-                        onClick={deleteEvent}
+                        onClick={() => deleteEvent(event._id)}
                     >
                         Delete
                         <MdDelete />

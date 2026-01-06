@@ -3,6 +3,7 @@ import multer from 'multer'
 
 import Event from '../models/event.js'
 import { createEventSchema } from '../Validators/EventValidator.js'
+import { success } from 'zod'
 
 const upload = multer()
 
@@ -147,6 +148,31 @@ router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
         res.status(500).json({
             success: false,
             message: `Failed to update tournament: ${error.message}`
+        })
+    }
+})
+
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const event = await Event.findByIdAndDelete(req.params.id)
+
+        if (!event) {
+            return res.status(404).json({
+                success: false,
+                message: "Event Not Found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Event Deleted Successfully"
+        })
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: `Failed to Delete Event: ${err.message}`
         })
     }
 })
