@@ -49,6 +49,7 @@ export default function AddNewsForm() {
                                 id="title"
                                 placeholder='Add News Title'
                                 value={newsTitle}
+                                resize='none'
                                 onChange={(e) => setNewsTitle(e.target.value)}
                             >
                             </textarea>
