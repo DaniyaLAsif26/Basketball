@@ -1,26 +1,43 @@
 import './news.css'
-import big_1 from '../../assets/big-1.jpg'
-import big_2 from '../../assets/big-2.jpg'
-import news_1 from '../../assets/news-1.jpg'
-import news_2 from '../../assets/news-2.webp'
-import news_3 from '../../assets/news-3.jpg'
-
+import { useState, useEffect } from 'react'
 import NewsBig from './News-big.jsx'
 import NewsSmall from './News-small.jsx'
 
-const newsData = [
-    { headline: "Launch of the Official School Basketball League ", img: big_1 },
-    { headline: "Launch of the Official School Basketball League ", img: news_1 },
-    { headline: "Launch of the Official School Basketball League ", img: news_2 },
-    { headline: "Launch of the Official School Basketball League ", img: big_2 },
-    { headline: "Launch of the Official School Basketball League ", img: news_3 },
-    { headline: "Launch of the Official School Basketball League ", img: news_1 },
-]
-
-const row1 = newsData.slice(0, 3)
-const row2 = newsData.slice(3, 6)
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function News() {
+
+    const [news, setNews] = useState([])
+
+    useEffect(() => {
+        const getHomeNews = async () => {
+            try {
+
+                const res = await fetch(`${BackEndRoute}/api/news/all-news`)
+
+                const dataRes = await res.json()
+
+                if (dataRes.success === true) {
+                    return setNews(dataRes.news)
+                }
+
+                alert(`Error: ${dataRes.message}`)
+            }
+            catch (err) {
+                console.log(err)
+                alert(`Something went wrong while fetching news`)
+            }
+        }
+        getHomeNews()
+    }, [])
+
+    const row1 = news.slice(0, 3)
+    const row2 = news.slice(3, 6)
+
+    if (news.length < 6) {
+        return <p>No news available</p>
+    }
+
     return (
         <div className="home-news">
             <div className="news-cont">

@@ -1,54 +1,63 @@
 import './news-page-component.css'
+import { useState, useEffect } from 'react'
 
-import big_1 from '../../assets/big-1.jpg'
-import big_2 from '../../assets/big-2.jpg'
-import news_1 from '../../assets/news-1.jpg'
-import news_2 from '../../assets/news-2.webp'
-import news_3 from '../../assets/news-3.jpg'
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-import NewsSmall from '../News/News-small'
-import NewsBig from '../News/News-big'
+export default function NewsPageComponent() {
 
-const photos = [
-    { headline: "Launch of the Official School Basketball League ", img: big_1 },
-    { headline: "Launch of the Official School Basketball League ", img: news_1 },
-    { headline: "Launch of the Official School Basketball League ", img: news_2 },
-    { headline: "Launch of the Official School Basketball League ", img: big_2 },
-    { headline: "Launch of the Official School Basketball League ", img: news_3 },
-    { headline: "Launch of the Official School Basketball League ", img: news_1 },
-    { headline: "Launch of the Official School Basketball League ", img: big_2 },
-    { headline: "Launch of the Official School Basketball League ", img: news_3 },
-    { headline: "Launch of the Official School Basketball League ", img: news_1 },
-]
+    const [news, setNews] = useState([])
 
-export default function Gallery() {
-    const rows = []
-    for (let i = 0; i < photos.length; i += 3) {
-        rows.push(photos.slice(i, i + 3))
-    }
+    useEffect(() => {
+        const getHomeNews = async () => {
+            try {
+
+                const res = await fetch(`${BackEndRoute}/api/news/all-news`)
+
+                const dataRes = await res.json()
+
+                if (dataRes.success === true) {
+                    console.log(dataRes.news)
+                    return setNews(dataRes.news)
+                }
+
+                alert(`Error: ${dataRes.message}`)
+            }
+            catch (err) {
+                console.log(err)
+                alert(`Something went wrong while fetching news`)
+            }
+        }
+        getHomeNews()
+    }, [])
+
 
     return (
         <div className="news-page">
             <div className="news-page-head news-head">
                 <h1>NEWS</h1>
             </div>
-            {rows.map((row, index) => (
-                <div key={index} className="news-row">
-                    {index % 2 === 0 ? (
-                        <>
-                            {row[0] && <NewsBig data={row[0]} />}
-                            {row[1] && <NewsSmall data={row[1]} />}
-                            {row[2] && <NewsSmall data={row[2]} />}
-                        </>
-                    ) : (
-                        <>
-                            {row[0] && <NewsSmall data={row[0]} />}
-                            {row[1] && <NewsSmall data={row[1]} />}
-                            {row[2] && <NewsBig data={row[2]} />}
-                        </>
-                    )}
-                </div>
-            ))}
+            <div className="news-age-news-cont">
+                {news.map((item, index) => (
+                    <div className="news-page-news" key={index}>
+                        <div className="news-page-news-img">
+                            <img src={item.newsImage} alt="" />
+                        </div>
+                        <div className="news-page-news-content">
+                            <div className="news-date">{new Date(item.createdAt).toLocaleString('en-US', {
+                                month: 'long',
+                                day: 'numeric',
+                                year: 'numeric'
+                            })}</div>
+                            <div className="news-headline">
+                              <h3>{item.newsHeadline}</h3>  
+                            </div>
+                            <div className="news-content">{item.newsContent}</div>
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+
         </div>
     )
 }
