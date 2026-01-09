@@ -28,7 +28,7 @@ export default function Footer() {
         { name: 'Host Event', path: '/add-event' },
         { name: 'Districts', path: '/districts' },
         { name: 'Working of Rankings', path: '/training' },
-        { name: 'Contact Us', path: '/faq' }
+        { name: 'Admin', path: '/admin' }
     ];
 
     const socialLinks = [

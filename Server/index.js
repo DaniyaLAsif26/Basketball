@@ -6,11 +6,12 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import EventRoute from './routes/Event.js'
+import NewsRoute from './routes/News.js'
 
 const app = express()
 app.use(cors({
-  origin: 'http://localhost:5173', // EXACT frontend origin
-  credentials: true
+    origin: 'http://localhost:5173', // EXACT frontend origin
+    credentials: true
 }))
 
 const PORT = process.env.PORT || 5000
@@ -30,6 +31,7 @@ connectDB()
     })
 
 app.use('/api/event', EventRoute)
+app.use('/api/news', NewsRoute)
 
 app.use('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")

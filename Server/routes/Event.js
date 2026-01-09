@@ -119,7 +119,7 @@ router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
             updateData.tournamentImage = req.file.path;
         }
 
-        const validatedData = createEventSchema.parse(updateData)
+        const validatedData = createEventSchema. parse(updateData)
 
         const updatedData = await Event.findByIdAndUpdate(
             req.params.id,

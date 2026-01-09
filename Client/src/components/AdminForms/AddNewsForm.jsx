@@ -1,37 +1,129 @@
 import './add-news-form.css'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-export default function AddNewsForm() {
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
-    const imageRef = useRef(null)
+const newsSchema = z.object({
+    newsHeadline: z.string()
+        .min(5, "Title to small")
+        .max(550, "Title to big"),
+
+    newsContent: z.string()
+        .min(15, "Content to small")
+        .max(600, "Content to big"),
+
+    newsImage: z.instanceof(FileList)
+        .optional()
+        .refine(files => !files || files.length === 0 || files.length === 1, "Upload only 1 image")
+        .refine(files => !files || files.length === 0 || files[0].size <= 5 * 1024 * 1024, "Image must be less than 5MB")
+        .refine(files => !files || files.length === 0 || ['image/jpeg', 'image/jpg', 'image/png'].includes(files?.[0]?.type), "Invalid Image format"),
+})
+
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
+export default function AddNewsForm() {
 
     const [loading, setLoading] = useState(false)
 
-    const [newsTitle, setNewsTitle] = useState(() => {
-        return sessionStorage.getItem('title') || ''
+    const initialValues = () => {
+
+        return {
+            newsTitle: '',
+            newsContent: '',
+        }
+    }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+        watch,
+        setValue
+    } = useForm({
+        resolver: zodResolver(newsSchema),
+        defaultValues: initialValues()
     })
 
-    useEffect(() => {
-        sessionStorage.setItem('title', newsTitle)
-    }, [newsTitle])
+    const formValues = watch();
 
-    const createNews = (e) => {
-        e.preventDefault()
+    useEffect(() => {
+        const draft = sessionStorage.getItem('news-draft');
+
+        if (draft) {
+            const parseDraft = JSON.parse(draft);
+            Object.keys(parseDraft).forEach(key => {
+                if (key !== "newsImage") {
+                    setValue(key, parseDraft[key])
+                }
+            })
+        }
+    }, [setValue])
+
+    useEffect(() => {
+        const timeOutId = setTimeout(() => {
+            const { newsImage, ...newsDraft } = formValues
+            sessionStorage.setItem('news-draft', JSON.stringify(newsDraft))
+        }, 500)
+
+        return () => clearTimeout(timeOutId)
+    }, [formValues])
+
+    const handleClear = (e) => {
+        // e.preventDefault()
+        sessionStorage.removeItem('tournazmentDraft');
+        reset()
+    }
+
+    const createNews = async (data) => {
         if (loading) return;
 
-        const image = imageRef.current.files[0]
+        try {
+            setLoading(true)
+            const formData = new FormData();
 
-        if (!newsTitle || !image) {
-            alert('Fill out all fields')
-            return
+            Object.entries(data).forEach(([key, value]) => {
+                if (key === 'newsImage') {
+                    if (value && value.length > 0) {
+                        formData.append('newsImage', value[0]);
+                    }
+                }
+                else if (value !== undefined && value !== '') {
+                    formData.append(key, value);
+                }
+            })
+
+            const res = await fetch(`${BackEndRoute}/api/news/admin/create`, {
+                method: 'POST',
+                body: formData
+            })
+
+            const dataRes = await res.json();
+
+            if (dataRes.success === false) {
+                return alert(`Error: ${dataRes.message}`);
+            }
+
+            alert(`Success: ${dataRes.message}`);
+            handleClear()
+
+        } catch (err) {
+            alert(`Error: ${err.message}`);
+            console.log(err);
         }
-
-        const formData = new FormData()
-        formData.append('newsTitle', newsTitle)
-        formData.append('newsImage', image)
+        finally {
+            setLoading(false)
+        }
     }
+
+    const ErrorMessage = ({ error }) => {
+        if (!error) return null;
+        return <span className="news-error-message">{error.message}</span>;
+    };
 
     return (
         <div className="add-news">
@@ -41,33 +133,54 @@ export default function AddNewsForm() {
                     <h2>Add News</h2>
                 </div>
                 <div className="add-news-from-cont">
-                    <form className='add-news-form'>
-                        <div className="news-form-div">
-                            <label htmlFor="title">News Title : </label>
-                            <textarea
-                                name='title'
-                                id="title"
-                                placeholder='Add News Title'
-                                value={newsTitle}
-                                resize='none'
-                                onChange={(e) => setNewsTitle(e.target.value)}
-                            >
-                            </textarea>
+                    <form className='add-news-form' onSubmit={handleSubmit(createNews)}>
+                        <div className="news-form">
+                            <div className="news-form-div">
+                                <label htmlFor="title">News Title : </label>
+                                <textarea
+                                    name='title'
+                                    id="title"
+                                    placeholder='Add News Title'
+                                    resize='none'
+                                    {...register('newsHeadline')}
+                                >
+                                </textarea>
+                            </div>
+                            <ErrorMessage error={errors.newsHeadline} />
+                        </div>
+                        <div className="news-form">
+                            <div className="news-form-div">
+                                <label htmlFor="content">News Content : </label>
+                                <textarea
+                                    name='content'
+                                    id="content"
+                                    placeholder='Add News Content'
+                                    resize='none'
+                                    {...register('newsContent')}
+                                >
+                                </textarea>
+                            </div>
+                            <ErrorMessage error={errors.newsContent} />
                         </div>
                         <div className="news-form-div">
                             <label htmlFor="image">News Image : </label>
                             <input
-                                ref={imageRef}
                                 id='image'
                                 type="file"
                                 name="image"
                                 accept='image/png, image/jpeg, image/jpg'
-                                required
+                                // required
                                 className="event-form-input"
+                                {...register('newsImage')}
                             />
                         </div>
-                        <div className="add-news-btn">
-                            <button onClick={createNews}>Create News</button>
+                        <div className="news-btn">
+                            <div className="add-news-btn">
+                                <button type='submit'>Create News</button>
+                            </div>
+                            <div className="add-news-btn clear-news-btn">
+                                <button onClick={handleClear}>Clear</button>
+                            </div>
                         </div>
                     </form>
                 </div>

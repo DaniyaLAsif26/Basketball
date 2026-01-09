@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 0rem 5rem 2rem;
+    padding: 0rem 4.5rem 2rem;
     width: max-content;
     border-radius: 1rem;
 }
@@ -36,6 +36,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.news-form {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.news-error-message {
+    color: red;
+    margin-top: 0.15rem;
 }
 
 .news-form-div label {
@@ -100,4 +112,17 @@
 .news-form-div textarea:focus {
     outline: none;
     border-color: darkcyan;
+}
+
+.news-btn {
+    display: flex;
+    gap: 1rem;
+}
+
+.clear-news-btn{
+    background-color: transparent;
+}
+
+#content{
+    height: 15rem;
 }
