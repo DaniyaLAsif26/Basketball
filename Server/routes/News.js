@@ -4,7 +4,6 @@ import News from '../models/news.js'
 import multer from 'multer'
 
 import { createNewsSchema } from '../Validators/NewsValidators.js'
-import news from '../models/news.js'
 
 const router = express.Router()
 
@@ -65,4 +64,24 @@ router.get('/all-news', async (req, res) => {
 
 })
 
-export default router
+router.get('/:id', async (req, res) => {
+    try {
+        const news = await News.findById(req.params.id)
+
+        if (!news) {
+            return res.status(404).json({
+                success: true,
+                message: "News not found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            news: news
+        })
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+export default router;
