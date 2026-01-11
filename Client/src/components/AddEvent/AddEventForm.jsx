@@ -279,7 +279,6 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
 
             if (draft) {
                 try {
-
                     const parseDraft = JSON.parse(draft)
                     Object.keys(parseDraft).forEach(key => {
                         if (key !== tournamentImage) {

@@ -2,11 +2,17 @@ import './admin-news.css'
 import './all-users.css'
 import OptionsHead from './OptionHead'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function AdminNews({ table }) {
 
+    const navigate = useNavigate()
+
     const [search, setSearch] = useState('')
+    const [news, setNews] = useState([])
 
     const OptHead = {
         heading: "All News",
@@ -15,6 +21,28 @@ export default function AdminNews({ table }) {
         btn: "Add news",
         url: '/admin/add-news',
     }
+
+    useEffect(() => {
+        const getAllNews = async () => {
+            try {
+                const res = await fetch(`${BackEndRoute}/api/news/all-news`)
+
+                const dataRes = await res.json()
+
+                if (dataRes.success === true) {
+                    console.log(dataRes.news)
+                    return setNews(dataRes.news)
+                }
+
+                alert(`Error: ${dataRes.message}`)
+            }
+            catch (err) {
+                console.log(err)
+                alert(`Something went wrong while fetching news`)
+            }
+        }
+        getAllNews()
+    }, [])
 
     return (
         <div className="admin-news-cont">
@@ -25,13 +53,31 @@ export default function AdminNews({ table }) {
                         <thead>
                             <tr>
                                 {table.map((item, index) => (
-                                    <th>{item}</th>
+                                    <th key={index}>{item}</th>
                                 ))}
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody><tr><td></td></tr></tbody>
+                        <tbody>
+                            {news.map((item, index) => (
+                                <tr key={index}>
+                                    <td >{item.newsHeadline}</td>
+                                    <td >
+                                        {new Date(item.createdAt).toLocaleString('en-US', {
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric'
+                                        })}</td>
+                                    <td>
+                                        <button className='edit-news-btn' onClick={()=> navigate(`/admin/edit-news/${item._id}`)}>Edit</button>
+                                    </td>
+                                    <td>
+                                        <button className='delete-news-btn'>Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 </div>
             </div>

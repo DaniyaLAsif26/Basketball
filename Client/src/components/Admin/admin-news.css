@@ -1,0 +1,14 @@
+.edit-news-btn {
+    color: black;
+    background-color: yellow;
+}
+
+.delete-news-btn {
+    color: white;
+    background-color: red;
+}
+
+.edit-news-btn,
+.delete-news-btn {
+    border: 1.5px solid black;
+}

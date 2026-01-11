@@ -25,11 +25,35 @@ const newsSchema = z.object({
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-export default function AddNewsForm() {
+export default function AddNewsForm({ isEditMode = false, newsData = null }) {
 
     const [loading, setLoading] = useState(false)
+    const [existingImage, setexistingImage] = useState(false)
+
+    const prepareNewsFormData = (news) => {
+
+        if (!news) return;
+
+        return {
+            newsHeadline: news.newsHeadline || '',
+            newsContent: news.newsContent || '',
+        }
+    }
 
     const initialValues = () => {
+        if (isEditMode && newsData) {
+            return (prepareNewsFormData(newsData))
+        }
+
+        const draft = sessionStorage.getItem('news-draft');
+        if (draft) {
+            try {
+                return JSON.parse(draft)
+            }
+            catch (e) {
+                console.error('Failed to parse draft', e)
+            }
+        }
 
         return {
             newsTitle: '',
@@ -52,29 +76,47 @@ export default function AddNewsForm() {
     const formValues = watch();
 
     useEffect(() => {
-        const draft = sessionStorage.getItem('news-draft');
 
-        if (draft) {
-            const parseDraft = JSON.parse(draft);
-            Object.keys(parseDraft).forEach(key => {
-                if (key !== "newsImage") {
-                    setValue(key, parseDraft[key])
-                }
+        if (isEditMode && newsData) {
+            const editData = prepareNewsFormData(newsData);
+            Object.keys(editData).forEach(keys => {
+                setValue(keys, editData[keys])
             })
+
+            if (editData.newsImage) {
+                setexistingImage(editData.newsImage)
+            }
+
+            sessionStorage.removeItem('news-draft');
         }
-    }, [setValue])
+
+        if (!isEditMode) {
+            const draft = sessionStorage.getItem('news-draft');
+
+            if (draft) {
+                const parseDraft = JSON.parse(draft);
+                Object.keys(parseDraft).forEach(key => {
+                    if (key !== "newsImage") {
+                        setValue(key, parseDraft[key])
+                    }
+                })
+            }
+        }
+
+    }, [isEditMode, newsData, setValue])
 
     useEffect(() => {
+        if (isEditMode) return;
+
         const timeOutId = setTimeout(() => {
             const { newsImage, ...newsDraft } = formValues
             sessionStorage.setItem('news-draft', JSON.stringify(newsDraft))
         }, 500)
 
         return () => clearTimeout(timeOutId)
-    }, [formValues])
+    }, [isEditMode, formValues])
 
     const handleClear = (e) => {
-        // e.preventDefault()
         sessionStorage.removeItem('tournazmentDraft');
         reset()
     }
@@ -125,12 +167,16 @@ export default function AddNewsForm() {
         return <span className="news-error-message">{error.message}</span>;
     };
 
+    if (isEditMode && (!newsData || newsData.length < 1)) return;
+
     return (
         <div className="add-news">
             <div className="add-news-cont">
                 <a href="/admin"><IoMdArrowRoundBack /></a>
                 <div className="add-news-head">
-                    <h2>Add News</h2>
+                    <h2>
+                        {isEditMode ? 'Edit News' : 'Add News'}
+                    </h2>
                 </div>
                 <div className="add-news-from-cont">
                     <form className='add-news-form' onSubmit={handleSubmit(createNews)}>
@@ -176,7 +222,9 @@ export default function AddNewsForm() {
                         </div>
                         <div className="news-btn">
                             <div className="add-news-btn">
-                                <button type='submit'>Create News</button>
+                                <button type='submit' disabled={isSubmitting}>
+                                    {isEditMode ? 'Edit News' : 'Add News'}
+                                </button>
                             </div>
                             <div className="add-news-btn clear-news-btn">
                                 <button onClick={handleClear}>Clear</button>

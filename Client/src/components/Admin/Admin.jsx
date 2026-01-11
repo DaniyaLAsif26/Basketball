@@ -32,7 +32,7 @@ export default function Admin() {
 
     const userTable = ["No", "Name", "Ranking", "Points"]
     const eventTable = ["No", "Name", "Category", "Date"]
-    const newsTable = ["No", "Title", "date", 'img']
+    const newsTable = ["Title", "date"]
 
     return (
         <div className="admin-cont">
