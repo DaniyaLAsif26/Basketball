@@ -84,4 +84,29 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const news = await News.findByIdAndDelete(req.params.id)
+
+        if (!news) {
+            return res.status(404).json({
+                success: false,
+                message: "News not found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "News deleted successfully"
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: `Failed to Delete News: ${err.message}`
+        })
+    }
+})
+
 export default router;

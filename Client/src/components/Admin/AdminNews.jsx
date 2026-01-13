@@ -44,6 +44,34 @@ export default function AdminNews({ table }) {
         getAllNews()
     }, [])
 
+    const deleteNews = async (id) => {
+        try {
+
+            const confirmDelete = confirm('Are you sure you want to delete this news item?')
+
+            if (!confirmDelete) {
+                return
+            }
+
+            const res = await fetch(`${BackEndRoute}/api/news/delete/${id}`, {
+                method: 'DELETE',
+                credentials: 'include',
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === false) {
+                return alert(`Error: ${dataRes.message}`)
+            }
+
+            alert(dataRes.message)
+            setNews(prevNews => prevNews.filter(item => item._id !== id))
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div className="admin-news-cont">
             <OptionsHead head={OptHead} />
@@ -70,10 +98,10 @@ export default function AdminNews({ table }) {
                                             year: 'numeric'
                                         })}</td>
                                     <td>
-                                        <button className='edit-news-btn' onClick={()=> navigate(`/admin/edit-news/${item._id}`)}>Edit</button>
+                                        <button className='edit-news-btn' onClick={() => navigate(`/admin/edit-news/${item._id}`)}>Edit</button>
                                     </td>
                                     <td>
-                                        <button className='delete-news-btn'>Delete</button>
+                                        <button className='delete-news-btn' onClick={() => deleteNews(item._id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}

@@ -1,5 +1,6 @@
 import './add-news-form.css'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import { IoMdArrowRoundBack } from "react-icons/io";
 
@@ -26,6 +27,8 @@ const newsSchema = z.object({
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function AddNewsForm({ isEditMode = false, newsData = null }) {
+
+    const navigate = useNavigate()
 
     const [loading, setLoading] = useState(false)
     const [existingImage, setexistingImage] = useState(false)
@@ -152,6 +155,7 @@ export default function AddNewsForm({ isEditMode = false, newsData = null }) {
 
             alert(`Success: ${dataRes.message}`);
             handleClear()
+            navigate('/admin')
 
         } catch (err) {
             alert(`Error: ${err.message}`);
