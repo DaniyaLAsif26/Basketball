@@ -84,7 +84,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-<<<<<<< HEAD
+
 router.delete('/delete/:id', async (req, res) => {
     try {
         const news = await News.findByIdAndDelete(req.params.id)
@@ -100,9 +100,17 @@ router.delete('/delete/:id', async (req, res) => {
             success: true,
             message: "News deleted successfully"
         })
-=======
-router.put('/admin/edit/:id', upload.single('tournamentImage') , async (req, res) => {
-    const updateNews = {...req.body }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: `Failed to Delete News: ${err.message}`
+        })
+    }
+})
+
+router.put('/admin/edit/:id', upload.single('tournamentImage'), async (req, res) => {
+    const updateNews = { ...req.body }
 
     try {
 
@@ -142,19 +150,14 @@ router.put('/admin/edit/:id', upload.single('tournamentImage') , async (req, res
             data: updatedNews
         })
 
->>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
     }
     catch (err) {
         console.log(err)
         res.status(500).json({
             success: false,
-<<<<<<< HEAD
             message: `Failed to Delete News: ${err.message}`
         })
-=======
-            message: 'Error updating news'
-        });
->>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
+
     }
 })
 
