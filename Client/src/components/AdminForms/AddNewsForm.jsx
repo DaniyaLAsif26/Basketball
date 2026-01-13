@@ -167,12 +167,8 @@ export default function AddNewsForm({ isEditMode = false, newsData = null }) {
 
             alert(`Success: ${dataRes.message}`);
             handleClear()
-<<<<<<< HEAD
             navigate('/admin')
-=======
-            navigate('/admin');
->>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
-
+            
         } catch (err) {
             alert(`Error: ${err.message}`);
             console.log(err);
