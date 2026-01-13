@@ -84,6 +84,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+<<<<<<< HEAD
 router.delete('/delete/:id', async (req, res) => {
     try {
         const news = await News.findByIdAndDelete(req.params.id)
@@ -99,13 +100,61 @@ router.delete('/delete/:id', async (req, res) => {
             success: true,
             message: "News deleted successfully"
         })
+=======
+router.put('/admin/edit/:id', upload.single('tournamentImage') , async (req, res) => {
+    const updateNews = {...req.body }
+
+    try {
+
+        if (req.file) {
+            // Optional: Delete old image from storage
+            const oldNews = await News.findById(req.params.id);
+            if (oldNews && oldNews.newsImage) {
+                const oldImagePath = path.join(__dirname, '..', oldNews.tournamentImage);
+                if (fs.existsSync(oldImagePath)) {
+                    fs.unlinkSync(oldImagePath);
+                }
+            }
+
+            updateNews.newsImage = req.file.path;
+        }
+
+        const validateNews = createNewsSchema.parse(updateNews)
+
+        const updatedNews = await News.findByIdAndUpdate(
+            req.params.id,
+            validateNews,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!updatedNews) {
+            return res.status(404).json({
+                success: false,
+                message: "News Not Found"
+            })
+        }
+        res.status(200).json({
+            success: true,
+            message: "News Updated Successfully",
+            data: updatedNews
+        })
+
+>>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
     }
     catch (err) {
         console.log(err)
         res.status(500).json({
             success: false,
+<<<<<<< HEAD
             message: `Failed to Delete News: ${err.message}`
         })
+=======
+            message: 'Error updating news'
+        });
+>>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
     }
 })
 

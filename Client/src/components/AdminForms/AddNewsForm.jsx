@@ -7,6 +7,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { Navigate } from 'react-router-dom';
 
 const newsSchema = z.object({
     newsHeadline: z.string()
@@ -28,7 +29,11 @@ const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 
 export default function AddNewsForm({ isEditMode = false, newsData = null }) {
 
+<<<<<<< HEAD
     const navigate = useNavigate()
+=======
+    const navigate = useNavigate();
+>>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
 
     const [loading, setLoading] = useState(false)
     const [existingImage, setexistingImage] = useState(false)
@@ -120,7 +125,7 @@ export default function AddNewsForm({ isEditMode = false, newsData = null }) {
     }, [isEditMode, formValues])
 
     const handleClear = (e) => {
-        sessionStorage.removeItem('tournazmentDraft');
+        sessionStorage.removeItem('news-draft');
         reset()
     }
 
@@ -142,9 +147,20 @@ export default function AddNewsForm({ isEditMode = false, newsData = null }) {
                 }
             })
 
-            const res = await fetch(`${BackEndRoute}/api/news/admin/create`, {
-                method: 'POST',
-                body: formData
+                        for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+
+            const endPoint = isEditMode ?
+                `${BackEndRoute}/api/news/admin/edit/${newsData._id}` :
+                `${BackEndRoute}/api/news/admin/create`
+
+            const method = isEditMode ? 'PUT' : 'POST';
+
+            const res = await fetch(endPoint, {
+                method: method,
+                body: formData,
+                credentials: 'include'
             })
 
             const dataRes = await res.json();
@@ -155,7 +171,11 @@ export default function AddNewsForm({ isEditMode = false, newsData = null }) {
 
             alert(`Success: ${dataRes.message}`);
             handleClear()
+<<<<<<< HEAD
             navigate('/admin')
+=======
+            navigate('/admin');
+>>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
 
         } catch (err) {
             alert(`Error: ${err.message}`);
