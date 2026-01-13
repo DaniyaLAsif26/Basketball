@@ -29,11 +29,7 @@ const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 
 export default function AddNewsForm({ isEditMode = false, newsData = null }) {
 
-<<<<<<< HEAD
     const navigate = useNavigate()
-=======
-    const navigate = useNavigate();
->>>>>>> 754824f8e0627b2038abfdc7f5b1edf7f4602c2d
 
     const [loading, setLoading] = useState(false)
     const [existingImage, setexistingImage] = useState(false)
@@ -147,7 +143,7 @@ export default function AddNewsForm({ isEditMode = false, newsData = null }) {
                 }
             })
 
-                        for (let [key, value] of formData.entries()) {
+            for (let [key, value] of formData.entries()) {
                 console.log(key, value);
             }
 
