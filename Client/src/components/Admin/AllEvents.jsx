@@ -43,6 +43,28 @@ export default function AllEvents({ table }) {
         adminAllEvents()
     }, [])
 
+    const deleteEvent = async (id) => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/event/delete/${id}`, {
+                method: 'DELETE',
+                credentials: 'include',
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === false) {
+                alert(`Error deleting event: ${dataRes.message}`)
+                return
+            }
+            alert('Event deleted successfully')
+            setEvents(events => events.filter(event => event._id !== id))
+        }
+        catch (err) {
+            console.log(err)
+            alert(`Error deleting event: ${err.message}`)
+        }
+    }
+
     return (
         <div className="all-events cont">
             <OptionsHead head={OptHead} />
@@ -75,7 +97,7 @@ export default function AllEvents({ table }) {
                                         })}>Edit</button>
                                     </td>
                                     <td>
-                                        {/* <button className='delete-news-btn' onClick={() => deleteNews(item._id)}>Delete</button> */}
+                                        <button className='delete-news-btn' onClick={() => deleteEvent(event._id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
