@@ -1,13 +1,17 @@
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import AddEventForm from '../AddEvent/AddEventForm.jsx'
 
 import { useState, useEffect } from 'react'
 
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
 export default function EditEvent() {
 
-    const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+    const location = useLocation();
+    const isAdmin = location.state?.from === 'admin';
 
     const { id } = useParams()
+
     const [event, setEvent] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -38,7 +42,7 @@ export default function EditEvent() {
 
     return (
         <div className="edit-event-cont">
-            <AddEventForm eventData={event} isEditMode={true} />
+            <AddEventForm eventData={event} isEditMode={true} isAdminEdit={true}/>
         </div>
     )
 }

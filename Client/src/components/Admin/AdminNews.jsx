@@ -30,7 +30,6 @@ export default function AdminNews({ table }) {
                 const dataRes = await res.json()
 
                 if (dataRes.success === true) {
-                    console.log(dataRes.news)
                     return setNews(dataRes.news)
                 }
 
@@ -38,7 +37,7 @@ export default function AdminNews({ table }) {
             }
             catch (err) {
                 console.log(err)
-                alert(`Something went wrong while fetching news`)
+                alert(`Something went wrong while fetching Events`)
             }
         }
         getAllNews()

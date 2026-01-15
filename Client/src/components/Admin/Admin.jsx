@@ -31,7 +31,7 @@ export default function Admin() {
     }, [option])
 
     const userTable = ["No", "Name", "Ranking", "Points"]
-    const eventTable = ["No", "Name", "Category", "Date"]
+    const eventTable = ["Headline", "Date"]
     const newsTable = ["Title", "date"]
 
     return (

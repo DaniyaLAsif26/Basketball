@@ -112,7 +112,7 @@ const eventSchema = z.object({
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-export default function AddEventForm({ eventData = null, isEditMode = false }) {
+export default function AddEventForm({ eventData = null, isEditMode = false, isAdminEdit = false }) {
 
     const navigate = useNavigate()
 
@@ -462,7 +462,8 @@ export default function AddEventForm({ eventData = null, isEditMode = false }) {
                                     className={`form-select ${errors.type ? 'error' : ''}`}
                                 >
                                     <option value="UN-OFFICIAL">UN-OFFICIAL</option>
-                                    {checkAdmin && <option value="OFFICIAL">OFFICIAL</option>}
+                                    {(checkAdmin || isAdminEdit) && 
+                                    (<option value="OFFICIAL">OFFICIAL</option>)}
                                 </select>
                                 <ErrorMessage error={errors.type} />
                             </div>
