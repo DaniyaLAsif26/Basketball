@@ -32,10 +32,10 @@ export default function Footer() {
     ];
 
     const socialLinks = [
-        { icon: Facebook, name: 'Facebook', url: 'https://facebook.com' },
+        { icon: Instagram, name: 'Instagram', url: 'https://www.instagram.com/telanganabasketball/?hl=en' },
+        { icon: Youtube, name: 'Youtube', url: 'https://www.youtube.com/@TelanganaBasketballAssociation' },
+        { icon: Facebook, name: 'Facebook', url: 'https://www.facebook.com/share/g/16fKBj8VhC/  ' },
         { icon: Twitter, name: 'Twitter', url: 'https://twitter.com' },
-        { icon: Instagram, name: 'Instagram', url: 'https://instagram.com' },
-        { icon: Youtube, name: 'Youtube', url: 'https://youtube.com' },
         { icon: Linkedin, name: 'LinkedIn', url: 'https://linkedin.com' }
     ];
 
@@ -141,7 +141,13 @@ export default function Footer() {
                             <p>&copy; 2026 Telangana Basketball Association. All rights reserved.</p>
                         </div>
                         <div className="developer-links">
-                            Developed by <a href=""><b>Daniyal Asif</b></a>
+                            Developed by <a
+                                href="https://www.linkedin.com/in/daniyal-a-693491185/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <b>Daniyal Asif</b>
+                            </a>
                         </div>
                     </div>
                 </div>
