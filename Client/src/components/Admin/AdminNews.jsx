@@ -22,26 +22,41 @@ export default function AdminNews({ table }) {
         url: '/admin/add-news',
     }
 
-    useEffect(() => {
-        const getAllNews = async () => {
-            try {
-                const res = await fetch(`${BackEndRoute}/api/news/all-news`)
+    const getAllNews = async (searchQuery = '') => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/news/all-news?q=${searchQuery}`, {
+                credentials: 'include',
+            })
 
-                const dataRes = await res.json()
+            const dataRes = await res.json()
 
-                if (dataRes.success === true) {
-                    return setNews(dataRes.news)
-                }
+            if (dataRes.success === true) {
+                return setNews(dataRes.news)
+            } else {
+                setNews([])
+            }
 
+            if (!search) {
                 alert(`Error: ${dataRes.message}`)
             }
-            catch (err) {
-                console.log(err)
-                alert(`Something went wrong while fetching Events`)
-            }
         }
+        catch (err) {
+            console.log(err)
+            alert(`Something went wrong while fetching News`)
+        }
+    }  
+
+    useEffect(() => {
         getAllNews()
-    }, [])
+    },[])
+
+    useEffect(() => {
+        const delayBounce = setTimeout(() => {
+            getAllNews(search)
+        }, 400)
+
+        return () => clearTimeout(delayBounce)
+    }, [search])
 
     const deleteNews = async (id) => {
         try {
@@ -76,36 +91,42 @@ export default function AdminNews({ table }) {
             <OptionsHead head={OptHead} />
             <div className="all-users">
                 <div className="all-users-table-cont">
-                    <table className='all-users-table'>
-                        <thead>
-                            <tr>
-                                {table.map((item, index) => (
-                                    <th key={index}>{item}</th>
-                                ))}
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {news.map((item, index) => (
-                                <tr key={index}>
-                                    <td >{item.newsHeadline}</td>
-                                    <td >
-                                        {new Date(item.createdAt).toLocaleString('en-US', {
-                                            month: 'long',
-                                            day: 'numeric',
-                                            year: 'numeric'
-                                        })}</td>
-                                    <td>
-                                        <button className='edit-news-btn' onClick={() => navigate(`/admin/edit-news/${item._id}`)}>Edit</button>
-                                    </td>
-                                    <td>
-                                        <button className='delete-news-btn' onClick={() => deleteNews(item._id)}>Delete</button>
-                                    </td>
+                    {news.length !== 0 ?
+                        <table className='all-users-table'>
+                            <thead>
+                                <tr>
+                                    {table.map((item, index) => (
+                                        <th key={index}>{item}</th>
+                                    ))}
+                                    <th></th>
+                                    <th></th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {news.map((item, index) => (
+                                    <tr key={index}>
+                                        <td >{item.newsHeadline}</td>
+                                        <td >
+                                            {new Date(item.createdAt).toLocaleString('en-US', {
+                                                month: 'long',
+                                                day: 'numeric',
+                                                year: 'numeric'
+                                            })}</td>
+                                        <td>
+                                            <button className='edit-news-btn' onClick={() => navigate(`/admin/edit-news/${item._id}`)}>Edit</button>
+                                        </td>
+                                        <td>
+                                            <button className='delete-news-btn' onClick={() => deleteNews(item._id)}>Delete</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        :
+                        <div className="error-msg-admin">
+                            No results Found
+                        </div>
+                    }
                 </div>
             </div>
         </div>

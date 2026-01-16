@@ -38,20 +38,47 @@ router.post('/admin/create', upload.single('newsImage'), async (req, res) => {
 })
 
 router.get('/all-news', async (req, res) => {
-    try {
-        const news = await News.find().sort({ createdAt: -1 })
 
-        if (!news || news.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: "No News Found"
+    const query = req.query.q?.trim();
+
+    try {
+        if (!query) {
+            const news = await News.find().sort({ createdAt: -1 })
+
+            if (!news || news.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "No News Found"
+                })
+            }
+
+            return res.status(200).json({
+                success: true,
+                news: news
             })
         }
 
-        res.status(200).json({
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+        const news = await News.find({
+            newsHeadline: {
+                $regex: escapedQuery,
+                $options: 'i'
+            }
+        })
+
+        if (news.length === 0) {
+            return res.status(200).json({
+                success: true,
+                news: []
+            })
+        }
+
+        return res.status(200).json({
             success: true,
             news: news
         })
+
     }
     catch (err) {
         console.log(err)
@@ -61,7 +88,6 @@ router.get('/all-news', async (req, res) => {
             error: err.message
         });
     }
-
 })
 
 router.get('/:id', async (req, res) => {

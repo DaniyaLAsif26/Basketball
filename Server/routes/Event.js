@@ -71,9 +71,9 @@ router.get('/all-events', async (req, res) => {
         })
 
         if (events.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: "No Events Found"
+            return res.status(299).json({
+                success: true,
+                data: []
             })
         }
 

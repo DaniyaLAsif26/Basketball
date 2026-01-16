@@ -56,7 +56,6 @@ export default function AllEvents({ table }) {
             return () => clearInterval(delayBounce)
         }, 400)
 
-        console.log(search)
     }, [search])
 
     const deleteEvent = async (id) => {
