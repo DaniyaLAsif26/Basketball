@@ -1,12 +1,16 @@
 import './navbar.css';
 import logo from '../../assets/red.png';
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
 
 import { FaPlus } from "react-icons/fa6";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
 
   const navigate = useNavigate()
+
+  const [login, setLogin] = useState(false)
 
   const logInRedirect = (e) => {
     e.preventDefault()
@@ -17,6 +21,11 @@ export default function Navbar() {
     e.preventDefault()
     navigate('/add-event')
   }
+
+  const user = {
+    name: "Daniyal",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
+  };
 
   return (
     <nav className='navbar'>
@@ -45,14 +54,20 @@ export default function Navbar() {
               </span>
             </button>
           </div>
-          <div className="login">
-            <button className='login-btn' onClick={logInRedirect}>
-              <div><span>Log in</span></div>
-            </button>
-          </div>
+          {login ?
+            <div className="login">
+              <button className='login-btn' onClick={logInRedirect}>
+                <div><span>Log in</span></div>
+              </button>
+            </div>
+            :
+            <div className="user-account" onClick={()=> navigate('/my-account')}>
+                <FaUserCircle/>
+              <span className="user-name">{user.name}</span>
+            </div>
+          }
         </div>
       </div>
-
     </nav>
   );
 }
