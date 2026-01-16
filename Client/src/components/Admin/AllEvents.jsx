@@ -21,27 +21,43 @@ export default function AllEvents({ table }) {
         url: '/admin/add-event',
     }
 
+    const adminAllEvents = async (searchQuery = '') => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/event/all-events?q=${searchQuery}`, {
+                credentials: 'include',
+            })
 
-    useEffect(() => {
-        const adminAllEvents = async () => {
-            try {
-                const res = await fetch(`${BackEndRoute}/api/event/all-events`)
+            const dataRes = await res.json()
 
-                const dataRes = await res.json()
-
-                if (dataRes.success === true) {
-                    return setEvents(dataRes.data)
-                }
-
-                alert(`Error: ${dataRes.message}`)
+            if (dataRes.success === true) {
+                return setEvents(dataRes.data)
+            } else {
+                setEvents([])
             }
-            catch (err) {
-                console.log(err)
-                alert(`Something went wrong while fetching news`)
+
+            if (!search) {
+                return alert(`Error: ${dataRes.message}`)
             }
         }
+        catch (err) {
+            console.log(err)
+            alert(`Something went wrong while fetching news`)
+        }
+    }
+
+    useEffect(() => {
         adminAllEvents()
     }, [])
+
+    useEffect(() => {
+        const delayBounce = setTimeout(() => {
+            adminAllEvents(search)
+
+            return () => clearInterval(delayBounce)
+        }, 400)
+
+        console.log(search)
+    }, [search])
 
     const deleteEvent = async (id) => {
         try {
@@ -70,18 +86,19 @@ export default function AllEvents({ table }) {
             <OptionsHead head={OptHead} />
             <div className="all-users">
                 <div className="all-users-table-cont">
-                    <table className='all-users-table'>
-                        <thead>
-                            <tr>
-                                {table.map((item, index) => (
-                                    <th key={index}>{item}</th>
-                                ))}
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {events.map((event, index) => (
+                    {events.length !== 0 ? (
+                        <table className='all-users-table'>
+                            <thead>
+                                <tr>
+                                    {table.map((item, index) => (
+                                        <th key={index}>{item}</th>
+                                    ))}
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {events.map((event, index) => (
                                 <tr key={event._id}>
                                     <td>{event.tournamentName}</td>
                                     <td>{new Date(event.startDate).toLocaleString('en-US', {
@@ -100,9 +117,16 @@ export default function AllEvents({ table }) {
                                         <button className='delete-news-btn' onClick={() => deleteEvent(event._id)}>Delete</button>
                                     </td>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) :
+                        (
+                            <div className="error-msg-admin">
+                                No Events Found
+                            </div>
+                           
+                        )}
                 </div>
             </div>
         </div>

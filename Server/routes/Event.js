@@ -3,7 +3,6 @@ import multer from 'multer'
 
 import Event from '../models/event.js'
 import { createEventSchema } from '../Validators/EventValidator.js'
-import { success } from 'zod'
 
 const upload = multer()
 
@@ -43,8 +42,33 @@ router.post('/create', upload.single('tournamentImage'), async (req, res) => {
 })
 
 router.get('/all-events', async (req, res) => {
+    const query = req.query.q?.trim();
+
     try {
-        const events = await Event.find().sort({ createdAt: -1 })
+        if (!query) {
+            const events = await Event.find().sort({ createdAt: -1 })
+
+            if (events.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "No Events Found"
+                })
+            }
+
+            return res.status(200).json({
+                success: true,
+                data: events
+            })
+        }
+
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+        const events = await Event.find({
+            tournamentName: {
+                $regex: escapedQuery,
+                $options: 'i'
+            }
+        })
 
         if (events.length === 0) {
             return res.status(404).json({
@@ -53,10 +77,11 @@ router.get('/all-events', async (req, res) => {
             })
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             data: events
         })
+
     }
     catch (err) {
         console.log(err)
@@ -119,7 +144,7 @@ router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
             updateData.tournamentImage = req.file.path;
         }
 
-        const validatedData = createEventSchema. parse(updateData)
+        const validatedData = createEventSchema.parse(updateData)
 
         const updatedData = await Event.findByIdAndUpdate(
             req.params.id,
