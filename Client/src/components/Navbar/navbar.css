@@ -220,9 +220,9 @@ nav ul li {
 .front {
   display: block;
   position: relative;
-  padding: 0.5rem 0.85rem;
+  padding: 0.69rem 0.85rem;
   border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: white;
   background: hsl(345deg 100% 47%);
   will-change: transform;
