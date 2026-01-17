@@ -201,6 +201,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.9375rem;
+  justify-content: center;
 }
 
 .btn-details:hover {
