@@ -14,7 +14,12 @@ import './footer.css';
 
 import whiteLogo from '../../assets/white.png';
 
+import { useNavigate } from 'react-router-dom';
+
 export default function Footer() {
+
+    const navigate = useNavigate()
+
     const quickLinks = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
@@ -28,7 +33,6 @@ export default function Footer() {
         { name: 'Host Event', path: '/add-event' },
         { name: 'Districts', path: '/districts' },
         { name: 'Working of Rankings', path: '/training' },
-        { name: 'Admin', path: '/admin' }
     ];
 
     const socialLinks = [
@@ -38,6 +42,11 @@ export default function Footer() {
         { icon: Twitter, name: 'Twitter', url: 'https://twitter.com' },
         { icon: Linkedin, name: 'LinkedIn', url: 'https://linkedin.com' }
     ];
+
+
+    const navigateAdmin = async () => {
+        navigate('/admin/login')
+    }
 
     return (
         <footer className="footer">
@@ -100,6 +109,12 @@ export default function Footer() {
                                         </a>
                                     </li>
                                 ))}
+                                <li>
+                                    <div className="footer-link" onClick={navigateAdmin}>
+                                        <ChevronRight className="link-icon" />
+                                        Admin
+                                    </div>
+                                </li>
                             </ul>
                         </div>
 

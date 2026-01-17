@@ -1,0 +1,136 @@
+/* DEOXY Was Here */
+
+.admin-login-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 2rem;
+    background-color: #e8e8e8;
+}
+
+.form {
+    --background: #d3d3d3;
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    padding: 2rem 2rem 3.5rem;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.7rem;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-logo img {
+    height: 4.5rem;
+}
+
+.form>p {
+    font-family: var(--font-DelaGothicOne);
+    color: var(--font-color);
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form>p>span {
+    font-family: var(--font-SpaceMono);
+    color: var(--font-color-sub);
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.oauthButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    /* margin: 50px auto 0 auto; */
+    padding: auto 15px 15px auto;
+    min-width: 273px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+    transition: all 250ms;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.oauthButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+}
+
+.oauthButton:hover {
+    color: #e8e8e8;
+}
+
+.oauthButton:hover .icon {
+    color: #e8e8e8;
+}
+
+.oauthButton:hover::before {
+    width: 100%;
+}
+
+.form>input {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+    margin-bottom: 1.26rem;
+}
+
+.icon {
+    color: black;
+    background: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.admin-error {
+    box-sizing: border-box;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: white;
+    font-weight: 500;
+    padding: 0.85rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+}
