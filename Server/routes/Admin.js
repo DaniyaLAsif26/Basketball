@@ -21,7 +21,7 @@ const getCookieOptions = (maxAge) => ({
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
 
-    if (!username || !password || username === undefined || password=== undefined) {
+    if (!username || !password || username === undefined || password === undefined) {
         return res.status(404).json({
             success: false,
             message: "Username and Password is required"
@@ -65,6 +65,34 @@ router.post('/login', async (req, res) => {
     catch (err) {
         console.log(err)
         return res.status(500).json({ success: false, message: "Server error" });
+    }
+})
+
+router.get('/verify/admin', async (req, res) => {
+    try {
+        const token = req.cookies.adminToken
+
+        if (!token) {
+            return res.json({
+                success: false
+            })
+        }
+
+        const decode = jwt.verify(token, process.env.JWT_SECRET)
+        if (decode.role !== 'admin') {
+            return res.json({
+                success: false
+            })
+        }
+
+        res.json({ success: true })
+    }
+    catch (err) {
+        console.log(err)
+        return res.json({
+            success: false,
+            message: err.message
+        })
     }
 })
 

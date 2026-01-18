@@ -15,10 +15,13 @@ import './footer.css';
 import whiteLogo from '../../assets/white.png';
 
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from '../../context/LoginContext';
 
 export default function Footer() {
 
     const navigate = useNavigate()
+
+    const { isAdminLoggedIn } = useLogin()
 
     const quickLinks = [
         { name: 'Home', path: '/' },
@@ -45,7 +48,12 @@ export default function Footer() {
 
 
     const navigateAdmin = async () => {
-        navigate('/admin/login')
+        if(isAdminLoggedIn){
+            navigate('/admin')
+        }
+        else{
+            navigate('/admin/login')
+        }
     }
 
     return (
