@@ -7,8 +7,14 @@ import cors from 'cors'
 
 import EventRoute from './routes/Event.js'
 import NewsRoute from './routes/News.js'
+import AdminRoute from './routes/Admin.js'
 
 const app = express()
+app.use(express.json());
+
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
 app.use(cors({
     origin: 'http://localhost:5173', // EXACT frontend origin
     credentials: true
@@ -32,6 +38,7 @@ connectDB()
 
 app.use('/api/event', EventRoute)
 app.use('/api/news', NewsRoute)
+app.use('/api/admin', AdminRoute)
 
 app.use('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")

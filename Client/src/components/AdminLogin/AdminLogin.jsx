@@ -1,8 +1,13 @@
 import './admin-login.css'
 import red from '../../assets/red.png'
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
+
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function AdminLogin() {
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -12,9 +17,29 @@ export default function AdminLogin() {
         e.preventDefault()
 
         try {
-            console.log(username, password)
+            const res = await fetch(`${BackEndRoute}/api/admin/login`, {
+                method: "POST",
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === false) {
+                setError(dataRes.message || "Login Failed")
+                return;
+            }
+
+            navigate('/admin')
         }
         catch (err) {
+            console.log("Error during admin login:", err);
             setError(err)
         }
     }

@@ -7,7 +7,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Navigate } from 'react-router-dom';
 
 const newsSchema = z.object({
     newsHeadline: z.string()
