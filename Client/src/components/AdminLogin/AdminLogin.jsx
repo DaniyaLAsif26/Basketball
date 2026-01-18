@@ -2,12 +2,14 @@ import './admin-login.css'
 import red from '../../assets/red.png'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useLogin } from '../../context/LoginContext'
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function AdminLogin() {
 
     const navigate = useNavigate();
+    const { verifyAdminLogin, setIsAdminLoggedIn } = useLogin();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -35,7 +37,8 @@ export default function AdminLogin() {
                 setError(dataRes.message || "Login Failed")
                 return;
             }
-
+            setIsAdminLoggedIn(true)
+            await verifyAdminLogin()
             navigate('/admin')
         }
         catch (err) {

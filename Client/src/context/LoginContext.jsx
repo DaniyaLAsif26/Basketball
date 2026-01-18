@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect, Children } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginContext = createContext()
 
@@ -7,9 +7,11 @@ const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 
 export const LoginProvider = ({ children }) => {
     const navigate = useNavigate()
+    const location = useLocation()
 
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const verifyAdminLogin = async () => {
         try {
@@ -20,25 +22,25 @@ export const LoginProvider = ({ children }) => {
 
             const dataRes = await res.json()
 
-            if (dataRes.success === true) {
-                setIsAdminLoggedIn(true)
-                return
-            }
-            else {
-                setIsAdminLoggedIn(false)
-                return
-            }
+            const isLoggedIn = dataRes.success === true
+            setIsAdminLoggedIn(isLoggedIn)
+            console.log(isAdminLoggedIn)
+            return isLoggedIn
+
         }
         catch (err) {
             console.log(err)
             setIsAdminLoggedIn(false)
+            return false
+        }
+        finally {
+            setIsLoading(false)
         }
     }
 
-
     useEffect(() => {
         verifyAdminLogin()
-    }, [])
+    }, [location.pathname])
 
     const logoutAdmin = async () => {
         try {
@@ -59,7 +61,16 @@ export const LoginProvider = ({ children }) => {
     }
 
     return (
-        <LoginContext.Provider value={{ isAdminLoggedIn, verifyAdminLogin, logoutAdmin }}>
+        <LoginContext.Provider value={
+            {
+                isLoading,
+                isAdminLoggedIn,
+                setIsAdminLoggedIn,
+                verifyAdminLogin,
+                logoutAdmin
+            }
+        }
+        >
             {children}
         </LoginContext.Provider>
     )
