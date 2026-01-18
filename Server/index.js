@@ -7,7 +7,8 @@ import cors from 'cors'
 
 import EventRoute from './routes/Event.js'
 import NewsRoute from './routes/News.js'
-import AdminRoute from './routes/Admin.js'
+import LoginRoute from './routes/Login.js'
+import LogoutRoute from './routes/Logout.js'
 
 const app = express()
 app.use(express.json());
@@ -38,7 +39,8 @@ connectDB()
 
 app.use('/api/event', EventRoute)
 app.use('/api/news', NewsRoute)
-app.use('/api/admin', AdminRoute)
+app.use('/api/login', LoginRoute)
+app.use('/api/logout', LogoutRoute)
 
 app.use('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")

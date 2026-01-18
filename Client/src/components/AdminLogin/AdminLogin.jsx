@@ -17,7 +17,7 @@ export default function AdminLogin() {
         e.preventDefault()
 
         try {
-            const res = await fetch(`${BackEndRoute}/api/admin/login`, {
+            const res = await fetch(`${BackEndRoute}/api/login/admin`, {
                 method: "POST",
                 credentials: 'include',
                 headers: {

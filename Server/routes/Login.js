@@ -18,7 +18,7 @@ const getCookieOptions = (maxAge) => ({
     maxAge: maxAge,
 });
 
-router.post('/login', async (req, res) => {
+router.post('/admin', async (req, res) => {
     const { username, password } = req.body
 
     if (!username || !password || username === undefined || password === undefined) {

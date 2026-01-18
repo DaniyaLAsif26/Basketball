@@ -13,7 +13,7 @@ export const LoginProvider = ({ children }) => {
 
     const verifyAdminLogin = async () => {
         try {
-            const res = await fetch(`${BackEndRoute}/api/admin/verify/admin`, {
+            const res = await fetch(`${BackEndRoute}/api/login/verify/admin`, {
                 method: "GET",
                 credentials: 'include'
             })
@@ -40,8 +40,26 @@ export const LoginProvider = ({ children }) => {
         verifyAdminLogin()
     }, [])
 
+    const logoutAdmin = async () => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/logout/admin`, {
+                method: 'POST',
+                credentials: "include"
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === true) {
+                setIsAdminLoggedIn(false)
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
-        <LoginContext.Provider value={{ isAdminLoggedIn, verifyAdminLogin }}>
+        <LoginContext.Provider value={{ isAdminLoggedIn, verifyAdminLogin, logoutAdmin }}>
             {children}
         </LoginContext.Provider>
     )
