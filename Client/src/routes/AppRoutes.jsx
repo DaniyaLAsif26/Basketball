@@ -19,6 +19,8 @@ import AddNewsPage from '../Pages/AddNewsPage.jsx';
 import AdminAddEventForm from '../components/AdminForms/AdminAddEventForm.jsx';
 import EditNewsPage from '../Pages/EditNewsPage.jsx';
 
+import AdminProtectedRoute from '../ProtectedRoutes/AdminProtectedRoute.jsx';
+
 function AppRoutes() {
     return (
         <Routes>
@@ -48,15 +50,33 @@ function AppRoutes() {
             <Route path='/my-account' element={<UserProfilePage />} />
 
             {/* admin */}
-            <Route path='/admin/login' element={<AdminLoginPage />} />
+            <Route path='/admin/login' element={
+                <AdminLoginPage />
+            } />
 
-            <Route path='/admin' element={<AdminPage />} />
+            <Route path='/admin' element={
+                <AdminProtectedRoute>
+                    <AdminPage />
+                </AdminProtectedRoute>
+            } />
 
-            <Route path='/admin/add-news' element={<AddNewsPage />} />
+            <Route path='/admin/add-news' element={
+                <AdminProtectedRoute>
+                    <AddNewsPage />
+                </AdminProtectedRoute>
+            } />
 
-            <Route path='/admin/add-event' element={<AdminAddEventForm />} />
+            <Route path='/admin/add-event' element={
+                <AdminProtectedRoute>
+                    <AdminAddEventForm />
+                </AdminProtectedRoute>
+            } />
 
-            <Route path='/admin/edit-news/:id' element={<EditNewsPage />} />
+            <Route path='/admin/edit-news/:id' element={
+                <AdminProtectedRoute>
+                    <EditNewsPage />
+                </AdminProtectedRoute>
+            } />
         </Routes>
     )
 }
