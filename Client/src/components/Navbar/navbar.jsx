@@ -1,6 +1,7 @@
 import './navbar.css';
 import logo from '../../assets/red.png';
 import { useNavigate } from 'react-router-dom'
+import { NavLink  } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../../context/LoginContext.jsx'
 
@@ -11,7 +12,16 @@ export default function Navbar() {
 
   const navigate = useNavigate()
 
-  const { isUserLoggedIn } = useLogin()
+  const { isUserLoggedIn , userData } = useLogin()
+
+  const navLinks = [
+    {link : "EVENTS", href : "/events"},
+    {link : "NEWS", href : "/news"},
+    {link : "RANKING", href : "/rankings"},
+    {link : "DISTRICTS", href : "/districts"},
+    {link : "ABOUT US", href : "/about"},
+    {link : "GALLERY", href : "/gallery"},
+  ]
 
   const logInRedirect = (e) => {
     e.preventDefault()
@@ -32,17 +42,14 @@ export default function Navbar() {
     <nav className='navbar'>
 
       <div className="logo">
-        <a href="/"> <img src={logo} alt="" /></a>
+        <NavLink to='/'> <img src={logo} alt="" /></NavLink>
       </div>
       <div className="nav-right">
         <div className="options">
           <ul>
-            <li><a href="/events">EVENTS</a></li>
-            <li><a href="/news">NEWS</a></li>
-            <li><a href="/rankings">RANKING</a></li>
-            <li><a href="/districts">DISTRICTS</a></li>
-            <li><a href="/about">ABOUT US</a></li>
-            <li><a href="/gallery">GALLERY</a></li>
+            {navLinks.map((item , index)=>(
+              <li key={index}><NavLink to={item.href}> {item.link} </NavLink></li>
+            ))}
           </ul>
         </div>
         <div className="nav-btns">
@@ -59,7 +66,7 @@ export default function Navbar() {
 
             <div className="user-account" onClick={() => navigate('/my-account')}>
               <FaUserCircle />
-              <span className="user-name">{user.name}</span>
+              <span className="user-name">{userData.name}</span>
             </div>
             :
             <div className="login">
