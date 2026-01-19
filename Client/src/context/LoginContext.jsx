@@ -76,13 +76,18 @@ export const LoginProvider = ({ children }) => {
     }, [location.pathname])
 
     const checkCompleteUserProfile = (user) => {
-        // Check basic details
-        if (!user.email || !user.firstName || !user.lastName) return false;
-        if (!user.phoneNumber || !user.homeTown || !user.dateOfBirth) return false;
-
-        // Check physical attributes
-        if (!user.height || !user.weight || !user.wingspan || !user.playerPosition) return false;
-
+        if(user){
+            // Check basic details
+            if (!user.email || !user.firstName || !user.lastName) return false;
+            if (!user.phoneNumber || !user.homeTown || !user.dateOfBirth) return false;
+            
+            // Check physical attributes
+            if (!user.height || !user.weight || !user.wingspan || !user.playerPosition) return false;
+        }
+        else{
+            return false;
+        }
+            
         return true;
     }
 
