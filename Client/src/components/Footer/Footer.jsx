@@ -15,6 +15,7 @@ import './footer.css';
 import whiteLogo from '../../assets/white.png';
 
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useLogin } from '../../context/LoginContext';
 
 export default function Footer() {
@@ -48,10 +49,10 @@ export default function Footer() {
 
 
     const navigateAdmin = async () => {
-        if(isAdminLoggedIn){
+        if (isAdminLoggedIn) {
             navigate('/admin')
         }
-        else{
+        else {
             navigate('/admin/login')
         }
     }
@@ -96,10 +97,10 @@ export default function Footer() {
                             <ul className="footer-links">
                                 {quickLinks.map((link, index) => (
                                     <li key={index}>
-                                        <a href={link.path} className="footer-link">
+                                        <NavLink to={link.path} className="footer-link">
                                             <ChevronRight className="link-icon" />
                                             {link.name}
-                                        </a>
+                                        </NavLink>
                                     </li>
                                 ))}
                             </ul>
@@ -111,10 +112,10 @@ export default function Footer() {
                             <ul className="footer-links">
                                 {resources.map((link, index) => (
                                     <li key={index}>
-                                        <a href={link.path} className="footer-link">
+                                        <NavLink to={link.path} className="footer-link">
                                             <ChevronRight className="link-icon" />
                                             {link.name}
-                                        </a>
+                                        </NavLink>
                                     </li>
                                 ))}
                                 <li>
