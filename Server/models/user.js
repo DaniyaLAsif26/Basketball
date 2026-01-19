@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
+    // Basic Details
     uniqueId: {
         type: String,
         required: true,
@@ -12,14 +13,71 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    name: {
+    firstName: {
         type: String,
-        required: true,
+        required: true
     },
-    picture: {
+    lastName: {
+        type: String,
+        default: ''
+    },
+    profilePicture: {
         type: String,
         default: 'https://cdn-icons-png.flaticon.com/512/2348/2348811.png'
+    },
+    phoneNumber: {
+        type: String,
+        default: ''
+    },
+    homeTown: {
+        type: String,
+        default: ''
+    },
+    dateOfBirth: {
+        type: Date,
+        default: null
+    },
+
+    // Physical Attributes
+    height: {
+        type: Number,
+        default: null
+    },
+    weight: {
+        type: Number,
+        default: null
+    },
+    wingspan: {
+        type: Number,
+        default: null
+    },
+    playerPosition: {
+        type: String,
+        default: ''
+    },
+
+    // Tournaments Participated (Admin managed) - Year wise
+    tournamentsParticipated: {
+        type: Map,
+        of: Array,
+        default: {}
+        // Example: { "2025": [...tournaments], "2024": [...tournaments] }
+    },
+
+    // Ranking (Admin managed)
+    ranking: {
+        currentRanking: {
+            type: Number,
+            default: null
+        },
+        rankingPoints: {
+            type: Number,
+            default: null
+        }
     }
-})
+},
+    {
+        timestamps: true
+    })
 
 export default mongoose.models.User || mongoose.model("User", UserSchema)

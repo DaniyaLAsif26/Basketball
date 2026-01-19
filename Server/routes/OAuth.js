@@ -36,7 +36,7 @@ router.post('/google', async (req, res) => {
 
         const payload = ticket.getPayload();
 
-        const { sub, email, name, email_verified } = payload
+        const { sub, email, email_verified, given_name, family_name } = payload
 
         if (!email_verified) {
             return res.status(401).json({
@@ -53,7 +53,8 @@ router.post('/google', async (req, res) => {
                 {
                     uniqueId: sub,
                     email: email,
-                    name: name
+                    firstName: given_name,
+                    lastName: family_name
                 }
             )
         }
