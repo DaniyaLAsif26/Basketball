@@ -9,17 +9,21 @@ import EventRoute from './routes/Event.js'
 import NewsRoute from './routes/News.js'
 import LoginRoute from './routes/Login.js'
 import LogoutRoute from './routes/Logout.js'
+import OAuthRoute from './routes/OAuth.js'
 
 const app = express()
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 import cookieParser from "cookie-parser";
 app.use(cookieParser());
-
-app.use(cors({
-    origin: 'http://localhost:5173', // EXACT frontend origin
-    credentials: true
-}))
 
 const PORT = process.env.PORT || 5000
 const HOST = '0.0.0.0'
@@ -41,6 +45,7 @@ app.use('/api/event', EventRoute)
 app.use('/api/news', NewsRoute)
 app.use('/api/login', LoginRoute)
 app.use('/api/logout', LogoutRoute)
+app.use('/api/auth', OAuthRoute)
 
 app.use('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")

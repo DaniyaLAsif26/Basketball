@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 import {
     Shield,
     Zap,
@@ -7,14 +8,17 @@ import {
 import './login.css';
 
 import logo from '../../assets/white.png'
+import { useLogin } from '../../context/LoginContext';
+
+const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function Login() {
-    const [isLogin, setIsLogin] = useState(true);
 
-    const handleGoogleAuth = () => {
-        console.log('Google authentication initiated');
-        alert('Google authentication would be triggered here!\n\nIn production, this would redirect to Google OAuth.');
-    };
+    const { setIsUserLoggedIn } = useLogin()
+
+    const [isLogin , setIsLogin] = useState()
+
+    const navigate = useNavigate()
 
     const features = [
         "Access to all tournaments",
@@ -22,6 +26,59 @@ export default function Login() {
         "News",
         "Tournament registration"
     ];
+
+    const handleGoogleLogin = async (response) => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/auth/google`, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-type": 'application/json',
+                },
+                body: JSON.stringify({
+                    token: response.credential
+                }),
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === false) {
+                alert("Error Logging In");
+                navigate('/')
+                return
+            }
+
+            setIsUserLoggedIn(true)
+            navigate('/')
+            return;
+        }
+        catch (err) {
+            console.error(err);
+        }
+    };
+
+    // ✅ Initialize Google once
+    useEffect(() => {
+        /* global google */
+        if (window.google) {
+            google.accounts.id.initialize({
+                client_id: import.meta.env.VITE_O_AUTH_CLIENT_ID,
+                callback: handleGoogleLogin,
+            });
+
+            google.accounts.id.renderButton(
+                document.getElementById("googleSignInButton"),
+                { theme: "outline", size: "large" }
+            );
+        }
+    }, []);
+
+    // ✅ Trigger Google account chooser
+    const handleGoogleAuth = () => {
+        /* global google */
+        google.accounts.id.prompt(); // 👈 THIS opens account selection
+    };
+
 
     return (
         <div className="auth-page">
@@ -106,7 +163,13 @@ export default function Login() {
                         </div>
 
                         {/* Google Sign In Button */}
-                        <button className="google-btn" onClick={handleGoogleAuth}>
+
+                        {/* Google Sign In Button */}
+                        <div style={{ display: 'none' }} id="googleSignInButton"></div>
+                        <button className="google-btn" onClick={() => {
+                            const googleBtn = document.getElementById("googleSignInButton")?.querySelector('div[role="button"]');
+                            if (googleBtn) googleBtn.click();
+                        }}>
                             <svg className="google-icon" viewBox="0 0 24 24">
                                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />

@@ -2,6 +2,7 @@ import './navbar.css';
 import logo from '../../assets/red.png';
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import { useLogin } from '../../context/LoginContext.jsx'
 
 import { FaPlus } from "react-icons/fa6";
 import { FaUserCircle } from "react-icons/fa";
@@ -10,7 +11,7 @@ export default function Navbar() {
 
   const navigate = useNavigate()
 
-  const [login, setLogin] = useState(false)
+  const { isUserLoggedIn } = useLogin()
 
   const logInRedirect = (e) => {
     e.preventDefault()
@@ -54,15 +55,15 @@ export default function Navbar() {
               </span>
             </button>
           </div>
-          {login ?
+          {!isUserLoggedIn ?
             <div className="login">
               <button className='login-btn' onClick={logInRedirect}>
                 <div><span>Log in</span></div>
               </button>
             </div>
             :
-            <div className="user-account" onClick={()=> navigate('/my-account')}>
-                <FaUserCircle/>
+            <div className="user-account" onClick={() => navigate('/my-account')}>
+              <FaUserCircle />
               <span className="user-name">{user.name}</span>
             </div>
           }
