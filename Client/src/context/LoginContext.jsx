@@ -11,8 +11,9 @@ export const LoginProvider = ({ children }) => {
 
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
-    const [userData, setUserData] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const [userData, setUserData] = useState()
+    const [isUserLoading, setIsUserLoading] = useState(true)
 
     const verifyAdminLogin = async () => {
         try {
@@ -25,7 +26,6 @@ export const LoginProvider = ({ children }) => {
 
             const isLoggedIn = dataRes.success === true
             setIsAdminLoggedIn(isLoggedIn)
-            console.log(isAdminLoggedIn)
             return isLoggedIn
 
         }
@@ -39,9 +39,37 @@ export const LoginProvider = ({ children }) => {
         }
     }
 
+    const verifyUserLogin = async () => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/login/verify/user`, {
+                method: "GET",
+                credentials: "include"
+            })
+
+            const dataRes = await res.json()
+
+            const isLoggedIn = dataRes.success === true
+            setIsUserLoggedIn(isLoggedIn)
+            return isLoggedIn
+
+        }
+        catch (err) {
+            console.log(err)
+            setIsUserLoggedIn(false)
+            return false
+        }
+        finally {
+            setIsUserLoading(false)
+        }
+    }
+
     useEffect(() => {
         verifyAdminLogin()
-    }, [location.pathname])
+        verifyUserLogin()
+    }, [])
+
+    // location.pathname
+
 
     const logoutAdmin = async () => {
         try {

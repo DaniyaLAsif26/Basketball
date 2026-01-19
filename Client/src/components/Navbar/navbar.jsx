@@ -55,16 +55,17 @@ export default function Navbar() {
               </span>
             </button>
           </div>
-          {!isUserLoggedIn ?
+          {isUserLoggedIn ?
+
+            <div className="user-account" onClick={() => navigate('/my-account')}>
+              <FaUserCircle />
+              <span className="user-name">{user.name}</span>
+            </div>
+            :
             <div className="login">
               <button className='login-btn' onClick={logInRedirect}>
                 <div><span>Log in</span></div>
               </button>
-            </div>
-            :
-            <div className="user-account" onClick={() => navigate('/my-account')}>
-              <FaUserCircle />
-              <span className="user-name">{user.name}</span>
             </div>
           }
         </div>
