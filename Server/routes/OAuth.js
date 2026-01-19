@@ -66,7 +66,7 @@ router.post('/google', async (req, res) => {
             { expiresIn: '14d' }
         )
 
-        res.cookie("UserToken", userToken, getCookieOptions(14 * 24 * 60 * 60 * 1000))
+        res.cookie("userToken", userToken, getCookieOptions(14 * 24 * 60 * 60 * 1000))
 
         return res.status(200).json({
             success: true,

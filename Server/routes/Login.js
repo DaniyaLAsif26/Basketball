@@ -95,5 +95,33 @@ router.get('/verify/admin', async (req, res) => {
     }
 })
 
+router.get('/verify/user', async (req, res) => {
+    try {
+        const token = req.cookies.userToken
+
+        if (!token) {
+            return res.json({
+                success: false
+            })
+        }
+
+        const decode = jwt.verify(token, process.env.JWT_SECRET)
+        if (decode.role !== 'user') {
+            return res.json({
+                success: false
+            })
+        }
+
+        res.json({ success: true })
+    }
+    catch (err) {
+        console.log(err)
+        return res.json({
+            success: false,
+            message: err.message
+        })
+    }
+})
+
 export default router;
 
