@@ -47,9 +47,14 @@ export const LoginProvider = ({ children }) => {
             })
 
             const dataRes = await res.json()
+            if (dataRes.success === false) {
+                alert("user verification failed")
+                return;
+            }
 
             const isLoggedIn = dataRes.success === true
             setIsUserLoggedIn(isLoggedIn)
+            setUserData(dataRes.user)
             return isLoggedIn
 
         }
@@ -66,10 +71,7 @@ export const LoginProvider = ({ children }) => {
     useEffect(() => {
         verifyAdminLogin()
         verifyUserLogin()
-    }, [])
-
-    // location.pathname
-
+    }, [location.pathname])
 
     const logoutAdmin = async () => {
         try {
