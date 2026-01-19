@@ -12,7 +12,7 @@ export const LoginProvider = ({ children }) => {
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    const [userData, setUserData] = useState()
+    const [userData, setUserData] = useState(null)
     const [isUserLoading, setIsUserLoading] = useState(true)
 
     const verifyAdminLogin = async () => {
