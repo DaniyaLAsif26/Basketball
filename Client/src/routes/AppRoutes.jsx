@@ -12,6 +12,7 @@ import AddEventPage from '../Pages/AddEventPage.jsx';
 import ViewEventPage from '../Pages/ViewEventPage.jsx';
 import EditEventPage from '../Pages/EditEventPage.jsx';
 import UserProfilePage from '../Pages/UserProfilePage.jsx';
+import EditUserPage from '../Pages/EditUserPage.jsx';
 
 import AdminLoginPage from '../Pages/AdminLoginPage.jsx';
 import AdminPage from '../Pages/AdminPage.jsx';
@@ -48,6 +49,7 @@ function AppRoutes() {
             <Route path='/event/edit/:id' element={<EditEventPage />} />
 
             <Route path='/my-account' element={<UserProfilePage />} />
+            <Route path='/my-account/edit' element={<EditUserPage />} />
 
             {/* admin */}
             <Route path='/admin/login' element={
