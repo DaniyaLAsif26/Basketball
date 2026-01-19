@@ -1,5 +1,6 @@
 import express from 'express'
 import Admin from '../models/admin.js'
+import User from '../models/user.js'
 
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
@@ -112,7 +113,14 @@ router.get('/verify/user', async (req, res) => {
             })
         }
 
-        res.json({ success: true })
+        const user = await User.findById(decode.id)
+
+        res.json(
+            {
+                success: true,
+                user: user
+            }
+        )
     }
     catch (err) {
         console.log(err)
