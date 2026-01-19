@@ -48,7 +48,8 @@ export const LoginProvider = ({ children }) => {
 
             const dataRes = await res.json()
             if (dataRes.success === false) {
-                alert("user verification failed")
+                setIsUserLoggedIn(false);
+                setUserData(null)
                 return;
             }
 
@@ -61,6 +62,7 @@ export const LoginProvider = ({ children }) => {
         catch (err) {
             console.log(err)
             setIsUserLoggedIn(false)
+            setUserData(null)
             return false
         }
         finally {
