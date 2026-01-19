@@ -75,6 +75,17 @@ export const LoginProvider = ({ children }) => {
         verifyUserLogin()
     }, [location.pathname])
 
+    const checkCompleteUserProfile = (user) => {
+        // Check basic details
+        if (!user.email || !user.firstName || !user.lastName) return false;
+        if (!user.phoneNumber || !user.homeTown || !user.dateOfBirth) return false;
+
+        // Check physical attributes
+        if (!user.height || !user.weight || !user.wingspan || !user.playerPosition) return false;
+
+        return true;
+    }
+
     const logoutAdmin = async () => {
         try {
             const res = await fetch(`${BackEndRoute}/api/logout/admin`, {
@@ -104,7 +115,8 @@ export const LoginProvider = ({ children }) => {
                 isUserLoggedIn,
                 setIsUserLoggedIn,
                 userData,
-                setUserData
+                setUserData,
+                checkCompleteUserProfile
             }
         }
         >

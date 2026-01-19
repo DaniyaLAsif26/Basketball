@@ -1,7 +1,6 @@
 import './navbar.css';
 import logo from '../../assets/red.png';
-import { useNavigate } from 'react-router-dom'
-import { NavLink  } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom'
 import { useState } from 'react';
 import { useLogin } from '../../context/LoginContext.jsx'
 
@@ -12,15 +11,15 @@ export default function Navbar() {
 
   const navigate = useNavigate()
 
-  const { isUserLoggedIn , userData } = useLogin()
+  const { isUserLoggedIn, userData, checkCompleteUserProfile } = useLogin()
 
   const navLinks = [
-    {link : "EVENTS", href : "/events"},
-    {link : "NEWS", href : "/news"},
-    {link : "RANKING", href : "/rankings"},
-    {link : "DISTRICTS", href : "/districts"},
-    {link : "ABOUT US", href : "/about"},
-    {link : "GALLERY", href : "/gallery"},
+    { link: "EVENTS", href: "/events" },
+    { link: "NEWS", href: "/news" },
+    { link: "RANKING", href: "/rankings" },
+    { link: "DISTRICTS", href: "/districts" },
+    { link: "ABOUT US", href: "/about" },
+    { link: "GALLERY", href: "/gallery" },
   ]
 
   const logInRedirect = (e) => {
@@ -33,10 +32,17 @@ export default function Navbar() {
     navigate('/add-event')
   }
 
-  const user = {
-    name: "Daniyal",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
-  };
+  const redirectUserProfile = (e) => {
+    e.preventDefault()
+    checkCompleteUserProfile(userData)
+    if (checkCompleteUserProfile(userData)) {
+      navigate('/my-account')
+    }
+    else {
+      navigate('/my-account/edit')
+    }
+  }
+
 
   return (
     <nav className='navbar'>
@@ -47,7 +53,7 @@ export default function Navbar() {
       <div className="nav-right">
         <div className="options">
           <ul>
-            {navLinks.map((item , index)=>(
+            {navLinks.map((item, index) => (
               <li key={index}><NavLink to={item.href}> {item.link} </NavLink></li>
             ))}
           </ul>
@@ -64,9 +70,9 @@ export default function Navbar() {
           </div>
           {isUserLoggedIn ?
 
-            <div className="user-account" onClick={() => navigate('/my-account')}>
+            <div className="user-account" onClick={redirectUserProfile}>
               <FaUserCircle />
-              <span className="user-name">{userData.name}</span>
+              <span className="user-name">{userData?.firstName}</span>
             </div>
             :
             <div className="login">
