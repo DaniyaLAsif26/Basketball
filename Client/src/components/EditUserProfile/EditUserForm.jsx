@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { X, Plus, Trash2, Save, Upload, User, Phone, Mail, MapPin, Calendar, Ruler, Weight, Maximize2, Target, Trophy, Award } from 'lucide-react';
+import { X, Plus, Trash2, Save, Upload, User, Phone, Mail, MapPin, Calendar, Ruler, Weight, Maximize2, Target } from 'lucide-react';
 import { useLogin } from '../../context/LoginContext';
-import './edit-user-profile.css'
+import './edit-user-profile.css';
 
 export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) {
-
-  const { checkCompleteUserProfile, userData } = useLogin()
-
+  const { checkCompleteUserProfile, userData } = useLogin();
   const [formData, setFormData] = useState({
     profilePicture: initialData?.profilePicture || '',
     firstName: initialData?.firstName || '',
@@ -23,33 +21,27 @@ export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) 
     currentRanking: initialData?.currentRanking || '',
     rankingPoints: initialData?.rankingPoints || ''
   });
-
   const [activeStep, setActiveStep] = useState(0);
-
   const steps = ['Basic Info', 'Physical', isAdmin ? 'Tournaments' : null, isAdmin ? 'Ranking' : null].filter(Boolean);
 
-  const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
+  const handleChange = (e) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onSave) onSave(formData);
   };
 
+  const isComplete = checkCompleteUserProfile?.(userData);
+
   return (
     <div className="form-backdrop">
       <div className="form-modal">
-
         {/* Header */}
         <div className="modal-header">
           <div className="user-edit-header-content">
-            <div className="header-icon">
-              <User size={24} />
-            </div>
+            <div className="header-icon"><User size={24} /></div>
             <div className="header-text">
-              <h1>{checkCompleteUserProfile?.(userData) ? 'Edit' : "Complete"} Player Profile</h1>
-              <p>{checkCompleteUserProfile?.(userData) ? 'Update' : "Add"} your basketball profile information</p>
+              <h1>{isComplete ? 'Edit' : 'Complete'} Player Profile</h1>
+              <p>{isComplete ? 'Update' : 'Add'} your basketball profile information</p>
             </div>
           </div>
           <button className="user-edit-btn-close" onClick={onClose}>
@@ -77,12 +69,9 @@ export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) 
         </div>
 
         <form className="user-edit-form-content" onSubmit={handleSubmit}>
-
           {/* Step 0: Basic Info */}
           {activeStep === 0 && (
             <div className="form-step">
-
-              {/* Profile Picture */}
               <div className="profile-upload">
                 <div className="upload-preview">
                   {formData.profilePicture ? (
@@ -97,92 +86,45 @@ export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) 
                 <div className="upload-input-group">
                   <label>Profile Picture URL</label>
                   <input
-                    type="url"
-                    name="profilePicture"
-                    value={formData.profilePicture}
-                    onChange={handleChange}
-                    placeholder="https://example.com/photo.jpg"
+                    type="file"
+                    // {...register('tournamentImage')}
+                    accept="image/png, image/jpeg, image/jpg"
                   />
                 </div>
               </div>
 
-              {/* Name Fields */}
               <div className="input-row">
                 <div className="input-group">
                   <label><User size={16} /> First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    placeholder="Enter first name"
-                    required
-                  />
+                  <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter first name" required />
                 </div>
                 <div className="input-group">
                   <label><User size={16} /> Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    placeholder="Enter last name"
-                    required
-                  />
+                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter last name" required />
                 </div>
               </div>
 
-              {/* Contact Fields */}
               <div className="input-row">
                 <div className="input-group">
                   <label><Mail size={16} /> Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="player@example.com"
-                    required
-                  />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="player@example.com" required />
                 </div>
                 <div className="input-group">
                   <label><Phone size={16} /> Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+1 (555) 000-0000"
-                    required
-                  />
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" required />
                 </div>
               </div>
 
-              {/* Location & DOB */}
               <div className="input-row">
                 <div className="input-group">
                   <label><MapPin size={16} /> Home Town</label>
-                  <input
-                    type="text"
-                    name="hometown"
-                    value={formData.hometown}
-                    onChange={handleChange}
-                    placeholder="City, State"
-                    required
-                  />
+                  <input type="text" name="hometown" value={formData.hometown} onChange={handleChange} placeholder="City, State" required />
                 </div>
                 <div className="input-group">
                   <label><Calendar size={16} /> Date of Birth</label>
-                  <input
-                    type="date"
-                    name="dob"
-                    value={formData.dob}
-                    onChange={handleChange}
-                    required
-                  />
+                  <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
                 </div>
               </div>
-
             </div>
           )}
 
@@ -195,75 +137,33 @@ export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) 
               </div>
 
               <div className="physical-grid">
-                <div className="user-edit-physical-card">
-                  <div className="card-icon">
-                    <Ruler size={24} />
+                {[
+                  { icon: Ruler, label: 'Height', name: 'height', placeholder: '6\' 2"' },
+                  { icon: Weight, label: 'Weight', name: 'weight', placeholder: '210 lbs' },
+                  { icon: Maximize2, label: 'Wingspan', name: 'wingspan', placeholder: '6\' 5"' }
+                ].map(({ icon: Icon, label, name, placeholder }) => (
+                  <div key={name} className="user-edit-physical-card">
+                    <div className="card-icon"><Icon size={24} /></div>
+                    <label>{label}</label>
+                    <input type="text" name={name} value={formData[name]} onChange={handleChange} placeholder={placeholder} required />
                   </div>
-                  <label>Height</label>
-                  <input
-                    type="text"
-                    name="height"
-                    value={formData.height}
-                    onChange={handleChange}
-                    placeholder='6\'
-                    required
-                  />
-                </div>
+                ))}
 
                 <div className="user-edit-physical-card">
-                  <div className="card-icon">
-                    <Weight size={24} />
-                  </div>
-                  <label>Weight</label>
-                  <input
-                    type="text"
-                    name="weight"
-                    value={formData.weight}
-                    onChange={handleChange}
-                    placeholder="210 lbs"
-                    required
-                  />
-                </div>
-
-                <div className="user-edit-physical-card">
-                  <div className="card-icon">
-                    <Maximize2 size={24} />
-                  </div>
-                  <label>Wingspan</label>
-                  <input
-                    type="text"
-                    name="wingspan"
-                    value={formData.wingspan}
-                    onChange={handleChange}
-                    placeholder='6\'
-                    required
-                  />
-                </div>
-
-                <div className="user-edit-physical-card">
-                  <div className="card-icon">
-                    <Target size={24} />
-                  </div>
+                  <div className="card-icon"><Target size={24} /></div>
                   <label>Position</label>
-                  <select
-                    name="position"
-                    value={formData.position}
-                    onChange={handleChange}
-                    required
-                  >
+                  <select name="position" value={formData.position} onChange={handleChange} required>
                     <option value="">Select</option>
-                    <option value="Point Guard">Point Guard</option>
-                    <option value="Shooting Guard">Shooting Guard</option>
-                    <option value="Small Forward">Small Forward</option>
-                    <option value="Power Forward">Power Forward</option>
-                    <option value="Center">Center</option>
+                    {['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center'].map(pos => (
+                      <option key={pos} value={pos}>{pos}</option>
+                    ))}
                   </select>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Navigation Buttons */}
+          {/* Navigation */}
           <div className="form-navigation">
             <button
               type="button"
@@ -273,7 +173,6 @@ export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) 
             >
               Previous
             </button>
-
             {activeStep < steps.length - 1 ? (
               <button
                 type="button"
@@ -289,9 +188,7 @@ export default function EditUserForm({ initialData, onClose, onSave, isAdmin }) 
               </button>
             )}
           </div>
-
         </form>
-
       </div>
     </div>
   );
