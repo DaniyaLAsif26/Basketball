@@ -10,14 +10,15 @@ import NewsRoute from './routes/News.js'
 import LoginRoute from './routes/Login.js'
 import LogoutRoute from './routes/Logout.js'
 import OAuthRoute from './routes/OAuth.js'
+import UserRoute from './routes/User.js'
 
 const app = express()
 
 app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true,
+    })
 );
 
 app.use(express.json());
@@ -46,6 +47,7 @@ app.use('/api/news', NewsRoute)
 app.use('/api/login', LoginRoute)
 app.use('/api/logout', LogoutRoute)
 app.use('/api/auth', OAuthRoute)
+app.use('/api/user', UserRoute)
 
 app.use('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")

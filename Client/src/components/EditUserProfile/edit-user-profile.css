@@ -408,6 +408,7 @@ input[type="date"] {
 
 .user-edit-physical-card input,
 .user-edit-physical-card select {
+  box-sizing: border-box;
   width: 100%;
   padding: 0.875rem 1rem;
   background: rgba(255, 255, 255, 0.05);

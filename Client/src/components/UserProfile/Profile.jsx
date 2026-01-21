@@ -1,15 +1,24 @@
 import cover from '../../assets/rank-1.avif'
 import { useLogin } from '../../context/LoginContext.jsx'
 
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronRight } from 'lucide-react';
 import './profile.css'
 
 export default function PlayerProfile() {
+
+const navigate = useNavigate()
+  
   const [activeTab, setActiveTab] = useState('overview');
 
   const { userData, isUserLoading } = useLogin()
-  console.log(userData)
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return `${date.getDate()} / ${date.getMonth()+1} / ${date.getFullYear()}`;
+  };
 
   const player = {
     firstName: "Daniyal",
@@ -35,7 +44,8 @@ export default function PlayerProfile() {
   };
 
   if (isUserLoading) return <div>Loading...</div>;
-  if (!userData) return <div>No user data</div>;
+  if (!userData) return <div>No user data</div>
+
   return (
     <div className="profile">
 
@@ -62,7 +72,7 @@ export default function PlayerProfile() {
 
           <div className="actions">
             <button className="btn-secondary"><Share2 size={18} /> Share</button>
-            <button className="btn-primary"><Edit size={18} /> Edit Profile</button>
+            <button className="btn-primary" onClick={()=> navigate('/my-account/edit')}><Edit size={18}  /> Edit Profile</button>
           </div>
         </div>
       </div>
@@ -104,7 +114,7 @@ export default function PlayerProfile() {
                 <div className="row"><span>Last Name</span><strong>{userData.lastName || '-'}</strong></div>
                 <div className="row"><span>Email</span><strong className="email">{userData.email}</strong></div>
                 <div className="row"><span>Phone</span><strong>{userData.phoneNumber || '-'}</strong></div>
-                <div className="row"><span>Date of Birth</span><strong>{userData.dateOfBirth || '-'}</strong></div>
+                <div className="row"><span>Date of Birth</span><strong>{formatDate(userData.dateOfBirth) || '-'}</strong></div>
                 <div className="row"><span>Location</span><strong>{userData.homeTown || '-'}</strong></div>
               </div>
             </div>
@@ -115,15 +125,15 @@ export default function PlayerProfile() {
               <div className="physical">
                 <div className="item">
                   <div className="user-card-icon"><Ruler size={24} /></div>
-                  <div><span>Height</span><strong>{userData.height || '-'}</strong></div>
+                  <div><span>Height (Feet)</span><strong>{userData.height || '-'}</strong></div>
                 </div>
                 <div className="item">
                   <div className="user-card-icon"><Weight size={24} /></div>
-                  <div><span>Weight</span><strong>{userData.weight || '-'}</strong></div>
+                  <div><span>Weight (Kg)</span><strong>{userData.weight || '-'}</strong></div>
                 </div>
                 <div className="item">
                   <div className="user-card-icon"><Maximize2 size={24} /></div>
-                  <div><span>Wingspan</span><strong>{userData.wingspan || '-'}</strong></div>
+                  <div><span>Wingspan (Feet)</span><strong>{userData.wingspan || '-'}</strong></div>
                 </div>
                 <div className="item">
                   <div className="user-card-icon"><Target size={24} /></div>
