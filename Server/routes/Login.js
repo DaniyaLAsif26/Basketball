@@ -115,6 +115,14 @@ router.get('/verify/user', async (req, res) => {
 
         const user = await User.findById(decode.id)
 
+        if(!user){
+           return res.json(
+            {
+                success: false,
+            }
+        ) 
+        }
+
         res.json(
             {
                 success: true,
