@@ -2,8 +2,6 @@ import './admin.css'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-import AdminNav from './AdminNav';
-
 import AdminOption from './Admin-options';
 import AllUsers from './AllUsers';
 import AllEvents from './AllEvents';
@@ -30,7 +28,7 @@ export default function Admin() {
         sessionStorage.setItem('adminOption', option)
     }, [option])
 
-    const userTable = ["No", "Name", "Ranking", "Points"]
+    const userTable = ["No", "Name", 'Email', "Ranking"]
     const eventTable = ["Headline", "Date"]
     const newsTable = ["Title", "date"]
 

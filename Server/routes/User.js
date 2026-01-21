@@ -65,8 +65,31 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
             message: `Failed to update User: ${err.message}`
         })
     }
+})
 
+router.get('/all-users', async (req, res) => {
+    try {
+        const allUsers = await User.find().sort({ createdAt: -1 })
 
+        if (!allUsers) {
+            return res.status(404).json({
+                sucess: false,
+                message: "No Users Found"
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            users: allUsers
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: `Error : ${err.message}`
+        })
+    }
 })
 
 export default router;
