@@ -40,15 +40,15 @@ const UserSchema = new Schema({
 
     // Physical Attributes
     height: {
-        type: Number,
+        type: String,
         default: null
     },
     weight: {
-        type: Number,
+        type: String,
         default: null
     },
     wingspan: {
-        type: Number,
+        type: String,
         default: null
     },
     playerPosition: {
