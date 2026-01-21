@@ -1,9 +1,12 @@
 import cover from '../../assets/rank-1.avif'
 import { useLogin } from '../../context/LoginContext.jsx'
+import { MdVerified } from "react-icons/md";
+import { GoUnverified } from "react-icons/go";
+import { IoLogOut } from "react-icons/io5";
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronRight } from 'lucide-react';
+import { LogOut, Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronRight } from 'lucide-react';
 import './profile.css'
 
 export default function PlayerProfile() {
@@ -12,7 +15,7 @@ export default function PlayerProfile() {
 
   const [activeTab, setActiveTab] = useState('overview');
 
-  const { userData, isUserLoading } = useLogin()
+  const { userData, isUserLoading , logOutUser } = useLogin()
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -60,7 +63,20 @@ export default function PlayerProfile() {
           <div className="header-left">
             <img src={userData.profilePicture} alt={userData.firstName} className="avatar" />
             <div className="title">
-              <h1>{userData.firstName} <span className="accent">{userData.lastName || '-'}</span></h1>
+              <h1>{userData.firstName} <span className="accent">{userData.lastName || '-'}</span>
+                {userData.verified ?
+
+                  <span className='verified-icon' >
+                    <MdVerified />
+                    <span>Verified</span>
+                  </span>
+
+                  : <span className='verified-icon' >
+                    <GoUnverified />
+                    <span>Not Verified</span>
+                  </span>
+                }
+              </h1>
               <div className="meta">
                 <span className="pill">{userData.playerPosition || '-'}</span>
                 <span>•</span>
@@ -71,8 +87,9 @@ export default function PlayerProfile() {
           </div>
 
           <div className="actions">
-            <button className="btn-secondary"><Share2 size={18} /> Share</button>
-            <button className="btn-primary" onClick={() => navigate('/my-account/edit')}><Edit size={18} /> Edit Profile</button>
+            <button className="user-button btn-secondary"><Share2 size={18} /> Share</button>
+            <button className="user-button btn-primary" onClick={() => navigate('/my-account/edit')}><Edit size={18} /> Edit Profile</button>
+            <button className='user-logout-btn user-button btn-primary' onClick={logOutUser}>Logout  <LogOut size={18} /></button>
           </div>
         </div>
       </div>

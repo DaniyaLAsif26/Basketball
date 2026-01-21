@@ -69,6 +69,38 @@
   letter-spacing: -0.02em;
 }
 
+.verified-icon svg {
+  color: rgb(29, 155, 240);
+  font-size: 2.26rem;
+  margin-left: 1rem;
+}
+
+.verified-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.verified-icon span {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  font-size: 1rem;
+  color: #555;
+  color: black;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.verified-icon:hover span {
+  opacity: 1;
+}
+
 .accent {
   color: #dc2626;
 }
@@ -100,7 +132,7 @@
   padding-bottom: 0.5rem;
 }
 
-button {
+.user-button {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -115,12 +147,24 @@ button {
   letter-spacing: 0.05em;
 }
 
+
 .btn-primary {
-  background: #dc2626;
-  color: white;
+  background: yellow;
 }
 
 .btn-primary:hover {
+  background: rgb(230, 230, 0);
+  transform: translateY(-1px);
+}
+
+.user-logout-btn{
+  background: #dc2626;
+  color: white;
+  padding: 0.875rem 1rem;
+
+}
+
+.user-logout-btn:hover {
   background: #b91c1c;
   transform: translateY(-1px);
 }
