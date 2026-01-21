@@ -407,7 +407,8 @@ input[type="date"] {
 }
 
 .user-edit-physical-card input,
-.user-edit-physical-card select {
+.user-edit-physical-card select,
+.input-group select {
   box-sizing: border-box;
   width: 100%;
   padding: 0.875rem 1rem;
@@ -419,7 +420,12 @@ input[type="date"] {
   font-weight: 700;
 }
 
-.user-edit-physical-card select {
+.input-group select{
+  font-size: 1rem;
+}
+
+.user-edit-physical-card select ,
+.input-group  select {
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23dc2626' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -428,7 +434,8 @@ input[type="date"] {
   padding-right: 3rem;
 }
 
-.user-edit-physical-card select option {
+.user-edit-physical-card select option ,
+.input-group select option {
   background-color: rgba(0, 0, 0, 0.95);
 }
 

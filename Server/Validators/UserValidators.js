@@ -11,6 +11,7 @@ export const createUserSchema = z.object({
     weight: z.string().min(1),
     wingspan: z.string().min(1),
     playerPosition: z.enum(['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center']),
+    gender: z.enum(['Male','Female']),
 })
     .refine(
         data => {

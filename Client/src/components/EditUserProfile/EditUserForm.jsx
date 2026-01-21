@@ -15,6 +15,9 @@ const userSchema = z.object({
     .min(3, "Email Required")
     .max(100, "Email to big"),
 
+  gender: z.string()
+    .min(1, "Gender Required"),
+
   firstName: z.string()
     .min(3, "First Name to Small")
     .max(50, "First Name to big"),
@@ -96,6 +99,7 @@ export default function EditUserForm({ onClose }) {
 
     return {
       email: user?.email || '',
+      gender: user?.gender || '',
       firstName: user?.firstName || '',
       lastName: user?.lastName || '',
       phoneNumber: user?.phoneNumber || '',
@@ -312,6 +316,19 @@ export default function EditUserForm({ onClose }) {
                     {...register('dateOfBirth')}
                   />
                   <ErrorMessage error={errors.dateOfBirth} />
+                </div>
+                <div className="input-group">
+                  <label>GENDER</label>
+                  <select
+                    name="gender"
+                    {...register('gender')}
+                  >
+                    <option value="">Select</option>
+                    {['Male', 'Female'].map(pos => (
+                      <option key={pos} value={pos}>{pos}</option>
+                    ))}
+                  </select>
+                  <ErrorMessage error={errors.gender} />
                 </div>
               </div>
             </div>

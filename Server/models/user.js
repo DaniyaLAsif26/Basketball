@@ -13,6 +13,9 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    gender: {
+        type: String,
+    },
     firstName: {
         type: String,
         required: true

@@ -8,8 +8,8 @@ import './profile.css'
 
 export default function PlayerProfile() {
 
-const navigate = useNavigate()
-  
+  const navigate = useNavigate()
+
   const [activeTab, setActiveTab] = useState('overview');
 
   const { userData, isUserLoading } = useLogin()
@@ -17,7 +17,7 @@ const navigate = useNavigate()
   const formatDate = (dateString) => {
     if (!dateString) return '';
     const date = new Date(dateString);
-    return `${date.getDate()} / ${date.getMonth()+1} / ${date.getFullYear()}`;
+    return `${date.getDate()} / ${date.getMonth() + 1} / ${date.getFullYear()}`;
   };
 
   const player = {
@@ -72,7 +72,7 @@ const navigate = useNavigate()
 
           <div className="actions">
             <button className="btn-secondary"><Share2 size={18} /> Share</button>
-            <button className="btn-primary" onClick={()=> navigate('/my-account/edit')}><Edit size={18}  /> Edit Profile</button>
+            <button className="btn-primary" onClick={() => navigate('/my-account/edit')}><Edit size={18} /> Edit Profile</button>
           </div>
         </div>
       </div>
@@ -112,6 +112,7 @@ const navigate = useNavigate()
               <div className="details">
                 <div className="row"><span>First Name</span><strong>{userData.firstName}</strong></div>
                 <div className="row"><span>Last Name</span><strong>{userData.lastName || '-'}</strong></div>
+                <div className="row"><span>Gender</span><strong>{userData.gender || '-'}</strong></div>
                 <div className="row"><span>Email</span><strong className="email">{userData.email}</strong></div>
                 <div className="row"><span>Phone</span><strong>{userData.phoneNumber || '-'}</strong></div>
                 <div className="row"><span>Date of Birth</span><strong>{formatDate(userData.dateOfBirth) || '-'}</strong></div>
