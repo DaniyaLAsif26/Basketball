@@ -91,10 +91,36 @@ export const LoginProvider = ({ children }) => {
         return true;
     }
 
+    const logOutUser = async () => {
+        try {
+            const res = await fetch(`${BackEndRoute}/api/logout/user`, {
+                method: "DELETE",
+                credentials: 'include'
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes.success === false) {
+                alert(dataRes.message)
+                return;
+            }
+
+            alert(dataRes.message)
+            setIsUserLoggedIn(false)
+            setUserData(null)
+            navigate('/')
+            return;
+        }
+        catch (err) {
+            console.log(err)
+            alert("Error", err.message)
+        }
+    }
+
     const logoutAdmin = async () => {
         try {
             const res = await fetch(`${BackEndRoute}/api/logout/admin`, {
-                method: 'POST',
+                method: 'DELETE',
                 credentials: "include"
             })
 
@@ -121,7 +147,8 @@ export const LoginProvider = ({ children }) => {
                 setIsUserLoggedIn,
                 userData,
                 setUserData,
-                checkCompleteUserProfile
+                checkCompleteUserProfile,
+                logOutUser
             }
         }
         >
