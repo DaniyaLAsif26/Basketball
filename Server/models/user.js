@@ -16,6 +16,10 @@ const UserSchema = new Schema({
     gender: {
         type: String,
     },
+    verified: {
+        type: Boolean,
+        default: false,
+    },
     firstName: {
         type: String,
         required: true
