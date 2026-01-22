@@ -63,15 +63,6 @@ const UserSchema = new Schema({
         default: ''
     },
 
-    // Tournaments Participated (Admin managed) - Year wise
-    tournamentsParticipated: {
-        type: Map,
-        of: Array,
-        default: {}
-        // Example: { "2025": [...tournaments], "2024": [...tournaments] }
-    },
-
-    // Ranking (Admin managed)
     ranking: {
         currentRanking: {
             type: Number,
@@ -81,7 +72,46 @@ const UserSchema = new Schema({
             type: Number,
             default: null
         }
-    }
+    },
+
+    // Tournaments Participated (Admin managed) - Year wise
+    tournamentsParticipated: {
+        type: Map,
+        of: [
+            {
+                name: {
+                    type: String,
+                    required: true
+                },
+                stats: {
+                    teamPosition: {
+                        type: Number,
+                        default: null,
+                    },
+                    points: {
+                        type: Number,
+                        default: 0,
+                    },
+                    assists: {
+                        type: Number,
+                        default: 0,
+                    },
+                    rebounds: {
+                        type: Number,
+                        default: 0,
+                    },
+                    matchesPlayed: {
+                        type: Number,
+                        default: 0,
+                    },
+                }
+            }
+        ],
+        default: {}
+    },
+
+    // Ranking (Admin managed)
+
 },
     {
         timestamps: true

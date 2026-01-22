@@ -17,7 +17,19 @@ export const createUserSchema = z.object({
         currentRanking: z.number().optional(),
         rankingPoints: z.number().optional()
     }).optional(),
-    tournamentsParticipated: z.record(z.array(z.string())).optional(),
+    tournamentsParticipated: z.record(
+        z.string(),
+        z.array(z.object({
+            name: z.string(),
+            stats: z.object({
+                teamPosition: z.number().optional(),
+                points: z.number().optional(),
+                assists: z.number().optional(),
+                rebounds: z.number().optional(),
+                matchesPlayed: z.number().optional(),
+            }).optional()
+        }))
+    ).optional()
 })
     .refine(
         data => {
