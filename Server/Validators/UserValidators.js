@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 export const createUserSchema = z.object({
+    verified: z.boolean().optional(),
     firstName: z.string().min(3),
     lastName: z.string().min(1),
     profilePicture: z.string().optional(),
@@ -11,7 +12,12 @@ export const createUserSchema = z.object({
     weight: z.string().min(1),
     wingspan: z.string().min(1),
     playerPosition: z.enum(['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center']),
-    gender: z.enum(['Male','Female']),
+    gender: z.enum(['Male', 'Female']),
+    ranking: z.object({
+        currentRanking: z.number().optional(),
+        rankingPoints: z.number().optional()
+    }).optional(),
+    tournamentsParticipated: z.record(z.array(z.string())).optional(),
 })
     .refine(
         data => {
