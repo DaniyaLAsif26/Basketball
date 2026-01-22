@@ -19,6 +19,7 @@ import AdminPage from '../Pages/AdminPage.jsx';
 import AddNewsPage from '../Pages/AddNewsPage.jsx';
 import AdminAddEventForm from '../components/AdminForms/AdminAddEventForm.jsx';
 import EditNewsPage from '../Pages/EditNewsPage.jsx';
+import AdminUserForm from '../components/AdminForms/EditUserForm.jsx';
 
 import AdminProtectedRoute from '../ProtectedRoutes/AdminProtectedRoute.jsx';
 import UserProtectedRoute from '../ProtectedRoutes/UserProtectedroute.jsx';
@@ -62,7 +63,7 @@ function AppRoutes() {
                     <UserProfilePage />
                 </UserProtectedRoute>
             } />
-            
+
             <Route path='/my-account/edit' element={
                 <UserProtectedRoute>
                     <EditUserPage />
@@ -97,6 +98,13 @@ function AppRoutes() {
                     <EditNewsPage />
                 </AdminProtectedRoute>
             } />
+
+            <Route path='/admin/user/edit/:id' element={
+                <AdminProtectedRoute>
+                    <AdminUserForm />
+                </AdminProtectedRoute>
+            } />
+
         </Routes>
     )
 }

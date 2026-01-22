@@ -18,7 +18,7 @@ export default function UserProtectedRoute({children}) {
         )
     }
 
-    if (!isUserLoggedIn) {
+    if (!isUserLoggedIn && isUserLoggedIn) {
         return <Navigate to="/login" />
     }
 

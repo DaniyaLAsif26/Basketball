@@ -1,10 +1,13 @@
 import './all-users.css'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import OptionsHead from './OptionHead'
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export default function AllUsers({ table }) {
+
+    const navigate = useNavigate()
 
     const [search, setSearch] = useState('')
     const [users, setUsers] = useState([])
@@ -48,6 +51,11 @@ export default function AllUsers({ table }) {
         getAllUsers()
     }, [])
 
+    const deleteUser = async () => {
+        const isConfirmed = confirm("User will be Deleted")
+
+    }
+
     return (
         <div className="all-users-cont">
             <OptionsHead head={OptHead} />
@@ -69,9 +77,13 @@ export default function AllUsers({ table }) {
                                     <td>{index + 1}</td>
                                     <td>{user.firstName}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.ranking.rankingPoints || '-'}</td>
-                                    <td><button className='edit-news-btn'>Edit</button></td>
-                                    <td><button className='delete-news-btn'>Delete</button></td>
+                                    <td> <b>{user.ranking.currentRanking || '-'} </b></td>
+                                    <td>
+                                        <button onClick={() => navigate(`/admin/user/edit/${user._id}`)} className='edit-news-btn'>Edit</button>
+                                    </td>
+                                    <td>
+                                        <button onClick={deleteUser} className='delete-news-btn'>Delete</button>
+                                    </td>
                                 </tr>
                             )}
                         </tbody>

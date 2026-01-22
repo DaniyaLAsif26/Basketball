@@ -1,0 +1,169 @@
+/* UserForm.css */
+
+.user-form-cont{
+    background: black;
+    padding: 2.26rem 0rem;
+}
+
+.user-form-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+  padding: 32px;
+}
+
+.admin-user-from-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-user-from-head img{
+  height: 6.5rem;
+  border: 1.5px solid black;
+}
+
+.user-form-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.user-form-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.user-form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-form-section-header {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid black;
+}
+
+.user-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.user-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-form-field-full {
+  grid-column: 1 / -1;
+}
+
+.user-form-label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.user-form-input,
+.user-form-select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.user-form-select option{
+    background-color: black;
+    color: white
+}
+
+.user-form-input:focus,
+.user-form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.user-form-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-form-checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+.user-form-tournament-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.user-form-year-input {
+  width: 160px;
+}
+
+.user-form-tournament-input {
+  flex: 1;
+}
+
+.user-form-add-tournament-btn {
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.user-form-add-tournament-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.user-form-tournament-display {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 16px;
+  min-height: 96px;
+  background-color: #f9fafb;
+}
+
+.user-form-tournament-placeholder {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.user-form-submit-btn {
+  width: 100%;
+  background-color: #16a34a;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.user-form-submit-btn:hover {
+  background-color: #15803d;
+}
+
+.user-form-remove-tournament-btn{
+  background: transparent;
+  color: red;
+}
