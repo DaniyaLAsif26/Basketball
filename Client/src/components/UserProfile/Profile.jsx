@@ -2,11 +2,10 @@ import cover from '../../assets/rank-1.avif'
 import { useLogin } from '../../context/LoginContext.jsx'
 import { MdVerified } from "react-icons/md";
 import { GoUnverified } from "react-icons/go";
-import { IoLogOut } from "react-icons/io5";
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronRight } from 'lucide-react';
+import { LogOut, Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronDown, ChevronUp } from 'lucide-react';
 import './profile.css'
 
 export default function PlayerProfile() {
@@ -14,8 +13,13 @@ export default function PlayerProfile() {
   const navigate = useNavigate()
 
   const [activeTab, setActiveTab] = useState('overview');
+  const [openDrop, setOpenDrop] = useState(null);
 
-  const { userData, isUserLoading , logOutUser } = useLogin()
+  const toggleDrop = (index) => {
+    setOpenDrop(prev => prev === index ? null : index);
+  };
+
+  const { userData, isUserLoading, logOutUser } = useLogin()
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -98,17 +102,19 @@ export default function PlayerProfile() {
       <div className="stats-banner">
         <div className="stat-item">
           <div className="stat-label">Rank</div>
-          <div className="stat-value player-rank">#{player.ranking}</div>
+          <div className="stat-value player-rank">#{userData.ranking.currentRanking}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
           <div className="stat-label">Points</div>
-          <div className="stat-value">{player.points.toLocaleString()}</div>
+          <div className="stat-value">{userData.ranking.rankingPoints.toLocaleString()}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
           <div className="stat-label">Tournaments</div>
-          <div className="stat-value">{player.tournaments}</div>
+          <div className="stat-value">{Object.values(userData.tournamentsParticipated).reduce((total, tournaments) =>
+            total + tournaments.length, 0
+          )}</div>
         </div>
       </div>
 
@@ -164,28 +170,54 @@ export default function PlayerProfile() {
         ) : (
           <div className="timeline">
             <h2>Tournament History</h2>
-            {player.history.map((year, i) => (
-              <div key={i} className="year-section">
-                <div className="year-header">
-                  <div className="circle"></div>
-                  <h3>{year.year}</h3>
-                  <span className="count">{year.list.length} Tournaments</span>
+
+            {Object.entries(userData.tournamentsParticipated)
+              .sort(([yearA], [yearB]) => yearB - yearA)
+              .map(([year, tournament]) => (
+                <div key={year} className="year-section">
+                  <div className="year-header">
+                    <div className="circle"></div>
+                    <h3>{year}</h3>
+                    <span className="count">{tournament.length} Tournaments</span>
+                  </div>
+                  <div className="tournaments">
+                    {tournament.map((item, index) => {
+                      const uniqueKey = `${year}-${index}`;
+                      return (
+                        <div key={uniqueKey} className="tournament-wrapper">
+                          <div
+                            className="tournament"
+                            onClick={() => toggleDrop(uniqueKey)}
+                          >
+                            <Trophy size={20} />
+                            <span>{item.name}</span>
+                            {openDrop === uniqueKey ? (
+                              <ChevronUp size={18} />
+                            ) : (
+                              <ChevronDown size={18} />
+                            )}
+                          </div>
+
+                          <div className={`tournament-stats-cont ${openDrop === uniqueKey ? 'open' : ''}`}>
+                            <div className="tournament-stats tournament">
+                              <div>Team Position: {item.stats.teamPosition}</div>
+                              <div>Points: {item.stats.points}</div>
+                              <div>Assists: {item.stats.assists}</div>
+                              <div>Rebounds: {item.stats.rebounds}</div>
+                              <div>Matches Played: {item.stats.matchesPlayed}</div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div className="tournaments">
-                  {year.list.map((t, j) => (
-                    <div key={j} className="tournament">
-                      <Trophy size={20} />
-                      <span>{t}</span>
-                      <ChevronRight size={18} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         )}
       </div>
 
-    </div>
+    </div >
   );
 }

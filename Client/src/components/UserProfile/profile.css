@@ -157,7 +157,7 @@
   transform: translateY(-1px);
 }
 
-.user-logout-btn{
+.user-logout-btn {
   background: #dc2626;
   color: white;
   padding: 0.875rem 1rem;
@@ -487,6 +487,34 @@
 
 .player-rank {
   color: gold;
+}
+
+.tournament-stats-cont {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.tournament-stats-cont.open {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+.tournament-stats-cont:hover .tournament{
+  transform: translateX(0px);
+}
+
+.tournament-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 /* Responsive */
