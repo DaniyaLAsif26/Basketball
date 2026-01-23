@@ -2,14 +2,13 @@ import { z } from 'zod'
 
 export const createEventSchema = z.object({
   tournamentName: z.string().min(3),
-  tournamentImage :z.string().optional(),
+  tournamentImage: z.string().optional(),
 
   type: z.enum(['UN-OFFICIAL', 'OFFICIAL']),
-  category: z.enum(['MEN', 'WOMEN']),
+  category: z.enum(['MEN', 'WOMEN', 'MIXED']),
   level: z.string().min(1),
   ageCategory: z.string().min(1),
   format: z.enum(['5X5', '3X3']),
-  gender: z.enum(['mens', 'womens', 'mixed']),
 
   startDate: z.coerce.date(),
   endDate: z.coerce.date(),
@@ -35,14 +34,16 @@ export const createEventSchema = z.object({
   description: z.string().min(5),
   highlights: z.array(z.string().min(1)),
 
-  createdBy: z.string().optional()
+  createdBy: z.string().optional(),
+
+  hostedUser: z.string().optional(),
 })
-.refine(
-  d => d.endDate >= d.startDate,
-  { path: ['endDate'], message: 'End date must be after start date' }
-)
-.refine(
-  d => d.registrationDeadline <= d.startDate,
-  { path: ['registrationDeadline'], message: 'Registration deadline must be before start date' }
-)
+  .refine(
+    d => d.endDate >= d.startDate,
+    { path: ['endDate'], message: 'End date must be after start date' }
+  )
+  .refine(
+    d => d.registrationDeadline <= d.startDate,
+    { path: ['registrationDeadline'], message: 'Registration deadline must be before start date' }
+  )
 

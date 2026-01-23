@@ -31,10 +31,6 @@ const EventSchema = new Schema({
         type: String,
         required: true
     },
-    gender: {
-        type: String,
-        required: true
-    },
 
     //Date&Time
     startDate: {
@@ -127,7 +123,14 @@ const EventSchema = new Schema({
         type: String,
         default: 'User',
         required: true
+    },
+
+    hostedUser:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
+
 },
     { timestamps: true }
 )

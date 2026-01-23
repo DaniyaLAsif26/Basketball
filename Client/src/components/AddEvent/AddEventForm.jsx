@@ -37,7 +37,6 @@ const eventSchema = z.object({
     level: z.string().min(1, "Level required"),
     ageCategory: z.string().min(1, "Age required"),
     format: z.string().min(1, "Format required"),
-    gender: z.string().min(1, "Gender required"),
 
     startDate: z.string().min(1, "Start Date required"),
     endDate: z.string().min(1, "End Date required"),
@@ -175,7 +174,6 @@ export default function AddEventForm({ eventData = null, isEditMode = false, isA
             level: event.level || '',
             ageCategory: event.ageCategory || '',
             format: event.format || '',
-            gender: event.gender || '',
             startDate: formatDate(event.startDate) || '',
             endDate: formatDate(event.endDate) || '',
             registrationDeadline: formatDate(event.registrationDeadline) || '',
@@ -223,7 +221,6 @@ export default function AddEventForm({ eventData = null, isEditMode = false, isA
             level: '',
             ageCategory: '',
             format: '',
-            gender: '',
             startDate: '',
             endDate: '',
             registrationDeadline: '',
@@ -477,6 +474,7 @@ export default function AddEventForm({ eventData = null, isEditMode = false, isA
                                     <option value="">Select Category</option>
                                     <option value="MEN">MEN</option>
                                     <option value="WOMEN">WOMEN</option>
+                                    <option value="MIXED">MIXED</option>
                                 </select>
                                 <ErrorMessage error={errors.category} />
                             </div>
@@ -534,20 +532,6 @@ export default function AddEventForm({ eventData = null, isEditMode = false, isA
                                     <option value="3X3">3X3</option>
                                 </select>
                                 <ErrorMessage error={errors.format} />
-                            </div>
-
-                            <div className="form-group">
-                                <label className="form-label">Gender *</label>
-                                <select
-                                    {...register('gender')}
-                                    className={`form-select ${errors.gender ? 'error' : ''}`}
-                                >
-                                    <option value="">Select Gender</option>
-                                    <option value="mens">MEN'S</option>
-                                    <option value="womens">WOMEN'S</option>
-                                    <option value="mixed">MIXED</option>
-                                </select>
-                                <ErrorMessage error={errors.gender} />
                             </div>
                         </div>
                     </div>
