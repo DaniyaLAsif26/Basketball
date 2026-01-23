@@ -102,12 +102,12 @@ export default function PlayerProfile() {
       <div className="stats-banner">
         <div className="stat-item">
           <div className="stat-label">Rank</div>
-          <div className="stat-value player-rank">#{userData.ranking.currentRanking}</div>
+          <div className="stat-value player-rank">#{userData.ranking?.currentRanking || '-'}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
           <div className="stat-label">Points</div>
-          <div className="stat-value">{userData.ranking.rankingPoints.toLocaleString()}</div>
+          <div className="stat-value">{userData.ranking.rankingPoints?.toLocaleString() || '-'}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
