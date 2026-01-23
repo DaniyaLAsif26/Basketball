@@ -488,6 +488,7 @@
     border: none;
     padding: 0px 20px;
     background-color: yellow;
+    background-color: rgb(224, 224, 0);
     color: black;
     font-weight: bold;
     cursor: pointer;
@@ -523,9 +524,9 @@
     box-shadow: 2px 2px 0px black;
 }
 
-.event-delete-btn{
+.event-delete-btn {
     width: 126px;
-    background-color: red;
+    background-color: rgb(223, 0, 0);
     color: white;
     display: flex;
     justify-content: space-between;
