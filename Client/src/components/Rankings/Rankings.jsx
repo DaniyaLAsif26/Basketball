@@ -3,8 +3,11 @@ import player1 from '../../assets/rank-1.avif'
 import './rankings.css'
 import PlayerRankings from './Ranking-player.jsx'
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export default function Rankings() {
+
+    const navigate = useNavigate()
 
     const players = [
         { rank: 1, name: "Daniyal Asif Ahmed", points: 2847, district: "Hyderabad", image: player1 },
@@ -16,7 +19,7 @@ export default function Rankings() {
         { rank: 7, name: "Mandadi Manideep Yadav", points: 2467, district: "Kamareddy", image: player1 },
     ];
 
-    const category = ["MEN","WOMEN","YOUTH MEN","YOUTH WOMEN"]
+    const category = ["MEN", "WOMEN", "YOUTH MEN", "YOUTH WOMEN"]
 
     const [selected, setSelected] = useState(() => {
         return sessionStorage.getItem('search') || "MEN"
@@ -43,10 +46,11 @@ export default function Rankings() {
                 </div>
                 <div className="ranking-options">
                     <ul>
-                       {category.map((cat,index)=>(
-                        <li className={`${selected === cat ? 'selected-cat' : ''}`} onClick={()=> setSelected(cat)}>{cat}</li>      
+                        {category.map((cat, index) => (
+                            <li className={`${selected === cat ? 'selected-cat' : ''}`} onClick={() => setSelected(cat)}>{cat}</li>
                         ))}
                     </ul>
+                    <button className="all-players-btn" onClick={() => navigate('/players')}>All Players</button>
                 </div>
                 <PlayerRankings players={players} />
             </div>
