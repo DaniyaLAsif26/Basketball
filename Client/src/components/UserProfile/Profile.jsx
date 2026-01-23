@@ -200,11 +200,50 @@ export default function PlayerProfile() {
 
                           <div className={`tournament-stats-cont ${openDrop === uniqueKey ? 'open' : ''}`}>
                             <div className="tournament-stats tournament">
-                              <div>Team Position: {item.stats.teamPosition}</div>
-                              <div>Points: {item.stats.points}</div>
-                              <div>Assists: {item.stats.assists}</div>
-                              <div>Rebounds: {item.stats.rebounds}</div>
-                              <div>Matches Played: {item.stats.matchesPlayed}</div>
+                              <div className="team-stats">
+                                <div >
+                                  Team Position :
+                                </div>
+                                <div className="">
+                                  {item.stats.teamPosition || <span>N/A</span>}
+                                </div>
+                              </div>
+
+                              <div className="team-stats">
+                                <div >
+                                  Points :
+                                </div>
+                                <div className="">
+                                  {item.stats.points || <span>N / A</span>}
+                                </div>
+                              </div>
+
+                              <div className="team-stats">
+                                <div >
+                                  Assists :
+                                </div>
+                                <div className="">
+                                  {item.stats.assists || <span>N / A</span>}
+                                </div>
+                              </div>
+
+                              <div className="team-stats">
+                                <div >
+                                  Rebounds :
+                                </div>
+                                <div className="">
+                                  {item.stats.rebounds || <span>N / A</span>}
+                                </div>
+                              </div>
+
+                              <div className="team-stats">
+                                <div >
+                                  Matches Played :
+                                </div>
+                                <div className="">
+                                  {item.stats.matchesPlayed || <span>N / A</span>}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>

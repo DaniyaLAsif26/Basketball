@@ -86,23 +86,23 @@ const UserSchema = new Schema({
                 stats: {
                     teamPosition: {
                         type: Number,
-                        default: null,
+                        default: '',
                     },
                     points: {
                         type: Number,
-                        default: 0,
+                        default: '',
                     },
                     assists: {
                         type: Number,
-                        default: 0,
+                        default: '',
                     },
                     rebounds: {
                         type: Number,
-                        default: 0,
+                        default: '',
                     },
                     matchesPlayed: {
                         type: Number,
-                        default: 0,
+                        default: '',
                     },
                 }
             }

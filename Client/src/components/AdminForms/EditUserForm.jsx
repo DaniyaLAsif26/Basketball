@@ -684,10 +684,10 @@ export default function UserForm() {
     const [tournamentName, setTournamentName] = useState('');
     const [tournamentStats, setTournamentStats] = useState({
         teamPosition: '',
-        points: 0,
-        assists: 0,
-        rebounds: 0,
-        matchesPlayed: 0
+        points: '',
+        assists: '',
+        rebounds: '',
+        matchesPlayed: ''
     });
 
     const formatDate = (dateString) => {
@@ -799,11 +799,11 @@ export default function UserForm() {
         const newTournament = {
             name: tournamentName,
             stats: {
-                teamPosition: tournamentStats.teamPosition ? Number(tournamentStats.teamPosition) : 0,
-                points: tournamentStats.points ? Number(tournamentStats.points) : undefined,
-                assists: tournamentStats.assists ? Number(tournamentStats.assists) : 0,
-                rebounds: tournamentStats.rebounds ? Number(tournamentStats.rebounds) : 0,
-                matchesPlayed: tournamentStats.matchesPlayed ? Number(tournamentStats.matchesPlayed) : 0,
+                teamPosition: tournamentStats.teamPosition ? Number(tournamentStats.teamPosition) : '',
+                points: tournamentStats.points ? Number(tournamentStats.points) : '',
+                assists: tournamentStats.assists ? Number(tournamentStats.assists) : '',
+                rebounds: tournamentStats.rebounds ? Number(tournamentStats.rebounds) : '',
+                matchesPlayed: tournamentStats.matchesPlayed ? Number(tournamentStats.matchesPlayed) : '',
             }
         };
 
@@ -816,11 +816,11 @@ export default function UserForm() {
         setTournamentYear('');
         setTournamentName('');
         setTournamentStats({
-            teamPosition: 0,
-            points: 0,
-            assists: 0,
-            rebounds: 0,
-            matchesPlayed: 0
+            teamPosition: '',
+            points: '',
+            assists: '',
+            rebounds: '',
+            matchesPlayed: ''
         });
     };
 
@@ -1089,6 +1089,7 @@ export default function UserForm() {
                                     className="user-form-input"
                                     value={tournamentStats.teamPosition}
                                     onChange={(e) => setTournamentStats(prev => ({ ...prev, teamPosition: e.target.value }))}
+                                    onWheel={(e) => e.target.blur()}
                                 />
                             </div>
                             <div className="user-form-field">
@@ -1099,6 +1100,7 @@ export default function UserForm() {
                                     className="user-form-input"
                                     value={tournamentStats.points}
                                     onChange={(e) => setTournamentStats(prev => ({ ...prev, points: e.target.value }))}
+                                    onWheel={(e) => e.target.blur()}
                                 />
                             </div>
                             <div className="user-form-field">
@@ -1108,6 +1110,7 @@ export default function UserForm() {
                                     placeholder="Wins"
                                     className="user-form-input"
                                     value={tournamentStats.assists}
+                                    onWheel={(e) => e.target.blur()}
                                     onChange={(e) => setTournamentStats(prev => ({ ...prev, assists: e.target.value }))}
                                 />
                             </div>
@@ -1118,6 +1121,7 @@ export default function UserForm() {
                                     placeholder="Losses"
                                     className="user-form-input"
                                     value={tournamentStats.rebounds}
+                                    onWheel={(e) => e.target.blur()}
                                     onChange={(e) => setTournamentStats(prev => ({ ...prev, rebounds: e.target.value }))}
                                 />
                             </div>
@@ -1128,6 +1132,7 @@ export default function UserForm() {
                                     placeholder="Losses"
                                     className="user-form-input"
                                     value={tournamentStats.matchesPlayed}
+                                    onWheel={(e) => e.target.blur()}
                                     onChange={(e) => setTournamentStats(prev => ({ ...prev, matchesPlayed: e.target.value }))}
                                 />
                             </div>

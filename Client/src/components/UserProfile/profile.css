@@ -517,6 +517,26 @@
   align-items: flex-start;
 }
 
+.team-stats{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.team-stats > div:first-child{
+  font-size: 1.1rem;
+  color: rgb(205, 205, 205);
+}
+.team-stats > div:last-child{
+  font-size: 1rem;
+  color: yellow;
+}
+.team-stats span{
+  color: lightcoral;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .cover {
