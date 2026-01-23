@@ -2,6 +2,8 @@ import express from 'express'
 import multer from 'multer'
 
 import Event from '../models/event.js'
+import jwt from "jsonwebtoken";
+
 import { createEventSchema } from '../Validators/EventValidator.js'
 
 const upload = multer()
@@ -11,9 +13,27 @@ const router = express.Router()
 router.post('/create', upload.single('tournamentImage'), async (req, res) => {
 
     try {
+
+        const token = req.cookies.userToken || req.cookies.adminToken
+
+        if (!token) {
+            return res.json({
+                success: false
+            })
+        }
+
+        const decode = jwt.verify(token, process.env.JWT_SECRET)
+
+        let userId
+
+        if (decode.role === 'user') {
+            userId = decode.id
+        }
+
         const parsedData = {
             ...req.body,
-            highlights: JSON.parse(req.body.highlights || '[]')
+            highlights: JSON.parse(req.body.highlights || '[]'),
+            hostedUser: userId
         }
 
         // 🔒 SERVER-SIDE VALIDATION
@@ -95,7 +115,7 @@ router.get('/all-events', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const event = await Event.findById(req.params.id)
+        const event = await Event.findById(req.params.id).populate('hostedUser')
 
         if (!event) {
             return res.status(404).json({
