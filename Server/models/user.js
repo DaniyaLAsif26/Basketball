@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Mongoose } from 'mongoose'
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
@@ -109,8 +109,6 @@ const UserSchema = new Schema({
         ],
         default: {}
     },
-
-    // Ranking (Admin managed)
 
 },
     {
