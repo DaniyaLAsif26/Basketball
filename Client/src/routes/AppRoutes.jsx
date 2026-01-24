@@ -25,6 +25,7 @@ import AdminUserForm from '../components/AdminForms/EditUserForm.jsx';
 
 import AdminProtectedRoute from '../ProtectedRoutes/AdminProtectedRoute.jsx';
 import UserProtectedRoute from '../ProtectedRoutes/UserProtectedroute.jsx';
+import LoginProtectedRoute from '../ProtectedRoutes/LoginProtectedRoute.jsx'
 
 function AppRoutes() {
     return (
@@ -44,7 +45,12 @@ function AppRoutes() {
 
             <Route path='/gallery' element={<GalleryPage />} />
 
-            <Route path='/login' element={<Login />} />
+            <Route path='/login' element={
+                <LoginProtectedRoute>
+                    <Login />
+                  </LoginProtectedRoute> 
+                } 
+                />
 
             <Route path='/players/:id' element={<ViewPlayerPage />} />
 
