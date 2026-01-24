@@ -13,6 +13,7 @@ import ViewEventPage from '../Pages/ViewEventPage.jsx';
 import EditEventPage from '../Pages/EditEventPage.jsx';
 import UserProfilePage from '../Pages/UserProfilePage.jsx';
 import EditUserPage from '../Pages/EditUserPage.jsx';
+import AllUsersPage from '../Pages/AllPlayersPage.jsx';
 
 import AdminLoginPage from '../Pages/AdminLoginPage.jsx';
 import AdminPage from '../Pages/AdminPage.jsx';
@@ -69,6 +70,8 @@ function AppRoutes() {
                     <EditUserPage />
                 </UserProtectedRoute>
             } />
+
+            <Route path='/players' element={<AllUsersPage />} />
 
             {/* admin */}
             <Route path='/admin/login' element={
