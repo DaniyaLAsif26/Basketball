@@ -14,6 +14,7 @@ import EditEventPage from '../Pages/EditEventPage.jsx';
 import UserProfilePage from '../Pages/UserProfilePage.jsx';
 import EditUserPage from '../Pages/EditUserPage.jsx';
 import AllUsersPage from '../Pages/AllPlayersPage.jsx';
+import ViewPlayerPage from '../Pages/ViewPlayerPage.jsx';
 
 import AdminLoginPage from '../Pages/AdminLoginPage.jsx';
 import AdminPage from '../Pages/AdminPage.jsx';
@@ -44,6 +45,8 @@ function AppRoutes() {
             <Route path='/gallery' element={<GalleryPage />} />
 
             <Route path='/login' element={<Login />} />
+
+            <Route path='/players/:id' element={<ViewPlayerPage />} />
 
             <Route path='/add-event' element={
                 <UserProtectedRoute>
