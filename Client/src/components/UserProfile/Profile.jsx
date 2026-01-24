@@ -27,28 +27,15 @@ export default function PlayerProfile() {
     return `${date.getDate()} / ${date.getMonth() + 1} / ${date.getFullYear()}`;
   };
 
-  const player = {
-    firstName: "Daniyal",
-    lastName: "Asif",
-    email: "daniyalasif550@gmail.com",
-    phone: "7382049545",
-    dob: "October 20, 2004",
-    avatar: cover,
-    cover: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1600&q=80",
-    location: "Hyderabad, Telangana",
-    height: "5'11\"",
-    weight: "75 Kg",
-    wingspan: "6'9\"",
-    position: "Shooting Guard",
-    ranking: 3,
-    points: 2847,
-    tournaments: 26,
-    history: [
-      { year: 2024, list: ["National Championship Finals", "State Cup Elite", "Metro Basketball League"] },
-      { year: 2023, list: ["Regional Masters", "Summer Slam Championship", "Winter Warriors Cup", "City Tournament"] },
-      { year: 2022, list: ["State Championship", "District Finals", "Spring Basketball Classic"] }
-    ]
-  };
+  const DOB = (date) => {
+    const dob = new Date(date)
+    const current = new Date()
+
+    const calculateDOB = current.getFullYear() - dob.getFullYear()
+
+    return calculateDOB
+
+  }
 
   if (isUserLoading) return <div>Loading...</div>;
   if (!userData) return <div>No user data</div>
@@ -101,17 +88,17 @@ export default function PlayerProfile() {
       {/* Stats Banner */}
       <div className="stats-banner">
         <div className="stat-item">
-          <div className="stat-label">Rank</div>
+          <div className="profile-stat-label">Rank</div>
           <div className="stat-value player-rank">#{userData.ranking?.currentRanking || '-'}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
-          <div className="stat-label">Points</div>
+          <div className="profile-stat-label">Points</div>
           <div className="stat-value">{userData.ranking.rankingPoints?.toLocaleString() || '-'}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
-          <div className="stat-label">Tournaments</div>
+          <div className="profile-stat-label">Tournaments</div>
           <div className="stat-value">{Object.values(userData.tournamentsParticipated).reduce((total, tournaments) =>
             total + tournaments.length, 0
           )}</div>
@@ -135,6 +122,7 @@ export default function PlayerProfile() {
               <div className="details">
                 <div className="row"><span>First Name</span><strong>{userData.firstName}</strong></div>
                 <div className="row"><span>Last Name</span><strong>{userData.lastName || '-'}</strong></div>
+                <div className="row"><span>Age</span><strong>{DOB(userData.dateOfBirth) || '-'}</strong></div>
                 <div className="row"><span>Gender</span><strong>{userData.gender || '-'}</strong></div>
                 <div className="row"><span>Email</span><strong className="email">{userData.email}</strong></div>
                 <div className="row"><span>Phone</span><strong>{userData.phoneNumber || '-'}</strong></div>
