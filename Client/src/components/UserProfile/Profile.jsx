@@ -1,4 +1,3 @@
-import cover from '../../assets/rank-1.avif'
 import { useLogin } from '../../context/LoginContext.jsx'
 import { MdVerified } from "react-icons/md";
 import { GoUnverified } from "react-icons/go";
@@ -8,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogOut, Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronDown, ChevronUp } from 'lucide-react';
 import './profile.css'
 
-export default function PlayerProfile() {
+export default function PlayerProfile({ UserData }) {
 
   const navigate = useNavigate()
 
@@ -19,7 +18,7 @@ export default function PlayerProfile() {
     setOpenDrop(prev => prev === index ? null : index);
   };
 
-  const { userData, isUserLoading, logOutUser } = useLogin()
+  const { userData, logOutUser } = useLogin()
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -37,9 +36,6 @@ export default function PlayerProfile() {
 
   }
 
-  if (isUserLoading) return <div>Loading...</div>;
-  if (!userData) return <div>No user data</div>
-
   return (
     <div className="profile">
 
@@ -52,10 +48,10 @@ export default function PlayerProfile() {
 
         <div className="header-content">
           <div className="header-left">
-            <img src={userData.profilePicture} alt={userData.firstName} className="avatar" />
+            <img src={UserData.profilePicture} alt={UserData.firstName} className="avatar" />
             <div className="title">
-              <h1>{userData.firstName} <span className="accent">{userData.lastName || '-'}</span>
-                {userData.verified ?
+              <h1>{UserData.firstName} <span className="accent">{UserData.lastName || '-'}</span>
+                {UserData.verified ?
 
                   <span className='verified-icon' >
                     <MdVerified />
@@ -69,18 +65,22 @@ export default function PlayerProfile() {
                 }
               </h1>
               <div className="meta">
-                <span className="pill">{userData.playerPosition || '-'}</span>
+                <span className="pill">{UserData.playerPosition || '-'}</span>
                 <span>•</span>
                 <MapPin size={16} />
-                <span>{userData.homeTown || '-'}</span>
+                <span>{UserData.homeTown || '-'}</span>
               </div>
             </div>
           </div>
 
           <div className="actions">
             <button className="user-button btn-secondary"><Share2 size={18} /> Share</button>
-            <button className="user-button btn-primary" onClick={() => navigate('/my-account/edit')}><Edit size={18} /> Edit Profile</button>
-            <button className='user-logout-btn user-button btn-primary' onClick={logOutUser}>Logout  <LogOut size={18} /></button>
+            {userData._id === UserData._id &&
+              <>
+                <button className="user-button btn-primary" onClick={() => navigate('/my-account/edit')}><Edit size={18} /> Edit</button>
+                <button className='user-logout-btn user-button btn-primary' onClick={logOutUser}>Logout  <LogOut size={18} /></button>
+              </>
+            }
           </div>
         </div>
       </div>
@@ -89,17 +89,17 @@ export default function PlayerProfile() {
       <div className="stats-banner">
         <div className="stat-item">
           <div className="profile-stat-label">Rank</div>
-          <div className="stat-value player-rank">#{userData.ranking?.currentRanking || '-'}</div>
+          <div className="stat-value player-rank">#{UserData.ranking?.currentRanking || '-'}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
           <div className="profile-stat-label">Points</div>
-          <div className="stat-value">{userData.ranking.rankingPoints?.toLocaleString() || '-'}</div>
+          <div className="stat-value">{UserData.ranking.rankingPoints?.toLocaleString() || '-'}</div>
         </div>
         <div className="divider"></div>
         <div className="stat-item">
           <div className="profile-stat-label">Tournaments</div>
-          <div className="stat-value">{Object.values(userData.tournamentsParticipated).reduce((total, tournaments) =>
+          <div className="stat-value">{Object.values(UserData.tournamentsParticipated).reduce((total, tournaments) =>
             total + tournaments.length, 0
           )}</div>
         </div>
@@ -120,14 +120,16 @@ export default function PlayerProfile() {
             <div className="card">
               <h2>Personal Details</h2>
               <div className="details">
-                <div className="row"><span>First Name</span><strong>{userData.firstName}</strong></div>
-                <div className="row"><span>Last Name</span><strong>{userData.lastName || '-'}</strong></div>
-                <div className="row"><span>Age</span><strong>{DOB(userData.dateOfBirth) || '-'}</strong></div>
-                <div className="row"><span>Gender</span><strong>{userData.gender || '-'}</strong></div>
-                <div className="row"><span>Email</span><strong className="email">{userData.email}</strong></div>
-                <div className="row"><span>Phone</span><strong>{userData.phoneNumber || '-'}</strong></div>
-                <div className="row"><span>Date of Birth</span><strong>{formatDate(userData.dateOfBirth) || '-'}</strong></div>
-                <div className="row"><span>Location</span><strong>{userData.homeTown || '-'}</strong></div>
+                <div className="row"><span>First Name</span><strong>{UserData.firstName}</strong></div>
+                <div className="row"><span>Last Name</span><strong>{UserData.lastName || '-'}</strong></div>
+                <div className="row"><span>Age</span><strong>{DOB(UserData.dateOfBirth) || '-'}</strong></div>
+                <div className="row"><span>Gender</span><strong>{UserData.gender || '-'}</strong></div>
+                <div className="row"><span>Email</span><strong className="email">{UserData.email}</strong></div>
+                {userData._id === UserData._id &&
+                  <div className="row"><span>Phone</span><strong>{UserData.phoneNumber || '-'}</strong></div>
+                }
+                <div className="row"><span>Date of Birth</span><strong>{formatDate(UserData.dateOfBirth) || '-'}</strong></div>
+                <div className="row"><span>Location</span><strong>{UserData.homeTown || '-'}</strong></div>
               </div>
             </div>
 
@@ -137,19 +139,19 @@ export default function PlayerProfile() {
               <div className="physical">
                 <div className="item">
                   <div className="user-card-icon"><Ruler size={24} /></div>
-                  <div><span>Height (Feet)</span><strong>{userData.height || '-'}</strong></div>
+                  <div><span>Height (Feet)</span><strong>{UserData.height || '-'}</strong></div>
                 </div>
                 <div className="item">
                   <div className="user-card-icon"><Weight size={24} /></div>
-                  <div><span>Weight (Kg)</span><strong>{userData.weight || '-'}</strong></div>
+                  <div><span>Weight (Kg)</span><strong>{UserData.weight || '-'}</strong></div>
                 </div>
                 <div className="item">
                   <div className="user-card-icon"><Maximize2 size={24} /></div>
-                  <div><span>Wingspan (Feet)</span><strong>{userData.wingspan || '-'}</strong></div>
+                  <div><span>Wingspan (Feet)</span><strong>{UserData.wingspan || '-'}</strong></div>
                 </div>
                 <div className="item">
                   <div className="user-card-icon"><Target size={24} /></div>
-                  <div><span>Position</span><strong>{userData.playerPosition || '-'}</strong></div>
+                  <div><span>Position</span><strong>{UserData.playerPosition || '-'}</strong></div>
                 </div>
               </div>
             </div>
@@ -159,7 +161,7 @@ export default function PlayerProfile() {
           <div className="timeline">
             <h2>Tournament History</h2>
 
-            {Object.entries(userData.tournamentsParticipated)
+            {Object.entries(UserData.tournamentsParticipated)
               .sort(([yearA], [yearB]) => yearB - yearA)
               .map(([year, tournament]) => (
                 <div key={year} className="year-section">
