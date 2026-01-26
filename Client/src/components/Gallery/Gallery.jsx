@@ -1,20 +1,21 @@
 import './gallery.css'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { GiPreviousButton } from "react-icons/gi";
 import { GiNextButton } from "react-icons/gi";
 
-import big_1 from '../../assets/big-1.jpg'
-import big_2 from '../../assets/big-2.jpg'
-import news_1 from '../../assets/news-1.jpg'
-import news_2 from '../../assets/news-2.webp'
-import news_3 from '../../assets/news-3.jpg'
-
 export default function Gallery() {
 
-    const [images, setImages] = useState([big_1, news_1, news_2, news_3, big_2, big_1, news_1, news_2, news_3, big_2])
+    const [images, setImages] = useState([])
     const [index, setIndex] = useState(null)
+
+     useEffect(() => {
+        fetch("/gallery.json")
+            .then(res => res.json())
+            .then(data => setImages(data))
+            .catch(err => console.error("Failed to load gallery:", err));
+    }, []);
 
     const openModal = (index) => setIndex(index)
     const closeModal = () => setIndex(null)

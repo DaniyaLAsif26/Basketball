@@ -1,13 +1,9 @@
 import './slider.css';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import { GrFormNext } from "react-icons/gr";
 
 import Slider_img from '../../assets/home-bg.jpg';
-import slide_1 from '../../assets/slide-1.jpg';
-import slide_2 from '../../assets/slide-2.jpg';
-import slide_3 from '../../assets/slide-3.jpg';
-import slide_4 from '../../assets/slide-4.jpg';
 
 export default function SliderCont() {
 
@@ -25,6 +21,15 @@ export default function SliderCont() {
         }
     };
 
+    const [images, setImages] = useState([])
+
+    useEffect(() => {
+        fetch("/home-gallery.json")
+            .then(res => res.json())
+            .then(data => setImages(data))
+            .catch(err => console.error("Failed to load gallery:", err));
+    }, []);
+
     return (
         <div className="slider-cont">
             <div className="gallery-slider">
@@ -40,15 +45,20 @@ export default function SliderCont() {
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                 >
-                    <img src={slide_1} alt="Slide 1" className='slider-img' />
-                    <img src={slide_2} alt="Slide 2" className='slider-img' />
-                    <img src={slide_3} alt="Slide 3" className='slider-img' />
-                    <img src={slide_4} alt="Slide 4" className='slider-img' />
-                    {/* Duplicate for seamless loop */}
-                    <img src={slide_1} alt="Slide 1" className='slider-img' />
-                    <img src={slide_2} alt="Slide 2" className='slider-img' />
-                    <img src={slide_3} alt="Slide 3" className='slider-img' />
-                    <img src={slide_4} alt="Slide 4" className='slider-img' />
+                    {images.map((img, index) => (
+                        <img src={img}
+                            loading='lazy'
+                            key={index}
+                            className='slider-img' />
+
+                    ))}
+                    {images.map((img, index) => (
+                        <img src={img}
+                            loading='lazy'
+                            key={index}
+                            className='slider-img' />
+
+                    ))}
                 </div>
             </div>
         </div>
