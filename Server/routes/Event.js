@@ -4,9 +4,15 @@ import multer from 'multer'
 import Event from '../models/event.js'
 import jwt from "jsonwebtoken";
 
-import { createEventSchema } from '../Validators/EventValidator.js'
+import { cloudinary, createCloudinaryStorage, deleteCloudinaryImage } from '../cloudConfig.js'
 
-const upload = multer()
+const createUserStorage = createCloudinaryStorage({
+    folder: "events",
+})
+
+const upload = multer({ storage: createUserStorage })
+
+import { createEventSchema } from '../Validators/EventValidator.js'
 
 const router = express.Router()
 
@@ -152,16 +158,14 @@ router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
         }
 
         if (req.file) {
-            // Optional: Delete old image from storage
-            const oldEvent = await Event.findById(req.params.id);
+            const oldEvent = await Event.findById(req.params.id)
+
+            // Delete old image from Cloudinary
             if (oldEvent && oldEvent.tournamentImage) {
-                const oldImagePath = path.join(__dirname, '..', oldEvent.tournamentImage);
-                if (fs.existsSync(oldImagePath)) {
-                    fs.unlinkSync(oldImagePath);
-                }
+                await deleteCloudinaryImage(oldEvent.tournamentImage)
             }
 
-            updateData.tournamentImage = req.file.path;
+            updateData.tournamentImage = req.file.path
         }
 
         const validatedData = createEventSchema.parse(updateData)
@@ -199,7 +203,7 @@ router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
 
 router.delete('/delete/:id', async (req, res) => {
     try {
-        const event = await Event.findByIdAndDelete(req.params.id)
+        const event = await Event.findById(req.params.id)
 
         if (!event) {
             return res.status(404).json({
@@ -207,6 +211,12 @@ router.delete('/delete/:id', async (req, res) => {
                 message: "Event Not Found"
             })
         }
+
+        if (event.tournamentImage) {
+            await deleteCloudinaryImage(event.tournamentImage)
+        }
+
+        await Event.findByIdAndDelete(req.params.id)
 
         res.status(200).json({
             success: true,

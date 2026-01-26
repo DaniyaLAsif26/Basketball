@@ -3,11 +3,18 @@ import News from '../models/news.js'
 
 import multer from 'multer'
 
+import { cloudinary, createCloudinaryStorage, deleteCloudinaryImage } from '../cloudConfig.js'
+
+const createUserStorage = createCloudinaryStorage({
+    folder: "news",
+})
+
+const upload = multer({ storage: createUserStorage })
+
 import { createNewsSchema } from '../Validators/NewsValidators.js'
 
 const router = express.Router()
 
-const upload = multer()
 
 router.post('/admin/create', upload.single('newsImage'), async (req, res) => {
     try {
@@ -113,7 +120,7 @@ router.get('/:id', async (req, res) => {
 
 router.delete('/delete/:id', async (req, res) => {
     try {
-        const news = await News.findByIdAndDelete(req.params.id)
+        const news = await News.findById(req.params.id)
 
         if (!news) {
             return res.status(404).json({
@@ -121,6 +128,12 @@ router.delete('/delete/:id', async (req, res) => {
                 message: "News not found"
             })
         }
+
+        if (news.newsImage) {
+            await deleteCloudinaryImage(news.newsImage)
+        }
+
+        await News.findByIdAndDelete(req.params.id)
 
         res.status(200).json({
             success: true,
@@ -135,22 +148,20 @@ router.delete('/delete/:id', async (req, res) => {
     }
 })
 
-router.put('/admin/edit/:id', upload.single('tournamentImage'), async (req, res) => {
+router.put('/admin/edit/:id', upload.single('newsImage'), async (req, res) => {
     const updateNews = { ...req.body }
 
     try {
 
         if (req.file) {
-            // Optional: Delete old image from storage
-            const oldNews = await News.findById(req.params.id);
+            const oldNews = await News.findById(req.params.id)
+
+            // Delete old image from Cloudinary
             if (oldNews && oldNews.newsImage) {
-                const oldImagePath = path.join(__dirname, '..', oldNews.tournamentImage);
-                if (fs.existsSync(oldImagePath)) {
-                    fs.unlinkSync(oldImagePath);
-                }
+                await deleteCloudinaryImage(oldNews.newsImage)
             }
 
-            updateNews.newsImage = req.file.path;
+            updateNews.newsImage = req.file.path
         }
 
         const validateNews = createNewsSchema.parse(updateNews)
@@ -181,7 +192,7 @@ router.put('/admin/edit/:id', upload.single('tournamentImage'), async (req, res)
         console.log(err)
         res.status(500).json({
             success: false,
-            message: `Failed to Delete News: ${err.message}`
+            message: `Failed to edit News: ${err.message}`
         })
 
     }

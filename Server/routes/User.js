@@ -1,14 +1,14 @@
 import express from "express"
 import multer from 'multer'
 import User from "../models/user.js"
-import path from 'path'
-import fs from 'fs'
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { cloudinary, createCloudinaryStorage , deleteCloudinaryImage } from '../cloudConfig.js'
 
-const upload = multer()
+const createUserStorage = createCloudinaryStorage({
+    folder: "users",
+})
+
+const upload = multer({ storage: createUserStorage })
 
 const router = express.Router()
 
@@ -61,7 +61,7 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
 
                     // Verify structure and convert stats numbers
                     const processedTournaments = {};
-                    
+
                     for (const [year, tournaments] of Object.entries(parsed)) {
 
                         if (!Array.isArray(tournaments)) {
@@ -94,10 +94,10 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
                     updateUser.tournamentsParticipated = processedTournaments;
                 } else if (typeof updateUser.tournamentsParticipated === 'object') {
                     console.log('Tournaments already an object, processing stats...');
-                    
+
                     // Still process to ensure numbers are correct
                     const processedTournaments = {};
-                    
+
                     for (const [year, tournaments] of Object.entries(updateUser.tournamentsParticipated)) {
                         if (Array.isArray(tournaments)) {
                             processedTournaments[year] = tournaments.map(tournament => {
@@ -118,7 +118,7 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
                             });
                         }
                     }
-                    
+
                     updateUser.tournamentsParticipated = processedTournaments;
                 }
             } catch (e) {
@@ -135,14 +135,13 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
 
         // Handle profile picture upload
         if (req.file) {
-            const oldUser = await User.findById(req.params.id);
-            if (oldUser && oldUser.profilePicture && !oldUser.profilePicture.includes('flaticon.com')) {
-                const oldImagePath = path.join(__dirname, '..', oldUser.profilePicture);
-                if (fs.existsSync(oldImagePath)) {
-                    fs.unlinkSync(oldImagePath);
-                }
+            const oldUser = await User.findById(req.params.id)
+
+            if (oldUser && oldUser.profilePicture) {
+                await deleteCloudinaryImage(oldUser.profilePicture)
             }
-            updateUser.profilePicture = req.file.path;
+
+            updateUser.profilePicture = req.file.path
         }
 
         const validateUser = createUserSchema.parse(updateUser)
@@ -174,7 +173,7 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
         console.error('=== ERROR ===');
         console.error('Error:', err);
         console.error('Error name:', err.name);
-        
+
         // Better error handling for Zod validation errors
         if (err.name === 'ZodError') {
             console.error('Zod errors:', JSON.stringify(err.errors, null, 2));
