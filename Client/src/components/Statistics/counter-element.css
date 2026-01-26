@@ -30,11 +30,11 @@
 }
 
 .counter-label {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     color: yellow;
 }
 
 .counter-count {
     font-weight: bold;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }

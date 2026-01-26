@@ -89,7 +89,7 @@ export default function AboutU() {
                     <div className="intro-content">
                         <div className="intro-text">
                             <span className="section-tag">Our Story</span>
-                            <h2 className="section-title">Who We Are</h2>
+                            <h2 className="about-section-title">Who We Are</h2>
                             <p className="intro-paragraph">
                                 Founded with a vision to revolutionize basketball in our region, we have grown
                                 from a small local initiative to a comprehensive basketball ecosystem that serves
@@ -107,24 +107,6 @@ export default function AboutU() {
                             </p>
                         </div>
 
-                        <div className="intro-stats">
-                            <div className="intro-stat-card">
-                                <div className="stat-number">500+</div>
-                                <div className="stat-label">Active Players</div>
-                            </div>
-                            <div className="intro-stat-card">
-                                <div className="stat-number">50+</div>
-                                <div className="stat-label">Tournaments</div>
-                            </div>
-                            <div className="intro-stat-card">
-                                <div className="stat-number">33</div>
-                                <div className="stat-label">Districts</div>
-                            </div>
-                            <div className="intro-stat-card">
-                                <div className="stat-number">100+</div>
-                                <div className="stat-label">Certified Referees</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -134,7 +116,7 @@ export default function AboutU() {
                 <div className="section-container">
                     <div className="values-header">
                         <span className="section-tag">Our Values</span>
-                        <h2 className="section-title">What Drives Us</h2>
+                        <h2 className="about-section-title">What Drives Us</h2>
                         <p className="section-subtitle">
                             The principles that guide everything we do
                         </p>

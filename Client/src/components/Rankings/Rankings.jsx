@@ -1,4 +1,3 @@
-import white from '../../assets/white.png';
 import player1 from '../../assets/rank-1.avif'
 import './rankings.css'
 import PlayerRankings from './Ranking-player.jsx'
@@ -32,7 +31,6 @@ export default function Rankings() {
     return (
         <div className="rankings-cont">
             <div className="rankings-head">
-                <img src={white} alt="" />
                 <div className="ranking-heading">PLAYER RANKING'S</div>
             </div>
             <div className="rankings">

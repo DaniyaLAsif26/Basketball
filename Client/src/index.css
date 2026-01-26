@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanchenjunga:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -57,5 +63,59 @@ p {
 }
 
 .home-bg {
-    background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
+  background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
+}
+
+/* fonts */
+
+.navbar {
+  font-family: "Rubik", sans-serif;
+}
+
+.intro-btns {
+  font-family: 'Kanchenjunga';
+}
+
+.intro-head p {
+  font-family: 'Poppins';
+}
+
+.news-txt-head h2 {
+  font-family: 'Roboto';
+  word-spacing: 2px;
+}
+
+.counter-cont-head {
+  font-family: 'Roboto';
+}
+
+.counter-element {
+  font-family: 'Poppins';
+}
+
+.ranking-head h2 {
+  font-family: 'Poppins';
+  word-spacing: 5px;
+}
+
+.ranking-position {
+  font-family: "BBH Bartle", sans-serif;
+  padding-left: 0.5rem;
+}
+
+.tournament-info p {
+  font-family: 'Poppins';
+}
+
+.tournament-btn , .logo-text{
+  font-family: 'Roboto';
+}
+
+.news-content{
+  font-family: 'Poppins';
+}
+
+.ranking-heading , .rank-badge {
+  font-family: "BBH Bartle", sans-serif;
+  word-spacing: 1.5rem;
 }

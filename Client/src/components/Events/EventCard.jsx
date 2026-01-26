@@ -98,7 +98,7 @@ export default function EventCard({ event }) {
                   <GiAges />
                 </div>
                 <div className="detail-content">
-                  <span className="detail-label">Age Category</span>
+                  <span className="detail-label">Age</span>
                   <span className="detail-value">{event.ageCategory}</span>
                   <span className="detail-value"></span>
                 </div>

@@ -29,6 +29,7 @@
 }
 
 .news-page-news {
+    width: 100%;
     box-sizing: border-box;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.487);
@@ -41,6 +42,13 @@
     justify-items: center;
     border-radius: 1rem;
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.17), 0 1.5px 13px rgba(255, 255, 255, 0.2);
+}
+
+.news-page-news-img{
+    max-height: 27rem ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .news-page-news-img img {

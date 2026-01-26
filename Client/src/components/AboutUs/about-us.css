@@ -62,7 +62,7 @@
 }
 
 .title-accent {
-  background: linear-gradient(135deg, #dc2626, #f97316);
+  background: linear-gradient(90deg, rgba(225, 0, 0, 1) 0%, rgba(252, 69, 69, 1) 55%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -94,11 +94,10 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1rem;
 }
 
-.section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+.about-section-title {
+  font-size: 2rem;
   font-weight: 800;
   color: white;
   margin-bottom: 0.5rem;
@@ -120,14 +119,13 @@
 }
 
 .intro-content {
-  display: grid;
-  grid-template-columns: 1fr 33rem;
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .intro-text {
-  padding-right: 2rem;
+  padding: 0rem 2rem;
 }
 
 .intro-paragraph {
@@ -135,43 +133,6 @@
   color: #d1d5db;
   line-height: 1.8;
   margin-bottom: 1.5rem;
-}
-
-.intro-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.intro-stat-card {
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.25rem;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.intro-stat-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(220, 38, 38, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, #dc2626, #f97316);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  font-size: 0.9375rem;
-  color: #9ca3af;
-  font-weight: 600;
 }
 
 /* Values Section */
@@ -210,7 +171,7 @@
   width: 5rem;
   height: 5rem;
   margin: 0 auto 2rem;
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(220, 38, 38, 0.1));
+  background: linear-gradient(90deg, rgba(225, 0, 0, 0.5) 0%, rgba(252, 69, 69, 0.5) 55%);
   border-radius: 1.5rem;
   display: flex;
   align-items: center;
@@ -330,7 +291,7 @@
   right: 2rem;
   width: 4rem;
   height: 4rem;
-  color: rgba(220, 38, 38, 0.2);
+  color: rgba(220, 38, 38, 0.7);
 }
 
 .message-title {
@@ -393,7 +354,7 @@
   background:
     radial-gradient(circle at center, rgba(220, 38, 38, 0.5) 0%, transparent 90%),
     #27272d;
-border-bottom: 2px solid rgba(220, 38, 38, 0.5);
+  border-bottom: 2px solid rgba(220, 38, 38, 0.5);
 }
 
 .cta-content {
