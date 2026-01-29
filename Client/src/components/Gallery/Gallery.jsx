@@ -1,5 +1,5 @@
 import './gallery.css'
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { GiPreviousButton } from "react-icons/gi";
@@ -10,7 +10,7 @@ export default function Gallery() {
     const [images, setImages] = useState([])
     const [index, setIndex] = useState(null)
 
-     useEffect(() => {
+    useEffect(() => {
         fetch("/gallery.json")
             .then(res => res.json())
             .then(data => setImages(data))

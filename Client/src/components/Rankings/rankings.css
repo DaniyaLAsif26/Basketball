@@ -114,3 +114,23 @@
     border-bottom: 5px solid #e10600;
     margin-bottom: -1px;
 }
+
+.ranking-options::-webkit-scrollbar {
+    height: 3px;
+}
+
+
+.ranking-options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+
+}
+
+.ranking-options::-webkit-scrollbar-thumb {
+    background: #888;
+
+}
+
+
+.ranking-options::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

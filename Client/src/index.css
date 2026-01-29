@@ -107,15 +107,1985 @@ p {
   font-family: 'Poppins';
 }
 
-.tournament-btn , .logo-text{
+.tournament-btn,
+.logo-text {
   font-family: 'Roboto';
 }
 
-.news-content{
+.news-content {
   font-family: 'Poppins';
 }
 
-.ranking-heading , .rank-badge {
+.ranking-heading,
+.rank-badge {
   font-family: "BBH Bartle", sans-serif;
   word-spacing: 1.5rem;
+}
+
+@media screen and (max-width: 1470px) {
+  .intro-head {
+    bottom: 5.5rem;
+  }
+
+  .intro-head h1 {
+    font-size: 3.15rem;
+  }
+
+  .intro-head p {
+    font-size: 1.1rem;
+  }
+
+  .options ul a {
+    font-size: 1rem;
+  }
+
+  .counter-cont-head {
+    font-size: 1.26rem;
+  }
+
+  .counter-count {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  .counter-label {
+    font-size: 1.1rem;
+  }
+
+  .dist-cont-head {
+    padding: 1.5rem 0rem 2rem;
+  }
+
+  .dist-cont-head h1 {
+    font-size: 2.1rem;
+  }
+
+  .dist-cont-grid {
+    justify-items: center;
+    gap: 0.75rem;
+    row-gap: 2.26rem;
+
+  }
+
+  .district {
+    min-height: 15rem;
+    max-height: 16rem;
+    width: 23rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .ranking-list {
+    /* padding: 0rem 1rem; */
+    gap: 1rem;
+    max-width: 95%;
+  }
+
+  .ranking-card-1 {
+    height: 16.5rem;
+  }
+
+  .ranking-card-2 {
+    height: 15rem;
+  }
+
+  .ranking-card-3 {
+    height: 13.5rem;
+  }
+
+  .ranking-position {
+    font-size: 1.75rem;
+  }
+
+  .ranking-points,
+  .player-name h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .intro-head {
+    bottom: 6rem;
+  }
+
+  .intro-head h1 {
+    font-size: 3rem;
+  }
+
+  .intro-head p {
+    font-size: 1rem;
+  }
+
+  .ranking-card {
+    width: 24rem;
+  }
+
+  .ranking-card-1 {
+    height: 16.5rem;
+  }
+
+  .ranking-card-2 {
+    height: 15rem;
+  }
+
+  .ranking-card-3 {
+    height: 13.5rem;
+  }
+
+  .event-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dist-cont {
+    background-color: #0f0f1e;
+    padding: 0rem 1.75rem 7rem;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .intro-head h1 {
+    font-size: 2.8rem;
+  }
+
+  .ranking-info img {
+    right: -2.26rem;
+  }
+
+  .comic-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  .news-box {
+    min-width: 19rem;
+  }
+
+  .events-search-form .evt-search input {
+    min-width: 23.5rem;
+    padding: 0rem 1rem 0rem 1.5rem;
+  }
+
+  .ranking-heading {
+    font-size: 2rem;
+  }
+
+  .rankings-head {
+    height: 4rem;
+  }
+
+  .rankings {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .district {
+    width: 21rem;
+  }
+
+  .logo-text {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .avatar {
+    height: 12.5rem;
+  }
+
+  .title h1 {
+    font-size: 2.8rem;
+  }
+
+  .verified-icon svg {
+    font-size: 2.15rem;
+    margin-left: 0.8rem;
+  }
+
+  .pill {
+    font-size: 0.85rem;
+  }
+
+  .user-button {
+    padding: 0.875rem 1.1rem;
+    font-size: 0.826rem;
+  }
+
+  .header-content {
+    padding: 0 3rem 1.8rem;
+  }
+
+  .stats-banner {
+    padding: 1.26rem 0;
+  }
+
+  .stat-value {
+    font-size: 2.4rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1.15fr;
+  }
+
+  .timeline h2 {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    padding: 2rem;
+  }
+
+  .year-header h3 {
+    font-size: 1.875rem;
+  }
+
+  .count {
+    font-size: 0.8rem;
+  }
+
+  .circle {
+    width: 2.875rem;
+    height: 2.875rem;
+  }
+
+  .players-grid {
+    gap: 1.5rem;
+  }
+
+  .search-filter-container {
+    padding: 1rem;
+  }
+
+  .players-grid-container {
+    padding: 4rem 0rem;
+  }
+
+  .all-player-card {
+    min-width: 20rem;
+    max-width: 23rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .intro-head h1 {
+    font-size: 2.5rem;
+  }
+
+  .player-name h3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0rem;
+  }
+
+  .player-name h3 span {
+    line-height: 1.2;
+  }
+
+  .news-box {
+    min-width: 17.5rem;
+  }
+
+  .small svg {
+    font-size: 1.75rem;
+  }
+
+  .counter-element {
+    min-width: 12rem;
+  }
+
+  .logo {
+    padding-left: 0rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 2.26rem;
+  }
+
+  .ranking-position {
+    font-size: 1.5rem;
+  }
+
+  .player-name h3 {
+    font-size: 1.15rem;
+  }
+
+  .view-all-rankings a {
+    font-size: 1.05rem;
+  }
+
+  .events-search-form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3rem 3.26rem;
+    grid-template-columns:
+      1.5fr 1fr 1fr 0.9fr 1fr 1fr 1fr
+  }
+
+  .evt-sort-wrapper-search {
+    border-bottom: 2px solid black;
+  }
+
+  .evt-search {
+    grid-column: span 6;
+    border-bottom: 2px solid black;
+  }
+
+  .events-search-form .evt-search input {
+    width: 100%;
+  }
+
+  .evt-sort-wrapper-search {
+    border-bottom: 2px solid black;
+  }
+
+  .select-district {
+    grid-column: span 2;
+  }
+
+  .select-district {
+    border-right: 0px;
+  }
+
+  .ranking-options ul li {
+    padding: 0.75rem 2rem;
+    font-size: 1.15rem;
+  }
+
+  .player-card {
+    padding: 1.25rem;
+  }
+
+  .player-name {
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .points-badge {
+    padding: 0.65rem 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .dist-cont-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .district {
+    width: 25rem;
+  }
+
+  .gallery-head {
+    padding: 1.5rem 0rem;
+  }
+
+  .branding-title {
+    font-size: 2.875rem;
+  }
+
+  .form-title {
+    font-size: 2.2rem;
+  }
+
+  .google-btn {
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+  }
+
+  .footer-main {
+    padding: 3rem 0rem;
+  }
+}
+
+@media screen and (max-width: 1126px) {
+  .branding-title {
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .news-head h1 {
+    font-size: 1.8rem;
+  }
+
+  .ranking-head h2 {
+    font-size: 1.9rem;
+    word-spacing: 3px;
+  }
+
+  .slider-cont-head h2 {
+    font-size: 1.8rem;
+  }
+
+  .ranking-update {
+    font-size: 0.9rem;
+  }
+
+  .ranking-btn span {
+    padding: 0.5rem 0.8rem;
+    min-width: 7rem;
+  }
+
+  .others-cont {
+    padding: 2rem;
+  }
+
+  .header-content {
+    padding: 0 2rem 1.8rem;
+  }
+
+  .avatar {
+    height: 12rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    flex-direction: column;
+  }
+
+  .item strong {
+    font-size: 1.1rem;
+  }
+
+  .players-grid {
+    padding: 6rem 1rem 5rem;
+  }
+
+}
+
+@media screen and (max-width: 1060px) {
+
+  .ranking-head {
+    padding: 1.5rem 2rem 0rem;
+  }
+
+  .ranking-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    max-width: 100%;
+    padding: 0rem 2rem;
+    box-sizing: border-box;
+    row-gap: 1.5rem;
+  }
+
+  .ranking-card {
+    box-sizing: border-box;
+    padding: 1.5rem;
+    width: 100%;
+    height: 16rem;
+  }
+
+  .ranking-card-1 {
+    box-sizing: border-box;
+    grid-column: span 2;
+    width: 100%;
+  }
+
+  .player-name h3 {
+    flex-direction: row;
+    font-size: 1.5rem;
+    gap: 0.7rem;
+    align-items: center;
+  }
+
+  .ranking-position,
+  .ranking-points {
+    font-size: 1.75rem;
+  }
+
+  .tournament-home {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .slider-cont-head {
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .news-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.75rem;
+  }
+
+  .news-big {
+    grid-column: span 2;
+  }
+
+  .intro-head {
+    left: 1.26rem;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+
+  .nav-btns {
+    margin-left: 1.75rem;
+  }
+
+  .intro-head h1 {
+    font-size: 2.26rem;
+  }
+
+  .ranking-info img {
+    right: 0rem;
+  }
+
+  .news {
+    margin: 0rem 2rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .counter {
+    padding: 3rem 1.75rem 0rem;
+  }
+
+  .counter-element {
+    min-width: 11rem;
+  }
+
+  .ranking-options {
+    margin: 0rem 2rem 0rem;
+  }
+
+  .member {
+    padding: 2rem 1rem;
+  }
+
+  .other-members-head {
+    padding: 2rem 2rem 1rem;
+  }
+
+  .content {
+    padding: 2rem 1.26rem;
+  }
+
+  .players-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+  }
+
+  .all-player-card {
+    min-width: 23rem;
+    max-width: 25rem;
+  }
+
+  .search-filter-container {
+    max-width: 100%;
+
+  }
+
+}
+
+@media screen and (max-width: 1020px) {
+  .events-search-form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3rem 3.26rem 3.26rem;
+    grid-template-columns:
+      1fr 1fr 1fr 1fr 1fr 1fr
+  }
+
+  .evt-search {
+    grid-column: span 5;
+  }
+
+  .type,
+  .age,
+  .category,
+  .level,
+  .format,
+  .select-district {
+    grid-column: span 2;
+  }
+
+  .evt-sort-wrapper-search {
+    border-bottom: 1.5px solid black;
+  }
+
+  .evt-search {
+    border-bottom: 1.5px solid black;
+  }
+
+  .type,
+  .age,
+  .category {
+    border-bottom: 1.5px solid black;
+  }
+
+  .category,
+  .select-district {
+    border-right: 0px;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .navbar {
+    padding: 0.5rem 3rem;
+  }
+
+  .tournament-home {
+    padding: 3rem 2.26rem 4rem;
+  }
+
+  .tournament-cont {
+    min-height: 26rem;
+  }
+
+  .tournament-info h2 {
+    font-size: 2.75rem;
+    margin: 0.5rem 2rem 1.5rem 0rem;
+    line-height: 1.2;
+  }
+
+  .tournament-info {
+    position: absolute;
+    bottom: 2.26rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .event-image {
+    height: 220px;
+  }
+
+  .event-results {
+    padding: 3rem 1rem 7rem;
+
+  }
+
+  .all-players-btn {
+    font-size: 1rem;
+  }
+
+  .others-cont {
+    padding: 1rem;
+  }
+
+  .form-container {
+    margin: 0 3rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .physical {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-branding {
+    display: none;
+  }
+
+  .modal img {
+    max-width: 60rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+
+  .counter-elements-cont {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .counter-element {
+    min-height: 10rem;
+    min-width: 17rem;
+    padding: 1rem;
+  }
+
+  .intro-head {
+    left: 2.26rem;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+
+  .event-content {
+    padding: 1.5rem 1.7rem;
+  }
+
+  .event-details {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card {
+    width: 380px;
+  }
+
+  .event-title {
+    font-size: 1.35rem;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+  }
+
+  .news-page {
+    padding: 0.5rem 2rem 5rem;
+  }
+
+  .rankings {
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  .ranking-heading {
+    font-size: 1.75rem;
+  }
+
+  .rankings-head {
+    height: 3.5rem;
+  }
+
+  .district {
+    width: 23rem;
+  }
+
+  .others-cont {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .member {
+    padding: 2rem;
+  }
+
+  .player-card-header {
+    height: 15rem;
+  }
+
+  .modal img {
+    max-width: 53rem;
+  }
+}
+
+@media screen and (max-width: 870px) {
+
+  .navbar {
+    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+  }
+
+  .ranking-btn-cont {
+    padding: 1rem 0rem 2.26rem;
+  }
+
+  .player-name h3 {
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1px;
+  }
+
+  .player-name h3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0rem;
+  }
+
+  .ranking-info img {
+    right: -3rem;
+  }
+
+  .event-results {
+    column-gap: 0.75rem;
+  }
+
+  .all-players-btn {
+    display: none;
+  }
+
+  .ranking-options {
+    margin: 0rem;
+  }
+
+  .ranking-options ul li {
+    padding: 0.65rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .rankings-container {
+    margin: 0rem 1rem;
+  }
+
+  .player-name {
+    font-size: 1.1rem;
+  }
+
+  .rank-badge {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    font-size: 1.2rem;
+  }
+
+  .district {
+    width: 21rem;
+  }
+
+  .modal img {
+    max-width: 50rem;
+  }
+}
+
+@media screen and (max-width: 826px) {
+  .actions {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    flex-direction: row;
+  }
+
+  .header-content {
+    padding: 0 2.5rem 1.8rem;
+  }
+
+  .stats-banner {
+    padding: 1.5rem 0;
+  }
+
+  .title h1 {
+    font-size: 2.65rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .all-player-card {
+    min-width: 20rem;
+    max-width: 23rem;
+  }
+
+  .user-edit-btn-close {
+    max-width: 3rem;
+  }
+
+  .modal img {
+    max-width: 47rem;
+    min-height: 10%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .dist-cont-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .district {
+    width: 25rem;
+  }
+
+  .other-members-head {
+    padding: 1rem 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .header-left {
+    gap: 1.5rem;
+  }
+
+  .comic-button {
+    max-width: 7rem;
+  }
+
+  .comic-button-2 {
+    max-width: 9rem;
+  }
+
+  .footer-heading {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 826px) {
+  .logo img {
+    height: 3rem;
+  }
+
+  .front {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .ranking-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ranking-card-2 {
+    width: 95%;
+  }
+
+  .ranking-card-3 {
+    width: 85%;
+  }
+
+  .ranking-info img {
+    right: 0rem;
+  }
+
+  .player-name h3 {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .counter-cont-head h2 {
+    text-align: center;
+  }
+
+  .sort-text-head {
+    font-size: 0.8rem;
+  }
+
+  .event-card {
+    width: 350px;
+  }
+
+  .events-search-form .evt-search input {
+    font-size: 1rem;
+  }
+
+  .events-search-form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3rem 3.26rem 3.26rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.5fr 1fr;
+  }
+
+  .news-page-news {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .news-page-news-img {
+    max-height: 100%;
+    width: 100%;
+  }
+
+  .news-page-news-img img {
+    width: 100%;
+    height: 23rem;
+  }
+
+  .news-page-news-content {
+    padding: 2rem 2rem 3rem;
+  }
+
+  .ranking-heading {
+    font-size: 1.5rem;
+  }
+
+  .rankings-head {
+    height: 3rem;
+  }
+
+  .district {
+    padding: 1rem 1.26rem;
+  }
+
+  .form-backdrop {
+    padding: 3rem 0;
+  }
+
+  .btn-nav {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .modal img {
+    max-width: 45rem;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .tournament-info h2 {
+    font-size: 2.5rem;
+  }
+
+  .counter-element {
+    min-width: 15rem;
+  }
+
+  .slider img {
+    height: 31rem;
+    width: 25rem;
+  }
+
+  .member {
+    padding: 2rem 1rem;
+  }
+
+  .event-edit-btn {
+    max-width: 8rem;
+  }
+
+  .search-input {
+    min-width: 17rem;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  .event-results {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .event-card {
+    width: 420px;
+  }
+
+  .event-details {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .events-search {
+    position: relative;
+    top: 0rem;
+    z-index: 24;
+  }
+
+  .rankings-res-head {
+    margin: 1rem 1.26rem 0.75rem;
+  }
+
+  .event-page-edit-del {
+    margin: 2rem 0rem 0rem;
+  }
+
+  .search-filter-container {
+    padding: 0.75rem;
+  }
+
+  .modal img {
+    max-width: 40rem;
+  }
+
+  .close-btn {
+    top: 2rem;
+    right: 2rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .counter-element {
+    min-width: 12.5rem;
+  }
+
+  .slider img {
+    height: 29rem;
+    width: auto;
+  }
+
+  .news-headline h3 {
+    font-size: 1.5rem;
+    padding: 1rem 0rem 1.75rem;
+  }
+
+  .news-content {
+    font-size: 0.9rem;
+  }
+
+  .news-date {
+    font-size: 0.85rem;
+  }
+
+  .ranking-options ul {
+    padding-left: 1.75rem;
+  }
+
+  .other-members-head h2 {
+    font-size: 1.8rem;
+  }
+
+  .form-title {
+    font-size: 1.6rem;
+  }
+
+  .players-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .all-player-card {
+    min-width: 23rem;
+    max-width: 25rem;
+  }
+
+  .form-modal {
+    max-width: 85%;
+  }
+
+  .step-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .step-header p {
+    font-size: 0.9rem;
+  }
+
+  .footer-grid {
+    padding: 0rem 1rem 0rem 2.5rem;
+  }
+
+  .modal img {
+    max-width: 37rem;
+  }
+
+  .gallery-btn {
+    font-size: 1.25rem;
+    padding: 1rem 1rem 0.8rem;
+  }
+
+  .close-btn {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .events-search-form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2.9rem 3.2rem 3.16rem 3.2rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .evt-search {
+    grid-column: span 3;
+  }
+
+  .category {
+    border-right: 2px solid black;
+  }
+
+  .level {
+    border-bottom: 1.5px solid black;
+  }
+
+  .age,
+  .level,
+  .select-district {
+    border-right: none;
+  }
+
+  .news-page {
+    padding: 0rem 1.5rem 5rem;
+  }
+
+  .rankings {
+    padding: 0rem;
+    margin: 0rem;
+  }
+
+  .rankings-container {
+    margin: 0rem;
+  }
+
+  .ranking-options ul li {
+    padding: 0.65rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .others-cont {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .member {
+    padding: 2rem;
+  }
+
+  .form-container {
+    margin: 0 2rem;
+  }
+
+  .avatar {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .menu-btn {
+    font-size: 2.158rem;
+  }
+
+}
+
+@media screen and (max-width: 630px) {
+  .news {
+    margin: 0rem 1rem;
+    padding: 1rem 1rem 3rem;
+  }
+
+  .news-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.75rem;
+    column-gap: 1rem;
+  }
+
+  .news-page-news-content {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .cta-btn {
+    font-size: 1.1rem;
+  }
+
+  .gallery-head {
+    padding: 1.5rem 0rem 1rem;
+  }
+
+  .hero-meta {
+    gap: 1rem;
+  }
+
+  .rankings-update {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .news {
+    margin: 0rem;
+    padding: 1rem 1rem 3rem;
+  }
+
+  .news-box {
+    min-width: 11rem;
+    max-width: 15.5rem;
+  }
+
+  .news-big {
+    max-width: 100%;
+  }
+
+  .counter-cont-head h2 {
+    text-align: center;
+  }
+
+  .counter-elements-cont {
+    gap: 2rem;
+    padding: 0.26rem 1rem 2.5rem;
+  }
+
+  .counter-element {
+    min-width: 11.5rem;
+  }
+
+  .tournament-cont {
+    min-height: 29rem;
+  }
+
+  .tournament-info h2 {
+    font-size: 2.25rem;
+  }
+
+  .amount {
+    font-size: 3.25rem;
+  }
+
+  .avatar {
+    height: 9rem;
+    width: 9rem;
+  }
+
+  .header-content {
+    padding: 0 1.75rem 1.8rem;
+  }
+
+  .user-edit-btn-close {
+    max-width: 2.75rem;
+  }
+
+  .user-edit-btn-close svg {
+    font-size: 2rem;
+  }
+
+  .step-number {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .modal-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .modal img {
+    max-width: 35rem;
+  }
+
+}
+
+@media screen and (max-width: 570px) {
+  .intro-head {
+    left: 1.5rem;
+    padding: 0rem 1rem 0rem 0rem;
+  }
+
+  .intro-head h1 {
+    font-size: 2rem;
+  }
+
+  .ranking-update {
+    display: none;
+  }
+
+  .counter-cont-head {
+    font-size: 1.15rem;
+  }
+
+  .counter-element svg {
+    font-size: 2.25rem;
+  }
+
+  .counter-count {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .counter-label {
+    font-size: 1rem;
+  }
+
+  .ranking-position,
+  .ranking-points {
+    font-size: 1.5rem;
+  }
+
+  .tournament-cont {
+    padding: 1rem 0rem 1rem 1.5rem;
+  }
+
+  .news-headline h3 {
+    font-size: 1.5rem;
+    padding: 1rem 0rem 2rem;
+  }
+
+  .news-headline h3 {
+    font-size: 1.5rem;
+    padding: 1rem 0rem 1.2rem;
+  }
+
+  .ranking-options ul {
+    padding-left: 1rem;
+  }
+
+  .ranking-options ul li {
+    white-space: nowrap;
+  }
+
+  .ranking-options {
+    overflow: scroll;
+  }
+
+  .district {
+    width: 23rem;
+  }
+
+  .dist-name {
+    font-size: 1.5rem;
+  }
+
+  .dist-sec-name {
+    font-size: 1.3rem;
+  }
+
+  .cta-btn {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  .news-head h1 {
+    font-size: 1.6rem;
+  }
+
+  .event-edit-btn {
+    max-width: 7rem;
+  }
+
+  .title h1 {
+    font-size: 2.45rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .verified-icon svg {
+    font-size: 2rem;
+    margin-left: 0.8rem;
+  }
+
+  .user-button {
+    padding: 0.85rem 0.26rem;
+    font-size: 0.8rem;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    min-width: 15rem;
+  }
+
+  .footer-grid {
+    padding: 0rem 1rem 0rem 1.5rem;
+  }
+
+  .modal img {
+    min-height: 45%;
+    max-width: 30rem;
+  }
+
+  .next-btn {
+    right: 1rem;
+  }
+
+  .prev-btn {
+    left: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 520px) {
+  .events-search-form {
+    grid-template-columns: 0.5fr 0.5fr 1.2fr 0.2fr;
+  }
+
+  .event-card {
+    width: 380px;
+  }
+
+  .events-search-form .evt-search input {
+    min-width: 11.5rem;
+  }
+
+  .news-page-news-img img {
+    height: 21rem;
+  }
+
+  .ranking-heading {
+    font-size: 1.25rem;
+  }
+
+  .other-members-head h2 {
+    font-size: 1.65rem;
+  }
+
+  .form-container {
+    margin: 0 1.5rem;
+  }
+
+  .form-header {
+    padding: 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .section-heading {
+    font-size: 1.15rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+
+  }
+
+  .event-edit-btn {
+    font-size: 0.875rem;
+  }
+
+  .timeline h2 {
+    font-size: 1.65rem;
+  }
+
+  .year-header h3 {
+    font-size: 1.75rem;
+  }
+
+  .count {
+    font-size: 0.769rem;
+  }
+
+  .circle {
+    width: 2.675rem;
+    height: 2.675rem;
+  }
+
+  .timeline::before {
+    left: 1.5rem;
+  }
+
+  .modal img {
+    min-height: 45%;
+    max-width: 27rem;
+  }
+
+  .gallery-btn {
+    font-size: 1.1rem;
+    padding: 0.8rem 0.875rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .counter-elements-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .counter-element {
+    min-width: 13.5rem;
+  }
+
+  .news-txt-head h2 {
+    font-size: 0.9rem;
+  }
+
+  .intro-head {
+    left: 0.75rem;
+    padding: 0rem;
+  }
+
+  .intro-head h1 {
+    font-size: 1.8rem;
+  }
+
+  .intro-head p {
+    font-size: 1rem;
+    padding: 2.26rem 1rem 1rem;
+  }
+
+  .comic-button {
+    font-size: 1rem;
+  }
+
+  .ranking-info img {
+    right: -1rem;
+    height: 10rem;
+  }
+
+  .tournament-info p {
+    font-size: 0.9rem;
+    padding-right: 3.5rem;
+  }
+
+  .intro-head {
+    bottom: 7rem;
+  }
+
+  .points-badge {
+    padding: 0.65rem 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .dist-cont {
+    padding: 0rem 1.5rem 7rem;
+  }
+
+  .district {
+    width: 21rem;
+  }
+
+  .cta-btn {
+    padding: 1.25rem 2rem;
+    font-size: 1rem;
+  }
+
+  .amount {
+    font-size: 3rem;
+  }
+
+  .side-column {
+    min-width: 350px;
+  }
+
+  .meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dot {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 2.2rem;
+  }
+
+  .form-modal {
+    max-width: 90%;
+  }
+
+  .footer-grid {
+    padding: 0rem 1rem;
+  }
+
+  .footer-container {
+    padding: 1rem 2rem;
+  }
+
+  .rankings-how .tournament-btn {
+    padding: 0.5rem 0.7rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  .ranking-card-2,
+  .ranking-card-3 {
+    width: 100%;
+  }
+
+  .player-name h3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0rem;
+    margin-top: 1.26rem;
+  }
+
+  .ranking-position,
+  .ranking-points,
+  .player-name h3 {
+    padding-left: 0rem;
+  }
+
+  .tournament-info h2 {
+    font-size: 2rem;
+  }
+
+  .counter-cont-head {
+    display: none;
+  }
+
+  .counter-elements-cont {
+    gap: 2rem;
+    padding: 2.5rem 1rem;
+  }
+
+  .events-search-form {
+    grid-template-columns: 0.5fr 0.5fr 1.2fr 0.2fr;
+  }
+
+  .form-container {
+    margin: 0 1rem;
+  }
+
+  .amount {
+    font-size: 2.75rem;
+  }
+
+  .player-card-header {
+    height: 13.5rem;
+  }
+
+  .header-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .header-text p {
+    font-size: 0.85rem;
+  }
+
+  .header-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .modal-header {
+    padding: 1.5rem 0.85rem;
+  }
+
+  .user-edit-btn-close {
+    max-width: 2.75rem;
+    height: 2.5rem;
+  }
+
+  .header-text {
+    padding-right: 1.26rem;
+  }
+
+  .toggle-pill {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .auth-form-side {
+    padding: 2rem;
+  }
+
+  .footer-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .modal img {
+    min-height: 50%;
+    max-width: 25rem;
+  }
+
+  .next-btn {
+    right: 0.26rem;
+  }
+
+  .prev-btn {
+    left: 0.26rem;
+  }
+
+  .close-btn {
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .intro-head h1 {
+    font-size: 1.6rem;
+  }
+
+  .ranking-position,
+  .ranking-points {
+    font-size: 1.25rem;
+  }
+
+  .player-name-first,
+  .player-name-last {
+    font-size: 1.25rem;
+  }
+
+  .ranking-card {
+    height: 14.5rem;
+  }
+
+  .news-txt-head h2 {
+    font-size: 0.8rem;
+  }
+
+  .sort-text-selected {
+    font-size: 0.85rem;
+  }
+
+  .event-details {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card {
+    width: 350px;
+  }
+
+  .events-search-form {
+    grid-template-columns: 0.5fr 0.5fr 1.2fr 0.1fr;
+  }
+
+  .detail-value {
+    font-size: 0.85rem;
+  }
+
+  .detail-label {
+    font-size: 0.826rem;
+  }
+
+  .select-district {
+    padding: 0.2rem;
+  }
+
+  .district {
+    width: 19rem;
+  }
+
+  .member {
+    padding: 2rem 1rem;
+  }
+
+  .cta-btn {
+    padding: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .search-input {
+    min-width: 13rem;
+    padding: 1rem 1rem 1rem 3.5rem;
+  }
+
+  .tba-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-container {
+    padding: 1rem;
+  }
+
+  .tournament-home {
+    padding: 3rem 2rem 4rem;
+  }
+
+  .ranking-heading {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 405px) {
+  .all-player-card {
+    min-width: 20rem;
+    max-width: 23rem;
+  }
+
+  .tournament-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .modal img {
+    min-height: 55%;
+    max-width: 23rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .news-box {
+    min-width: 9rem;
+  }
+
+  .intro-head h1 {
+    font-size: 1.46rem;
+  }
+
+  .event-card {
+    width: 326px;
+  }
+
+  .select-district {
+    padding: 0rem;
+  }
+
+  .district {
+    width: 17rem;
+  }
+
+  .side-column {
+    min-width: 300px;
+  }
+
+  .navbar {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+  }
+
+  .ranking-heading {
+    font-size: 1rem;
+  }
+
+  .news-head h1 {
+    font-size: 1.4rem;
+  }
+
+  .stats-banner {
+    gap: 1rem;
+  }
+
+  .form-navigation {
+    padding: 1rem;
+  }
+
+  .event-form {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .form-wrapper {
+    padding: 1.5rem 0rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .event-card {
+    width: 300px;
+  }
+
+  .district {
+    width: 15rem;
+  }
+
+  .players-grid {
+    padding: 6rem 0.5rem 5rem;
+  }
+
+  .all-player-card {
+    min-width: 18rem;
+    max-width: 21rem;
+  }
+
+  .section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    justify-items: center;
+    padding: 1rem 1.5rem 7.5rem;
+    gap: 2rem;
+    row-gap: 2.26rem;
+  }
+
+  .modal img {
+    min-height: 50%;
+    max-width: 20rem;
+  }
+
+  .google-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .title h1 {
+    font-size: 2.2rem;
+  }
+
+  .form-navigation {
+    padding: 1rem 0.7rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+    max-width: 15rem;
+  }
+
+      .logo img {
+        height: 2.75rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
+  .tournament-cont {
+    padding: 1rem 0rem 1rem 1rem;
+  }
+
+  .tournament-home {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .event-results {
+    padding: 3rem 0.5rem 7rem;
+  }
+
+  .district {
+    width: 13.5rem;
+  }
+
+  .modal img {
+    min-height: 40%;
+    max-width: 17rem;
+  }
 }

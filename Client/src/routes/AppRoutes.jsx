@@ -48,9 +48,9 @@ function AppRoutes() {
             <Route path='/login' element={
                 <LoginProtectedRoute>
                     <Login />
-                  </LoginProtectedRoute> 
-                } 
-                />
+                </LoginProtectedRoute>
+            }
+            />
 
             <Route path='/players/:id' element={<ViewPlayerPage />} />
 

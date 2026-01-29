@@ -67,7 +67,7 @@
   position: fixed;
   width: 100%;
   top: 5rem;
-  z-index: 100;
+  z-index: 20;
   background: rgba(10, 10, 10, 0.85);
   background: linear-gradient(90deg, rgba(252, 69, 69, 1) 0%, rgba(225, 0, 0, 1) 55%);
   backdrop-filter: blur(30px) saturate(180%);
@@ -76,21 +76,8 @@
 }
 
 .search-filter-container {
-  max-width: 80rem;
   margin: 0 auto;
-  padding: 1.5rem 1rem;
-}
-
-@media (min-width: 640px) {
-  .search-filter-container {
-    padding: 1.5rem 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .search-filter-container {
-    padding: 1.5rem 2rem;
-  }
+  padding: 1.2rem;
 }
 
 .search-filter-flex {
@@ -110,6 +97,9 @@
   position: relative;
   max-width: 600px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-icon {
@@ -186,29 +176,10 @@
   padding: 6rem 2rem 5rem;
 }
 
-@media (min-width: 640px) {
-  .players-grid-container {
-    padding: 4rem 1.5rem;
-  }
-}
-
 .players-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .players-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .players-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
 }
 
 .all-player-card {

@@ -68,11 +68,6 @@
     height: 15.5rem;
 }
 
-.ranking-card-3 {
-    /* height: 15rem; */
-}
-
-
 .ranking-info {
     display: flex;
     flex-direction: column;
@@ -115,12 +110,19 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding-left: 0.5rem;
 }
 
 .player-name-first {
     font-weight: 500;
-    font-size: 1.45rem;
+}
 
+
+.player-name-first,
+.player-name-last {
+    position: relative;
+    z-index: 2;
+    font-size: 1.45rem;
 }
 
 .player-name p {
@@ -132,6 +134,7 @@
     font-weight: bold;
     position: absolute;
     bottom: 1rem;
+    padding-left: 0.5rem;
 }
 
 .view-all-rankings {
@@ -186,9 +189,6 @@
     color: white;
     background: linear-gradient(to bottom right, #4F4F4F, #A13232, #613434);
 }
-
-
-.ranking-men {}
 
 @media (max-width: 768px) {
     .ranking-head h2 {

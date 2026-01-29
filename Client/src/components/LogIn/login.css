@@ -110,7 +110,7 @@
     margin-bottom: 0.5rem;
 }
 
-.stat-label {
+.login-stat-label {
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
@@ -364,19 +364,6 @@ align-items: center;
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-    .auth-page {
-        grid-template-columns: 1fr;
-    }
-
-    .auth-branding {
-        display: none;
-    }
-
-    .auth-form-side {
-        padding: 2rem;
-    }
-}
 
 @media (max-width: 768px) {
     .auth-form-container {

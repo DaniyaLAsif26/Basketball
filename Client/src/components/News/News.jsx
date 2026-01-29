@@ -51,9 +51,9 @@ export default function News() {
                         <NewsSmall data={row1[2]} />
                     </div>
                     <div className="news-row">
-                        <NewsBig data={row2[0]} />
                         <NewsSmall data={row2[1]} />
                         <NewsSmall data={row2[2]} />
+                        <NewsBig data={row2[0]} />
                     </div>
                 </div>
             </div>

@@ -46,11 +46,6 @@ export default function Events() {
         allEvents()
     }, [])
 
-    useEffect(() => {
-        console.log("Updated events:", events)
-    }, [events])
-
-
     // Type
     const [search, setSearch] = useState(() => {
         return sessionStorage.getItem('eventSearch') || '';
@@ -117,7 +112,7 @@ export default function Events() {
     const drop = [
         { head: 'Type', selected: type, setSelected: setType, icon: <MdOutlineSort style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'type', list: ['All', 'Official', 'Un-Official'] },
 
-        { head: 'Age group', selected: age, setSelected: setAge, icon: <IoPerson style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'age', list: ['All', 'Open', 'U-23', 'U-21', 'U-19', 'U-18', 'U-17', 'U-16', 'U-15', 'U-14', 'U-13', 'U-12', 'U-11', 'U-10'] },
+        { head: 'Age', selected: age, setSelected: setAge, icon: <IoPerson style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'age', list: ['All', 'Open', 'U-23', 'U-21', 'U-19', 'U-18', 'U-17', 'U-16', 'U-15', 'U-14', 'U-13', 'U-12', 'U-11', 'U-10'] },
 
         { head: 'Category', selected: category, setSelected: setCategory, icon: <IoMdMale style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'category', list: ['All', 'Male', 'Female'] },
 
@@ -172,14 +167,38 @@ export default function Events() {
         console.log(search, type, age, category, level, format, category)
     }
 
+    const [eventSearch, setEventSearch] = useState(window.innerWidth < 1200)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setNavbarWidth(window.innerWidth < 1200)
+        }
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [])
+
     return (
         <div className="events">
 
             <div className="events-search">
                 <form action="" className='events-search-form'>
-                    <EveInput search={search} setSearch={setSearch} />
-                    <EveDrop drop={drop} />
-                    <EveSearch search={submitSearch} />
+                    {!eventSearch ?
+                        <>
+                            <EveInput search={search} setSearch={setSearch} />
+                            <EveDrop drop={drop} />
+                            <EveSearch search={submitSearch} />
+                        </>
+                        :
+                        <>
+                            <EveInput search={search} setSearch={setSearch} />
+                            <EveSearch search={submitSearch} />
+                            <EveDrop drop={drop} />
+                        </>
+                    }
 
                 </form>
             </div>

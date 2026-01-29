@@ -561,7 +561,7 @@
     }
 
     .side-column {
-        max-width: 500px;
+        min-width: 450px;
         margin: 0 auto;
     }
 }
@@ -576,10 +576,17 @@
     }
 
     .content-grid {
-        padding: 1rem;
+        padding: 1.26rem;
     }
 
     .section-card {
         padding: 1.5rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .side-column {
+        min-width: 400px;
+        margin: 0 auto;
     }
 }

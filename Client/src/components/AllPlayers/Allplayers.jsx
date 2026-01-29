@@ -43,6 +43,7 @@ export default function AllPlayers() {
   }, [])
 
   const DOB = (date) => {
+    if (!date) return;
     const dob = new Date(date)
     const current = new Date()
 
@@ -93,21 +94,21 @@ export default function AllPlayers() {
 
                   <div className="player-location">
                     <MapPin className="location-icon" />
-                    <span>{player.homeTown}</span>
+                    <span>{player.homeTown || '-'}</span>
                   </div>
 
                   <div className="player-details">
                     <div className="detail-row">
                       <span className="detail-label">Position</span>
-                      <span className="detail-value">{player.playerPosition}</span>
+                      <span className="detail-value">{player?.playerPosition || '-'}</span>
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">Age</span>
-                      <span className="detail-value">{DOB(player.dateOfBirth)}</span>
+                      <span className="detail-value">{DOB(player?.dateOfBirth) || '-'}</span>
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">Height</span>
-                      <span className="detail-value">{player.height}</span>
+                      <span className="detail-value">{player?.height || '-'}</span>
                     </div>
                   </div>
                 </div>

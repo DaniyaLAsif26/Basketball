@@ -33,10 +33,10 @@ export default function Footer() {
     ];
 
     const resources = [
-        { name: 'Player Registration', path: '/login' },
+        { name: 'Players', path: '/players' },
         { name: 'Host Event', path: '/add-event' },
         { name: 'Districts', path: '/districts' },
-        { name: 'Working of Rankings', path: '/training' },
+        { name: 'Working of Rankings', path: '/ranking-working' },
     ];
 
     const socialLinks = [
@@ -98,7 +98,6 @@ export default function Footer() {
                                 {quickLinks.map((link, index) => (
                                     <li key={index}>
                                         <NavLink to={link.path} className="footer-link">
-                                            <ChevronRight className="link-icon" />
                                             {link.name}
                                         </NavLink>
                                     </li>
@@ -113,14 +112,12 @@ export default function Footer() {
                                 {resources.map((link, index) => (
                                     <li key={index}>
                                         <NavLink to={link.path} className="footer-link">
-                                            <ChevronRight className="link-icon" />
                                             {link.name}
                                         </NavLink>
                                     </li>
                                 ))}
                                 <li>
                                     <div className="footer-link" onClick={navigateAdmin}>
-                                        <ChevronRight className="link-icon" />
                                         Admin
                                     </div>
                                 </li>
@@ -147,7 +144,7 @@ export default function Footer() {
                                 <div className="contact-item">
                                     <Mail className="contact-icon" />
                                     <div className="contact-text">
-                                        <a href="mailto:info@basketball.com">telanganabasketballassociation@gmail.com</a>
+                                        telanganabasketballassociation@gmail.com
                                     </div>
                                 </div>
                             </div>

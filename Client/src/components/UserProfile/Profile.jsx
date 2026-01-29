@@ -27,6 +27,8 @@ export default function PlayerProfile({ UserData }) {
   };
 
   const DOB = (date) => {
+  if(!date) return ;
+  
     const dob = new Date(date)
     const current = new Date()
 
@@ -66,9 +68,9 @@ export default function PlayerProfile({ UserData }) {
               </h1>
               <div className="meta">
                 <span className="pill">{UserData.playerPosition || '-'}</span>
-                <span>•</span>
-                <MapPin size={16} />
-                <span>{UserData.homeTown || '-'}</span>
+                <span className='dot'>•</span>
+                
+                <span><MapPin size={16} /> &nbsp;{UserData.homeTown || '-'}</span>
               </div>
             </div>
           </div>
@@ -122,13 +124,13 @@ export default function PlayerProfile({ UserData }) {
               <div className="details">
                 <div className="row"><span>First Name</span><strong>{UserData.firstName}</strong></div>
                 <div className="row"><span>Last Name</span><strong>{UserData.lastName || '-'}</strong></div>
-                <div className="row"><span>Age</span><strong>{DOB(UserData.dateOfBirth) || '-'}</strong></div>
+                <div className="row"><span>Age</span><strong>{DOB(UserData?.dateOfBirth) || '-'}</strong></div>
                 <div className="row"><span>Gender</span><strong>{UserData.gender || '-'}</strong></div>
                 <div className="row"><span>Email</span><strong className="email">{UserData.email}</strong></div>
                 {userData._id === UserData._id &&
                   <div className="row"><span>Phone</span><strong>{UserData.phoneNumber || '-'}</strong></div>
                 }
-                <div className="row"><span>Date of Birth</span><strong>{formatDate(UserData.dateOfBirth) || '-'}</strong></div>
+                <div className="row"><span>Date of Birth</span><strong>{formatDate(UserData?.dateOfBirth) || '-'}</strong></div>
                 <div className="row"><span>Location</span><strong>{UserData.homeTown || '-'}</strong></div>
               </div>
             </div>

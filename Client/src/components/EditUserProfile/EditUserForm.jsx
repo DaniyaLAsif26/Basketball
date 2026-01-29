@@ -398,7 +398,7 @@ export default function EditUserForm({ onClose }) {
                 }
                 }
               >
-                Next Step
+                Next
               </button>
             ) : (
               <button
@@ -406,7 +406,7 @@ export default function EditUserForm({ onClose }) {
                 className="btn-nav btn-submit"
               >
                 <Save size={20} />
-                Save Changes
+                Save
               </button>
             )}
           </div>

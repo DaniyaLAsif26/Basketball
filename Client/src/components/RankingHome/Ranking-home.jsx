@@ -85,7 +85,7 @@ export default function Ranking() {
             <div className="ranking">
                 <div className="ranking-head">
                     <h2>Player Rankings</h2>
-                    <div className="">Updated on 20/10/2025</div>
+                    <div className="ranking-update">Updated on 20/10/2025</div>
                 </div>
                 <div className="ranking-btn-cont">
                     <div className="ranking-btn">

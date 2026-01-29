@@ -119,15 +119,15 @@ export default function Login() {
                     <div className="stats-row">
                         <div className="stat-card">
                             <div className="stat-number-login">500+</div>
-                            <div className="stat-label">Players</div>
+                            <div className="login-stat-label">Players</div>
                         </div>
                         <div className="stat-card">
                             <div className="stat-number-login">10+</div>
-                            <div className="stat-label">Tournaments</div>
+                            <div className="login-stat-label">Tournaments</div>
                         </div>
                         <div className="stat-card">
                             <div className="stat-number-login">33</div>
-                            <div className="stat-label">Districts</div>
+                            <div className="login-stat-label">Districts</div>
                         </div>
                     </div>
                 </div>

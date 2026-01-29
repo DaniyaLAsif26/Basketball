@@ -132,7 +132,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
     .player-card {
         flex-wrap: wrap;
     }
@@ -141,5 +141,11 @@
         order: 3;
         flex-basis: 100%;
         margin-top: 0.5rem;
+        text-align: center;
+    }
+
+    .rank-badge,
+    .player-image {
+        margin-right: 0.5rem;
     }
 }
