@@ -22,9 +22,9 @@ export default function AllUsers({ table }) {
         rankedOptions: { ranked: ranked, showRanked: setRanked }
     }
 
-    const getAllUsers = async () => {
+    const getAllUsers = async (searchQuery = '') => {
         try {
-            const res = await fetch(`${BackEndRoute}/api/user/all-users`, {
+            const res = await fetch(`${BackEndRoute}/api/user/all-users?q=${searchQuery}`, {
                 method: "GET",
                 credentials: "include"
             })
@@ -51,9 +51,17 @@ export default function AllUsers({ table }) {
         getAllUsers()
     }, [])
 
+    useEffect(() => {
+        const delayBounce = setTimeout(() => {
+            getAllUsers(search)
+
+            return () => clearInterval(delayBounce)
+        }, 400)
+
+    }, [search])
+
     const deleteUser = async () => {
         const isConfirmed = confirm("User will be Deleted")
-
     }
 
     return (
@@ -61,33 +69,42 @@ export default function AllUsers({ table }) {
             <OptionsHead head={OptHead} />
             <div className="all-users">
                 <div className="all-users-table-cont">
-                    <table className='all-users-table'>
-                        <thead>
-                            <tr>
-                                {table.map((item, index) => (
-                                    <th>{item}</th>
-                                ))}
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user, index) =>
-                                <tr key={user._id}>
-                                    <td>{index + 1}</td>
-                                    <td>{user.firstName}</td>
-                                    <td>{user.email}</td>
-                                    <td> <b>{user.ranking.currentRanking || '-'} </b></td>
-                                    <td>
-                                        <button onClick={() => navigate(`/admin/user/edit/${user._id}`)} className='edit-news-btn'>Edit</button>
-                                    </td>
-                                    <td>
-                                        <button onClick={deleteUser} className='delete-news-btn'>Delete</button>
-                                    </td>
+                    {users.length !== 0 ? (
+                        <table className='all-users-table'>
+                            <thead>
+                                <tr>
+                                    {table.map((item, index) => (
+                                        <th>{item}</th>
+                                    ))}
+                                    <th></th>
+                                    <th></th>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {users.map((user, index) =>
+                                    <tr key={user._id}>
+                                        <td>{index + 1}</td>
+                                        <td>{user.firstName}</td>
+                                        <td>{user.email}</td>
+                                        <td> <b>{user.ranking.currentRanking || '-'} </b></td>
+                                        <td>
+                                            <button onClick={() => navigate(`/admin/user/edit/${user._id}`)} className='edit-news-btn'>Edit</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={deleteUser} className='delete-news-btn'>Delete</button>
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    )
+                        :
+                        (
+                            <div className="error-msg-admin">
+                                No Events Found
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>
