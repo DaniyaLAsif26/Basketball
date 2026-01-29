@@ -14,7 +14,7 @@ const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 
 export default function Login() {
 
-    const { setIsUserLoggedIn, setUserData , checkCompleteUserProfile } = useLogin()
+    const { setIsUserLoggedIn, setUserData, checkCompleteUserProfile } = useLogin()
 
     const [isLogin, setIsLogin] = useState()
 
@@ -50,13 +50,8 @@ export default function Login() {
 
             setIsUserLoggedIn(true)
             setUserData(dataRes.user)
-            if(checkCompleteUserProfile(dataRes.user)){
-               return navigate('/')
-            }
-            else{
-                return navigate('/my-account/edit')
-            }
-            
+            navigate('/my-account')
+            return
         }
         catch (err) {
             console.error(err);

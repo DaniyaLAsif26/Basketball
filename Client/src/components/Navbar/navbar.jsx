@@ -54,13 +54,8 @@ export default function Navbar() {
 
   const redirectUserProfile = (e) => {
     e.preventDefault()
-    checkCompleteUserProfile(userData)
-    if (checkCompleteUserProfile(userData)) {
-      navigate('/my-account')
-    }
-    else {
-      navigate('/my-account/edit')
-    }
+    navigate('/my-account')
+    return
   }
 
 
@@ -127,7 +122,7 @@ export default function Navbar() {
             }
           </div>
           {sidebar &&
-            <Sidebar isOpen={sidebar} isClose={setSidebar}/>
+            <Sidebar isOpen={sidebar} isClose={setSidebar} />
           }
         </>
       }
