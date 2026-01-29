@@ -2,7 +2,7 @@ import express from "express"
 import multer from 'multer'
 import User from "../models/user.js"
 
-import { cloudinary, createCloudinaryStorage , deleteCloudinaryImage } from '../cloudConfig.js'
+import { cloudinary, createCloudinaryStorage, deleteCloudinaryImage } from '../cloudConfig.js'
 
 const createUserStorage = createCloudinaryStorage({
     folder: "users",
@@ -192,19 +192,47 @@ router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
 })
 
 router.get('/all-users', async (req, res) => {
-    try {
-        const allUsers = await User.find().sort({ createdAt: -1 })
 
-        if (!allUsers || allUsers.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: "No users found"
+    const query = req.query.q?.trim();
+
+    try {
+        if (!query) {
+
+            const allUsers = await User.find().sort({ createdAt: -1 })
+
+            if (!allUsers || allUsers.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "No users found"
+                })
+            }
+
+            return res.status(200).json({
+                success: true,
+                users: allUsers
+            })
+        }
+
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+        const user = await User.find({
+            $or: [
+                { firstName: { $regex: escapedQuery, $options: 'i' } },
+                { lastName: { $regex: escapedQuery, $options: 'i' } },
+                { email: { $regex: escapedQuery, $options: 'i' } },
+            ],
+        });
+
+        if (user.length === 0) {
+            return res.status(299).json({
+                success: true,
+                users: []
             })
         }
 
         return res.status(200).json({
             success: true,
-            users: allUsers
+            users: user
         })
     }
     catch (err) {
