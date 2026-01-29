@@ -1,7 +1,11 @@
 .form-wrapper {
   min-height: 100vh;
   background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
-  padding: 3rem 1rem 7rem;
+  padding: 1rem 1rem 7rem;
+}
+
+.add-edit-back-btn {
+  margin: 1rem 2rem 1.75rem;
 }
 
 .form-container {

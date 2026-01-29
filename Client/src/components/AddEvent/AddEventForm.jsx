@@ -18,6 +18,7 @@ import {
     Image,
     FileText,
     Award,
+    ArrowLeft,
 } from 'lucide-react';
 
 const eventSchema = z.object({
@@ -383,8 +384,18 @@ export default function AddEventForm({ eventData = null, isEditMode = false, isA
         return <span className="error-message">{error.message}</span>;
     };
 
+    const backPath = eventData?._id
+        ? `/view-event/${eventData._id}`
+        : '/events';
+
     return (
         <div className="form-wrapper">
+            <div className="event-page-back">
+                <button className="add-edit-back-btn back-btn" onClick={() => navigate(backPath)}>
+                    <ArrowLeft className="icon-sm" />
+                    Back
+                </button>
+            </div>
             <div className="form-container">
                 <div className="form-header">
                     <h1 className="form-title">
@@ -459,8 +470,8 @@ export default function AddEventForm({ eventData = null, isEditMode = false, isA
                                     className={`form-select ${errors.type ? 'error' : ''}`}
                                 >
                                     <option value="UN-OFFICIAL">UN-OFFICIAL</option>
-                                    {(checkAdmin || isAdminEdit) && 
-                                    (<option value="OFFICIAL">OFFICIAL</option>)}
+                                    {(checkAdmin || isAdminEdit) &&
+                                        (<option value="OFFICIAL">OFFICIAL</option>)}
                                 </select>
                                 <ErrorMessage error={errors.type} />
                             </div>
@@ -842,6 +853,6 @@ Prize money for top 3 teams"
                     </div>
                 </form>
             </div>
-        </div>
+        </div >
     );
 }

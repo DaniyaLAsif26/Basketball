@@ -24,7 +24,7 @@ export default function EditEvent() {
 
                 if (data.success === true) {
                     setEvent(data.data)
-                    console.log(data.data)
+                    return;
                 }
             }
             catch (err) {
@@ -42,7 +42,7 @@ export default function EditEvent() {
 
     return (
         <div className="edit-event-cont">
-            <AddEventForm eventData={event} isEditMode={true} isAdminEdit={true}/>
+            <AddEventForm eventData={event} isEditMode={true} isAdminEdit={true} />
         </div>
     )
 }
