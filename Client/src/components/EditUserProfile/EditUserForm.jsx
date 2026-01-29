@@ -76,7 +76,7 @@ const userSchema = z.object({
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-export default function EditUserForm({ onClose }) {
+export default function EditUserForm() {
 
   const navigate = useNavigate()
 
@@ -204,7 +204,7 @@ export default function EditUserForm({ onClose }) {
               <p>{isComplete ? 'Update' : 'Add'} your basketball profile information</p>
             </div>
           </div>
-          <button className="user-edit-btn-close" onClick={onClose}>
+          <button className="user-edit-btn-close" onClick={() => navigate('/my-account')}>
             <X size={26} />
           </button>
         </div>
