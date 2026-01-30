@@ -17,10 +17,11 @@ const app = express()
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const allowedOrigins = ["http://localhost:5173",
+const allowedOrigins = [
+    "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
-    'https://vercel.com/tbas-projects-3ce63ece/basketball',
+    'https://basketball-eight-wheat.vercel.app/',
 ];
 
 app.use(cors({
