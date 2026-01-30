@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=BBH+Bartle&family=Sekuya&display=swap');
 
-.intro-cont {
+/* .intro-cont {
     height: calc(100vh - 5rem);
     background-color: rgb(41, 41, 41);
     position: relative;
     overflow: hidden;
-}
+} */
 
 .intro-bg-img {
     position: absolute;

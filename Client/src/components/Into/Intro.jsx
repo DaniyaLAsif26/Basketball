@@ -7,7 +7,15 @@ export default function Intro() {
     const navigate = useNavigate();
 
     return (
-        <div className="intro-cont">
+        <div 
+            className="intro-cont"
+            style={{
+                height: 'calc(100vh - 5rem)',
+                backgroundColor: 'rgb(41, 41, 41)',
+                position: 'relative',
+                overflow: 'hidden'
+            }}
+        >
             <div className="intro-head">
                 <h1>
                     TELANGANA&nbsp; BASKETBALL&nbsp; ASSOCIATION
