@@ -7,7 +7,7 @@ export default function Intro() {
     const navigate = useNavigate();
 
     return (
-        <div className="intro-cont">
+        <div className="intro-cont-">
             <div className="intro-head">
                 <h1>
                     TELANGANA&nbsp; BASKETBALL&nbsp; ASSOCIATION
