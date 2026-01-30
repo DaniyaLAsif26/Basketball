@@ -1,8 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-console.log("0-Auth", process.env.O_AUTH_CLIENT_ID);
-
 import express from "express"
 import mongoose from 'mongoose'
 import cors from 'cors'
@@ -16,6 +14,8 @@ import UserRoute from './routes/User.js'
 import searchRoute from './routes/Search.js'
 
 const app = express()
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 const allowedOrigins = ["http://localhost:5173",
     "http://localhost:5174",
