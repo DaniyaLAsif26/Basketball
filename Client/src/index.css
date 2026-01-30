@@ -506,6 +506,14 @@ p {
   .branding-title {
     font-size: 2.6rem;
   }
+
+  .navbar {
+    padding: 0.5rem 2rem;
+  }
+
+  .nav-btns {
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 1100px) {
@@ -556,6 +564,18 @@ p {
 
   .players-grid {
     padding: 6rem 1rem 5rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .options ul {
+    gap: 1rem;
+  }
+
+  .nav-btns {
+    margin-left: 1.5rem;
   }
 
 }
@@ -726,6 +746,10 @@ p {
   .select-district {
     border-right: 0px;
   }
+
+  .navbar {
+    padding: 0.5rem 0.8rem;
+  }
 }
 
 @media screen and (max-width: 999px) {
@@ -793,6 +817,7 @@ p {
   .modal img {
     max-width: 60rem;
   }
+
 }
 
 @media screen and (max-width: 950px) {

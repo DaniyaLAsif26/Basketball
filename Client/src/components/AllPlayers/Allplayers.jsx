@@ -14,10 +14,10 @@ export default function AllPlayers() {
   const [allPlayers, setAllPlayers] = useState([]);
   const [allPlayersLoaded, setAllPlayersLoaded] = useState(false);
 
-  const getAllPlayers = async () => {
+  const getAllPlayers = async (searchQuery = '') => {
 
     try {
-      const res = await fetch(`${BackEndRoute}/api/user/all-users`)
+      const res = await fetch(`${BackEndRoute}/api/user/all-users?q=${searchQuery}`)
 
       const dataRes = await res.json()
 
@@ -41,6 +41,14 @@ export default function AllPlayers() {
   useEffect(() => {
     getAllPlayers()
   }, [])
+
+  useEffect(() => {
+    const delayBounce = setTimeout(() => {
+      getAllPlayers(searchTerm)
+
+      return () => clearInterval(delayBounce)
+    }, 400)
+  }, [searchTerm])
 
   const DOB = (date) => {
     if (!date) return;

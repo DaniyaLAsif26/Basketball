@@ -37,6 +37,7 @@ export default function Navbar() {
     { link: "EVENTS", href: "/events" },
     { link: "NEWS", href: "/news" },
     { link: "RANKING", href: "/rankings" },
+    { link: "PLAYERS", href: "/players" },
     { link: "DISTRICTS", href: "/districts" },
     { link: "ABOUT US", href: "/about" },
     { link: "GALLERY", href: "/gallery" },
