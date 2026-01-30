@@ -61,6 +61,7 @@ connectDB()
         console.log(err)
     })
 
+// Root route
 app.get('/', (req, res) => {
     res.status(200).json({ 
         message: "Backend is running 🚀",
@@ -90,14 +91,12 @@ app.get('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")
 })
 
-app.use("/api/*", (req, res) => {
-    res.status(404).json({ message: "API route not found" });
-});
-
+// 404 handler for all unmatched routes
 app.use((req, res) => {
     res.status(404).json({ message: "Route not found" });
 });
 
+// Error handler
 app.use((err, req, res, next) => {
     console.error("Server error:", err.stack);
     res.status(err.status || 500).json({
