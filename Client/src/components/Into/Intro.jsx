@@ -3,19 +3,14 @@ import into_bg from '../../assets/intro-bg.jpg'
 import {useNavigate} from 'react-router-dom'
 
 export default function Intro() {
-
     const navigate = useNavigate();
 
     return (
-        <div 
-            className="intro-cont"
-            style={{
-                height: 'calc(100vh - 5rem)',
-                backgroundColor: 'rgb(41, 41, 41)',
-                position: 'relative',
-                overflow: 'hidden'
-            }}
-        >
+        <div className="intro-cont">
+            <div className="intro-bg-img">
+                <img src={into_bg} alt="Basketball background" />
+            </div>
+            <div className="intro-bg-color"></div>
             <div className="intro-head">
                 <h1>
                     TELANGANA&nbsp; BASKETBALL&nbsp; ASSOCIATION
@@ -26,10 +21,6 @@ export default function Intro() {
                     <button className="comic-button comic-button-2" onClick={() => navigate('/about')}>About Us</button>
                 </div>
             </div>
-            <div className="intro-bg-img">
-                <img src={into_bg} alt="" />
-            </div>
-            <div className="intro-bg-color"></div>
         </div>
     )
 }

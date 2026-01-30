@@ -8,8 +8,8 @@ import Counter from '../components/Statistics/Counter.jsx'
 export default function HomePage() {
     return (
         <>
+            <Intro />
             <div className="home-bg">
-                <Intro />
                 <News />
                 <Counter />
                 <Ranking />
