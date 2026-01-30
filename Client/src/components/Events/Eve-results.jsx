@@ -43,7 +43,7 @@ export default function EveResults({ searchResults, loading }) {
                         )
                     ) : (
                         <div className="event-error-msg">
-                            No Tournaments currently being hosted
+                            No Events Found
                         </div>
                     )}
                 </div>

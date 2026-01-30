@@ -5,7 +5,9 @@ export default function EveSearch({search}) {
     return (
         <div className="evt-sort-wrapper evt-sort-wrapper-search" onClick={search}>
             <div className="evt-search-icon">
+                <button type='submit'>
                 <FaSearch className="sort-icon" style={{ fontSize: '1.15rem' }} />
+                </button>
             </div>
         </div>
     )

@@ -21,28 +21,29 @@ export default function Events() {
     const [events, setEvents] = useState([])
     const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        const allEvents = async () => {
-            if (loading) return;
-            try {
-                setLoading(true)
-                const res = await fetch(`${BackEndRoute}/api/event/all-events`, {
-                    method: "GET"
-                })
+    const allEvents = async () => {
+        if (loading) return;
+        try {
+            setLoading(true)
+            const res = await fetch(`${BackEndRoute}/api/event/all-events`, {
+                method: "GET"
+            })
 
-                const data = await res.json()
+            const data = await res.json()
 
-                if (data.success === true) {
-                    setEvents(data.data)
-                }
-            }
-            catch (err) {
-                console.log(err)
-            }
-            finally {
-                setLoading(false)
+            if (data.success === true) {
+                setEvents(data.data)
             }
         }
+        catch (err) {
+            console.log(err)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
         allEvents()
     }, [])
 
@@ -164,14 +165,71 @@ export default function Events() {
     ]
 
     const submitSearch = async () => {
-        console.log(search, type, age, category, level, format, category, district)
+        const query = {}
+
+        if (search) {
+            query.search = search;
+        }
+
+        if (type && type !== 'All') {
+            query.type = type.toLocaleUpperCase();
+        }
+
+        if (age && age !== 'All') {
+            query.age = age.toLocaleUpperCase();
+        }
+
+        if (category && category !== 'All') {
+            query.category = category.toUpperCase();
+        }
+
+        if (level && level !== 'All') {
+            query.level = level.toLocaleUpperCase();
+        }
+
+        if (format && format !== 'All') {
+            query.format = format.toLocaleUpperCase();
+        }
+
+        if (district && district !== 'All') {
+            query.format = district;
+        }
+
+        const queryString = new URLSearchParams(query).toString();
+        console.log(queryString)
+
+        try {
+            setLoading(true)
+
+            const res = await fetch(`${BackEndRoute}/api/search/events?${queryString}`, {
+                method: "GET"
+            })
+
+            const dataRes = await res.json()
+
+            if (dataRes === false) {
+                setEvents([])
+                return
+            }
+
+            setEvents(dataRes.events)
+        }
+        catch (err) {
+            console.log(err.message)
+            alert(err)
+            setEvents([])
+            return
+        } finally {
+            setLoading(false)
+        }
+
     }
 
     const [eventSearch, setEventSearch] = useState(window.innerWidth < 1200)
 
     useEffect(() => {
         const handleResize = () => {
-            setNavbarWidth(window.innerWidth < 1200)
+            setEventSearch(window.innerWidth < 1200)
         }
 
         window.addEventListener("resize", handleResize);
@@ -185,7 +243,10 @@ export default function Events() {
         <div className="events">
 
             <div className="events-search">
-                <form action="" className='events-search-form'>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    submitSearch();
+                }} className='events-search-form'>
                     {!eventSearch ?
                         <>
                             <EveInput search={search} setSearch={setSearch} />

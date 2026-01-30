@@ -11,6 +11,7 @@ import LoginRoute from './routes/Login.js'
 import LogoutRoute from './routes/Logout.js'
 import OAuthRoute from './routes/OAuth.js'
 import UserRoute from './routes/User.js'
+import searchRoute from './routes/Search.js'
 
 const app = express()
 
@@ -48,6 +49,7 @@ app.use('/api/login', LoginRoute)
 app.use('/api/logout', LogoutRoute)
 app.use('/api/auth', OAuthRoute)
 app.use('/api/user', UserRoute)
+app.use('/api/search', searchRoute)
 
 app.use('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")
