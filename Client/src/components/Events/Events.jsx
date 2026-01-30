@@ -114,7 +114,7 @@ export default function Events() {
 
         { head: 'Age', selected: age, setSelected: setAge, icon: <IoPerson style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'age', list: ['All', 'Open', 'U-23', 'U-21', 'U-19', 'U-18', 'U-17', 'U-16', 'U-15', 'U-14', 'U-13', 'U-12', 'U-11', 'U-10'] },
 
-        { head: 'Category', selected: category, setSelected: setCategory, icon: <IoMdMale style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'category', list: ['All', 'Male', 'Female'] },
+        { head: 'Category', selected: category, setSelected: setCategory, icon: <IoMdMale style={{ fontSize: '1.15rem' }} />, dropIcon: <TiArrowSortedDown style={{ fontSize: '1.15rem' }} />, class: 'category', list: ['All', 'MEN', 'WOMEN', 'MIXED'] },
 
         {
             head: 'Level', selected: level, setSelected: setLevel, icon: <PiStepsFill style={{ fontSize: '1.15rem' }} />,
@@ -164,7 +164,7 @@ export default function Events() {
     ]
 
     const submitSearch = async () => {
-        console.log(search, type, age, category, level, format, category)
+        console.log(search, type, age, category, level, format, category, district)
     }
 
     const [eventSearch, setEventSearch] = useState(window.innerWidth < 1200)
