@@ -1,6 +1,8 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
+console.log("0-Auth", process.env.O_AUTH_CLIENT_ID);
+
 import express from "express"
 import mongoose from 'mongoose'
 import cors from 'cors'
