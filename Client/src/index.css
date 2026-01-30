@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanchenjunga:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -86,7 +87,8 @@ p {
 }
 
 .counter-cont-head {
-  font-family: 'Roboto';
+  font-family: "Oswald", sans-serif;
+  word-spacing: 3px;
 }
 
 .counter-element {
@@ -94,13 +96,16 @@ p {
 }
 
 .ranking-head h2 {
-  font-family: 'Poppins';
-  word-spacing: 5px;
+  font-family: "Oswald", sans-serif;
 }
 
 .ranking-position {
   font-family: "BBH Bartle", sans-serif;
   padding-left: 0.5rem;
+}
+
+.tournament-info h2 {
+  font-family: "Oswald", sans-serif;
 }
 
 .tournament-info p {
@@ -1547,6 +1552,14 @@ p {
     left: 1rem;
   }
 
+  .slider-cont-head h2 {
+    font-size: 1.6rem;
+  }
+
+  .news-head {
+    padding: 2rem 2rem 1.26rem;
+  }
+
 }
 
 @media screen and (max-width: 520px) {
@@ -1632,6 +1645,10 @@ p {
   .gallery-btn {
     font-size: 1.1rem;
     padding: 0.8rem 0.875rem 0.5rem;
+  }
+
+  .slider-cont-head {
+    padding: 1.5rem 1rem 2rem;
   }
 }
 
@@ -1736,6 +1753,16 @@ p {
 
   .rankings-how .tournament-btn {
     padding: 0.5rem 0.7rem;
+  }
+
+  .slider-cont-head a {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    font-size: 0.9rem;
   }
 }
 
@@ -1843,6 +1870,23 @@ p {
   .close-btn {
     right: 1rem;
     font-size: 1.5rem;
+  }
+
+  .slider-cont-head h2 {
+    font-size: 1.4rem;
+  }
+
+  .ranking-head h2 {
+    font-size: 1.7rem;
+  }
+
+  .ranking-btn span {
+    min-width: 5rem;
+    font-size: 0.9rem;
+  }
+
+  .news-head {
+    padding: 2rem 1.5rem 1.26rem;
   }
 }
 
@@ -2062,9 +2106,13 @@ p {
     max-width: 15rem;
   }
 
-      .logo img {
-        height: 2.75rem;
-    }
+  .logo img {
+    height: 2.75rem;
+  }
+
+  .slider-cont-head a {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 330px) {
