@@ -61,6 +61,23 @@ connectDB()
         console.log(err)
     })
 
+app.get('/', (req, res) => {
+    res.status(200).json({ 
+        message: "Backend is running 🚀",
+        status: "OK",
+        endpoints: {
+            events: "/api/event",
+            news: "/api/news",
+            login: "/api/login",
+            logout: "/api/logout",
+            auth: "/api/auth",
+            user: "/api/user",
+            search: "/api/search",
+            hello: "/hello"
+        }
+    })
+})
+
 app.use('/api/event', EventRoute)
 app.use('/api/news', NewsRoute)
 app.use('/api/login', LoginRoute)
@@ -69,16 +86,16 @@ app.use('/api/auth', OAuthRoute)
 app.use('/api/user', UserRoute)
 app.use('/api/search', searchRoute)
 
-app.use('/hello', (req, res) => {
+app.get('/hello', (req, res) => {
     res.status(200).send("Backend is running 🚀")
 })
 
-app.use("/api", (req, res) => {
+app.use("/api/*", (req, res) => {
     res.status(404).json({ message: "API route not found" });
 });
 
 app.use((req, res) => {
-    res.status(404).json({ message: "API route not found" });
+    res.status(404).json({ message: "Route not found" });
 });
 
 app.use((err, req, res, next) => {
