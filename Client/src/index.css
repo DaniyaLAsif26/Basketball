@@ -1259,6 +1259,15 @@ p {
   .modal img {
     max-width: 45rem;
   }
+
+  .comic-button {
+    font-size: 1rem;
+    max-width: 6rem;
+  }
+
+  .comic-button-2 {
+    max-width: 7.5rem;
+  }
 }
 
 @media screen and (max-width: 775px) {
@@ -1709,6 +1718,14 @@ p {
     padding: 2rem 2rem 1.26rem;
   }
 
+  .comic-button {
+    padding: 0.375rem 1rem;
+  }
+
+  .comic-button {
+    padding: 0.375rem 1rem;
+  }
+
 }
 
 @media screen and (max-width: 520px) {
@@ -1798,6 +1815,10 @@ p {
 
   .slider-cont-head {
     padding: 1.5rem 1rem 2rem;
+  }
+
+  .comic-button-2 {
+    max-width: 7rem;
   }
 }
 
@@ -2258,7 +2279,8 @@ p {
   .slider-cont-head a {
     display: none;
   }
-    .counter-cont-head {
+
+  .counter-cont-head {
     padding: 1.5rem 1rem 1.7rem;
   }
 }
