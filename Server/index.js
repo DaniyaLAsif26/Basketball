@@ -22,11 +22,11 @@ const allowedOrigins = [
     "http://localhost:5174",
     "http://localhost:3000",
     'https://basketball-eight-wheat.vercel.app',
+    'https://basketball-knofxqeal-tbas-projects-3ce63ece.vercel.app',
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
-        console.log('Request from origin:', origin);
 
         if (!origin) return callback(null, !isProduction);
         if (allowedOrigins.indexOf(origin) === -1) {
