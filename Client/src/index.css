@@ -104,7 +104,8 @@ p {
   padding-left: 0.5rem;
 }
 
-.tournament-info h2 , .event-error-msg {
+.tournament-info h2,
+.event-error-msg {
   font-family: "Oswald", sans-serif;
 }
 

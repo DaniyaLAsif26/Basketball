@@ -5,6 +5,8 @@ import Tournament from '../components/Tournament/Tournament.jsx'
 import HeroSection from '../components/HeroSection/Hero.jsx'
 import Counter from '../components/Statistics/Counter.jsx'
 
+import '../components/HeroSection/hero.css'
+
 export default function HomePage() {
     return (
         <>
