@@ -21,11 +21,13 @@ const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
-    'https://basketball-eight-wheat.vercel.app/',
+    'https://basketball-eight-wheat.vercel.app',
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
+        console.log('Request from origin:', origin);
+
         if (!origin) return callback(null, !isProduction);
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
@@ -63,7 +65,7 @@ connectDB()
 
 // Root route
 app.get('/', (req, res) => {
-    res.status(200).json({ 
+    res.status(200).json({
         message: "Backend is running 🚀",
         status: "OK",
         endpoints: {
