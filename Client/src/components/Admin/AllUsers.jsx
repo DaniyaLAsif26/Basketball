@@ -60,8 +60,32 @@ export default function AllUsers({ table }) {
 
     }, [search])
 
-    const deleteUser = async () => {
+    const deleteUser = async (id) => {
         const isConfirmed = confirm("User will be Deleted")
+
+        if (isConfirmed) {
+            try {
+                const res = await fetch(`${BackEndRoute}/api/user/delete/${id}`, {
+                    method: "DELETE",
+                    credentials: "include"
+                })
+
+                const dataRes = await res.json()
+
+                if (dataRes === false) {
+                    alert(`Error : ${dataRes.message}`)
+                    return
+                }
+
+                alert(dataRes.message)
+                setUsers(users => users.filter(user => user._id !== id))
+                return
+            }
+            catch (err) {
+                console.log(err)
+                alert(`Error : ${err.message}`)
+            }
+        }
     }
 
     return (
@@ -91,7 +115,7 @@ export default function AllUsers({ table }) {
                                             <button onClick={() => navigate(`/admin/user/edit/${user._id}`)} className='edit-news-btn'>Edit</button>
                                         </td>
                                         <td>
-                                            <button onClick={deleteUser} className='delete-news-btn'>Delete</button>
+                                            <button onClick={() => deleteUser(user._id)} className='delete-news-btn'>Delete</button>
                                         </td>
                                     </tr>
                                 )}
@@ -101,7 +125,7 @@ export default function AllUsers({ table }) {
                         :
                         (
                             <div className="error-msg-admin">
-                                No Players Found
+                                No Users Found
                             </div>
                         )
                     }
