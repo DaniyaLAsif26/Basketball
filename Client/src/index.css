@@ -253,7 +253,7 @@ p {
 
 @media screen and (max-width: 1470px) {
   .hero-head {
-    bottom: 5.5rem;
+    bottom: 8.5rem;
   }
 
   .hero-head h1 {
@@ -1846,7 +1846,7 @@ p {
   }
 
   .hero-head {
-    bottom: 7rem;
+    bottom: 13rem;
   }
 
   .points-badge {
