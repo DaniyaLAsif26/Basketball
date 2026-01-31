@@ -117,6 +117,13 @@ export default function Sidebar({ isOpen, isClose }) {
         navigate('/login')
     }
 
+      const redirectUserProfile = (e) => {
+    e.preventDefault()
+    navigate('/my-account')
+    isClose(false)
+    return
+  }
+
     return (
         <div className={`sidebar-cont ${isOpen ? 'side' : ''}`}>
 
@@ -126,13 +133,13 @@ export default function Sidebar({ isOpen, isClose }) {
                     <div className="user-section">
                         <div className="user-photo-container">
                             <div className="photo-ring"></div>
-                            <div className="user-photo">
+                            <div className="user-photo" onClick={redirectUserProfile}>
                                 <img src={userData.profilePicture} alt="" />
                             </div>
                         </div>
                         <div className="user-info">
-                            <div className="username">{userData.firstName}&nbsp; {userData.lastName}</div>
-                            <div className="user-email">{userData.email}</div>
+                            <div className="username" onClick={redirectUserProfile}>{userData.firstName}&nbsp; {userData.lastName}</div>
+                            <div className="user-email" onClick={redirectUserProfile}>{userData.email}</div>
                         </div>
                     </div>
 
