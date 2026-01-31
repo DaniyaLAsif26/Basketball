@@ -1822,16 +1822,24 @@ p {
   }
 
   .navbar {
-    height: 4.75rem;
+    height: 4.5rem;
+  }
+
+  .sidebar-cont {
+    top: 4.5rem;
+  }
+
+  .search-filter-section {
+    top: 4.5rem;
   }
 
   .logo img {
-    height: 2.75rem;
+    height: 2.7rem;
   }
 
   .hero-cont {
     height: calc(100vh - 6rem);
-}
+  }
 }
 
 @media screen and (max-width: 490px) {
