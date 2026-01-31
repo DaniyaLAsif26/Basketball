@@ -6,10 +6,12 @@ export default function UserProfile() {
 
     const { userData, isUserLoading } = useLogin()
 
+    console.log(userData , isUserLoading)
+
     if (isUserLoading) return <div>Loading...</div>;
     if (!userData) return <div>No user data</div>
 
     return (
-        <PlayerProfile UserData={userData} />
+        <PlayerProfile UserData={userData} userLoading={isUserLoading} />
     )
 }

@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { LogOut, Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronDown, ChevronUp } from 'lucide-react';
 import './profile.css'
 
-export default function PlayerProfile({ UserData }) {
-
+export default function PlayerProfile({ UserData , userLoading }) {
+// console.log(userLoading , UserData)
   const navigate = useNavigate()
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -77,7 +77,7 @@ export default function PlayerProfile({ UserData }) {
 
           <div className="actions">
             <button className="user-button btn-secondary"><Share2 size={18} /> Share</button>
-            {userData._id === UserData._id &&
+            {userData?._id === UserData?._id &&
               <>
                 <button className="user-button btn-primary" onClick={() => navigate('/my-account/edit')}><Edit size={18} /> Edit</button>
                 <button className='user-logout-btn user-button btn-primary' onClick={logOutUser}>Logout  <LogOut size={18} /></button>
@@ -127,7 +127,7 @@ export default function PlayerProfile({ UserData }) {
                 <div className="row"><span>Age</span><strong>{DOB(UserData?.dateOfBirth) || '-'}</strong></div>
                 <div className="row"><span>Gender</span><strong>{UserData.gender || '-'}</strong></div>
                 <div className="row"><span>Email</span><strong className="email">{UserData.email}</strong></div>
-                {userData._id === UserData._id &&
+                {userData?._id === UserData._id &&
                   <div className="row"><span>Phone</span><strong>{UserData.phoneNumber || '-'}</strong></div>
                 }
                 <div className="row"><span>Date of Birth</span><strong>{formatDate(UserData?.dateOfBirth) || '-'}</strong></div>
