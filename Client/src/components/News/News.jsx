@@ -21,7 +21,6 @@ export default function News() {
                     return setNews(dataRes.news)
                 }
 
-                alert(`Error: ${dataRes.message}`)
             }
             catch (err) {
                 console.log(err)
