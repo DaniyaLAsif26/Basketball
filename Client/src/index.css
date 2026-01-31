@@ -1940,13 +1940,9 @@ p {
   }
 
   .counter-cont-head {
-    display: none;
+    padding: 1.5rem 2rem 1.7rem;
   }
 
-  .counter-elements-cont {
-    gap: 2rem;
-    padding: 2.5rem 1rem;
-  }
 
   .events-search-form {
     grid-template-columns: 0.5fr 0.5fr 1.2fr 0.2fr;
@@ -2261,6 +2257,9 @@ p {
 
   .slider-cont-head a {
     display: none;
+  }
+    .counter-cont-head {
+    padding: 1.5rem 1rem 1.7rem;
   }
 }
 
