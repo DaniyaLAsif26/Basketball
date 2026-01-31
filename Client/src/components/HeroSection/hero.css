@@ -3,7 +3,7 @@
     background-color: rgb(41, 41, 41);
     position: relative;
     overflow: hidden;
-} */
+}
 
 .hero-bg-img {
     position: absolute;
@@ -113,4 +113,4 @@
     background-color: #fcf414;
     box-shadow: none;
     transform: translateY(4px);
-}
+} */

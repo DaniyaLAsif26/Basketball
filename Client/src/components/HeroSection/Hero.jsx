@@ -1,7 +1,7 @@
 import into_bg from '../../assets/intro-bg.jpg'
 import { useNavigate } from 'react-router-dom'
 
-import './hero.css'
+// import './hero.css'
 
 export default function HeroSection() {
     const navigate = useNavigate();
