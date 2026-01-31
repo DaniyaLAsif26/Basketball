@@ -1,9 +1,9 @@
-.hero-cont {
+/* .hero-cont {
     height: calc(100vh - 5rem);
     background-color: rgb(41, 41, 41);
     position: relative;
     overflow: hidden;
-}
+} */
 
 .hero-bg-img {
     position: absolute;

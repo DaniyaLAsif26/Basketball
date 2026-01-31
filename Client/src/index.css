@@ -69,6 +69,13 @@ p {
   background: linear-gradient(to bottom right, #1a1a1a, #7f1d1d, #2d2d2d);
 }
 
+.hero-cont {
+    height: calc(100vh - 5rem);
+    background-color: rgb(41, 41, 41);
+    position: relative;
+    overflow: hidden;
+}
+
 /* fonts */
 
 .navbar {
