@@ -101,7 +101,7 @@ export default function AllUsers({ table }) {
                         :
                         (
                             <div className="error-msg-admin">
-                                No Events Found
+                                No Players Found
                             </div>
                         )
                     }

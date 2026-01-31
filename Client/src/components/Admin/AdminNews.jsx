@@ -35,20 +35,16 @@ export default function AdminNews({ table }) {
             } else {
                 setNews([])
             }
-
-            if (!search) {
-                alert(`Error: ${dataRes.message}`)
-            }
         }
         catch (err) {
             console.log(err)
             alert(`Something went wrong while fetching News`)
         }
-    }  
+    }
 
     useEffect(() => {
         getAllNews()
-    },[])
+    }, [])
 
     useEffect(() => {
         const delayBounce = setTimeout(() => {

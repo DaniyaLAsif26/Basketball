@@ -34,10 +34,6 @@ export default function AllEvents({ table }) {
             } else {
                 setEvents([])
             }
-
-            if (!search) {
-                return alert(`Error: ${dataRes.message}`)
-            }
         }
         catch (err) {
             console.log(err)
@@ -98,24 +94,24 @@ export default function AllEvents({ table }) {
                             </thead>
                             <tbody>
                                 {events.map((event, index) => (
-                                <tr key={event._id}>
-                                    <td>{event.tournamentName}</td>
-                                    <td>{new Date(event.startDate).toLocaleString('en-US', {
-                                        month: 'long',
-                                        day: 'numeric',
-                                        year: 'numeric'
-                                    })}</td>
-                                    <td>
-                                        <button className='edit-news-btn' onClick={() => navigate(`/event/edit/${event._id}`, {
-                                            state: {
-                                                from: 'admin'
-                                            }
-                                        })}>Edit</button>
-                                    </td>
-                                    <td>
-                                        <button className='delete-news-btn' onClick={() => deleteEvent(event._id)}>Delete</button>
-                                    </td>
-                                </tr>
+                                    <tr key={event._id}>
+                                        <td>{event.tournamentName}</td>
+                                        <td>{new Date(event.startDate).toLocaleString('en-US', {
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric'
+                                        })}</td>
+                                        <td>
+                                            <button className='edit-news-btn' onClick={() => navigate(`/event/edit/${event._id}`, {
+                                                state: {
+                                                    from: 'admin'
+                                                }
+                                            })}>Edit</button>
+                                        </td>
+                                        <td>
+                                            <button className='delete-news-btn' onClick={() => deleteEvent(event._id)}>Delete</button>
+                                        </td>
+                                    </tr>
                                 ))}
                             </tbody>
                         </table>
@@ -124,7 +120,7 @@ export default function AllEvents({ table }) {
                             <div className="error-msg-admin">
                                 No Events Found
                             </div>
-                           
+
                         )}
                 </div>
             </div>
