@@ -1820,6 +1820,18 @@ p {
   .comic-button-2 {
     max-width: 7rem;
   }
+
+  .navbar {
+    height: 4.75rem;
+  }
+
+  .logo img {
+    height: 2.75rem;
+  }
+
+  .hero-cont {
+    height: calc(100vh - 6rem);
+}
 }
 
 @media screen and (max-width: 490px) {
