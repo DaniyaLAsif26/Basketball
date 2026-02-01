@@ -121,13 +121,15 @@ p {
 }
 
 .hero-head {
+  height: 100%;
+  width: 100%;
   color: red;
-  position: absolute;
+  position: relative;
   z-index: 2;
-  bottom: 11rem;
   left: 2.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-shadow: 2.5px 2px 2.5px #000000, 5px 4px 5px #000000, 7.5px 6px 7.5px #000000, 10px 8px 10px #000000, 12.5px 10px 12.5px #000000;
 }
 
@@ -252,10 +254,6 @@ p {
 }
 
 @media screen and (max-width: 1470px) {
-  .hero-head {
-    bottom: 8.5rem;
-  }
-
   .hero-head h1 {
     font-size: 3.15rem;
   }
@@ -305,7 +303,6 @@ p {
 
 @media screen and (max-width: 1400px) {
   .ranking-list {
-    /* padding: 0rem 1rem; */
     gap: 1rem;
     max-width: 95%;
   }
@@ -333,10 +330,6 @@ p {
 }
 
 @media screen and (max-width: 1350px) {
-  .hero-head {
-    bottom: 6rem;
-  }
-
   .hero-head h1 {
     font-size: 3rem;
   }
@@ -827,10 +820,9 @@ p {
     max-width: 100%;
 
   }
-
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1025px) {
   .events-search-form {
     height: 100%;
     display: grid;
@@ -1017,6 +1009,12 @@ p {
 
   .modal img {
     max-width: 53rem;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .hero-head h1 {
+    font-size: 2.6rem;
   }
 }
 
@@ -1584,14 +1582,13 @@ p {
     max-width: 35rem;
   }
 
+  .hero-head h1 {
+    font-size: 2.2rem;
+  }
+
 }
 
 @media screen and (max-width: 570px) {
-  .hero-head {
-    left: 1.5rem;
-    padding: 0rem 1rem 0rem 0rem;
-  }
-
   .hero-head h1 {
     font-size: 2rem;
   }
@@ -1725,7 +1722,6 @@ p {
   .comic-button {
     padding: 0.375rem 1rem;
   }
-
 }
 
 @media screen and (max-width: 520px) {
@@ -1884,10 +1880,6 @@ p {
   .tournament-info p {
     font-size: 0.9rem;
     padding-right: 3.5rem;
-  }
-
-  .hero-head {
-    bottom: 13rem;
   }
 
   .points-badge {
@@ -2303,9 +2295,23 @@ p {
   .counter-cont-head {
     padding: 1.5rem 1rem 1.7rem;
   }
+
+  .comic-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .comic-button-2 {
+    max-width: 6rem;
+  }
 }
 
 @media screen and (max-width: 330px) {
+
+  .hero-head h1 {
+    font-size: 1.25rem;
+  }
+
   .tournament-cont {
     padding: 1rem 0rem 1rem 1rem;
   }
