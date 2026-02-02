@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom'
 import { useLogin } from '../context/LoginContext.jsx'
 
-export default function UserProtectedRoute({children}) {
+export default function UserProtectedRoute({ children }) {
     const { isUserLoggedIn, isUserLoading } = useLogin()
 
     if (isUserLoading) {
@@ -18,7 +18,7 @@ export default function UserProtectedRoute({children}) {
         )
     }
 
-    if (!isUserLoggedIn ) {
+    if (!isUserLoggedIn) {
         return <Navigate to="/login" />
     }
 

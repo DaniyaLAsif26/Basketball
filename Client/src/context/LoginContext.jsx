@@ -148,7 +148,8 @@ export const LoginProvider = ({ children }) => {
                 userData,
                 setUserData,
                 checkCompleteUserProfile,
-                logOutUser
+                logOutUser,
+                isUserLoading
             }
         }
         >
