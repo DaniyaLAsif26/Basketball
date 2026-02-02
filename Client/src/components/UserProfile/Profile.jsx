@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogOut, Mail, Phone, Calendar, MapPin, Trophy, Edit, Share2, Ruler, Weight, Maximize2, Target, ChevronDown, ChevronUp } from 'lucide-react';
 import './profile.css'
 
-export default function PlayerProfile({ UserData , userLoading }) {
-// console.log(userLoading , UserData)
+export default function PlayerProfile({ UserData }) {
   const navigate = useNavigate()
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -27,8 +26,8 @@ export default function PlayerProfile({ UserData , userLoading }) {
   };
 
   const DOB = (date) => {
-  if(!date) return ;
-  
+    if (!date) return;
+
     const dob = new Date(date)
     const current = new Date()
 
@@ -69,7 +68,6 @@ export default function PlayerProfile({ UserData , userLoading }) {
               <div className="meta">
                 <span className="pill">{UserData.playerPosition || '-'}</span>
                 <span className='dot'>•</span>
-                
                 <span><MapPin size={16} /> &nbsp;{UserData.homeTown || '-'}</span>
               </div>
             </div>

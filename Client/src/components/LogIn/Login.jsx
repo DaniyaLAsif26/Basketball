@@ -48,9 +48,15 @@ export default function Login() {
                 return
             }
 
+            const profileComplete = checkCompleteUserProfile(dataRes.user)
+            if (profileComplete) {
+                navigate('/my-account')
+            }
+            else {
+                navigate('/my-account/edit')
+            }
             setIsUserLoggedIn(true)
             setUserData(dataRes.user)
-            navigate('/my-account')
             return
         }
         catch (err) {

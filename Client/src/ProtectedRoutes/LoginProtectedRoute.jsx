@@ -1,8 +1,9 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
+
 import { useLogin } from '../context/LoginContext.jsx'
 
-export default function LoginProtectedRoute({children}) {
-    const { isUserLoggedIn, isUserLoading } = useLogin()
+export default function LoginProtectedRoute({ children }) {
+    const { isUserLoggedIn, isUserLoading, userData, checkCompleteUserProfile } = useLogin()
 
     if (isUserLoading) {
         return (
@@ -19,7 +20,11 @@ export default function LoginProtectedRoute({children}) {
     }
 
     if (isUserLoggedIn) {
-        return <Navigate to="/my-account" />
+        const profileComplete = checkCompleteUserProfile(userData)
+
+        return profileComplete
+            ? <Navigate to="/my-account" replace />
+            : <Navigate to="/my-account/edit" replace />;
     }
 
     return children;
