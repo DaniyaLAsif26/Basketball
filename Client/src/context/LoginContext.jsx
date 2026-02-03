@@ -14,6 +14,7 @@ export const LoginProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [userData, setUserData] = useState(null)
     const [isUserLoading, setIsUserLoading] = useState(true)
+    const [oAuthLoading , setOAuthLoading] = useState(false)
 
     const verifyAdminLogin = async () => {
         try {
@@ -149,7 +150,9 @@ export const LoginProvider = ({ children }) => {
                 setUserData,
                 checkCompleteUserProfile,
                 logOutUser,
-                isUserLoading
+                isUserLoading,
+                oAuthLoading,
+                setOAuthLoading
             }
         }
         >

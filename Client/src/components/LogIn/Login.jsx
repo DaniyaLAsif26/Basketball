@@ -14,7 +14,7 @@ const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 
 export default function Login() {
 
-    const { setIsUserLoggedIn, setUserData, checkCompleteUserProfile } = useLogin()
+    const { setIsUserLoggedIn, setUserData, checkCompleteUserProfile, oAuthLoading, setOAuthLoading } = useLogin()
 
     const [isLogin, setIsLogin] = useState()
 
@@ -28,6 +28,7 @@ export default function Login() {
     ];
 
     const handleGoogleLogin = async (response) => {
+        setOAuthLoading(true)
         try {
             const res = await fetch(`${BackEndRoute}/api/auth/google`, {
                 method: "POST",
@@ -62,6 +63,9 @@ export default function Login() {
         catch (err) {
             console.error(err);
         }
+        finally {
+            setOAuthLoading(false)
+        }
     };
 
     // ✅ Initialize Google once
@@ -85,6 +89,20 @@ export default function Login() {
         /* global google */
         google.accounts.id.prompt(); // 👈 THIS opens account selection
     };
+
+    if (oAuthLoading) {
+        return (
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+                fontSize: '1.5rem'
+            }}>
+                Loading...
+            </div>
+        )
+    }
 
 
     return (
