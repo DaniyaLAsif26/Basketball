@@ -8,9 +8,11 @@ const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
 export default function News() {
 
     const [news, setNews] = useState([])
+    const [newsLoading, setNewsLoading] = useState(false)
 
     useEffect(() => {
         const getHomeNews = async () => {
+            setNewsLoading(true)
             try {
 
                 const res = await fetch(`${BackEndRoute}/api/news/all-news`)
@@ -26,6 +28,9 @@ export default function News() {
                 console.log(err)
                 alert(`Something went wrong while fetching news`)
             }
+            finally {
+                setNewsLoading(false)
+            }
         }
         getHomeNews()
     }, [])
@@ -33,7 +38,7 @@ export default function News() {
     const row1 = news.slice(0, 3)
     const row2 = news.slice(3, 6)
 
-    if (news.length < 6) {
+    if (!newsLoading && news.length < 6) {
         return <p>No news available</p>
     }
 
@@ -45,14 +50,14 @@ export default function News() {
                 </div>
                 <div className="news">
                     <div className="news-row">
-                        <NewsBig data={row1[0]} />
-                        <NewsSmall data={row1[1]} />
-                        <NewsSmall data={row1[2]} />
+                        <NewsBig data={row1[0]} newsLoading={newsLoading} />
+                        <NewsSmall data={row1[1]} newsLoading={newsLoading} />
+                        <NewsSmall data={row1[2]} newsLoading={newsLoading} />
                     </div>
                     <div className="news-row">
-                        <NewsSmall data={row2[1]} />
-                        <NewsSmall data={row2[2]} />
-                        <NewsBig data={row2[0]} />
+                        <NewsSmall data={row2[1]} newsLoading={newsLoading} />
+                        <NewsSmall data={row2[2]} newsLoading={newsLoading} />
+                        <NewsBig data={row2[0]} newsLoading={newsLoading} />
                     </div>
                 </div>
             </div>
