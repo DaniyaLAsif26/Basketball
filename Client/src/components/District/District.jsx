@@ -6,7 +6,7 @@ export default function District({ district }) {
     return (
         <>
         {district.map((dist, index) =>
-            <div className="district">
+            <div className="district" key={index}>
                 <div className="dist-name">{dist.name}</div>
                 <div className="dist-sec-name">{dist.secName}</div>
                 <div className="dist-role">{dist.role}</div>

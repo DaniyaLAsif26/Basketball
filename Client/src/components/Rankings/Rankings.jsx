@@ -45,7 +45,9 @@ export default function Rankings() {
                 <div className="ranking-options">
                     <ul>
                         {category.map((cat, index) => (
-                            <li className={`${selected === cat ? 'selected-cat' : ''}`} onClick={() => setSelected(cat)}>{cat}</li>
+                            <li 
+                            key={index}
+                            className={`${selected === cat ? 'selected-cat' : ''}`} onClick={() => setSelected(cat)}>{cat}</li>
                         ))}
                     </ul>
                     <button className="all-players-btn" onClick={() => navigate('/players')}>All Players</button>

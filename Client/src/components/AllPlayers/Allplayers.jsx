@@ -84,7 +84,7 @@ export default function AllPlayers() {
         {allPlayersLoaded && (
           <div className="players-grid">
             {allPlayers.map((player) => (
-              <div key={player.id} className="all-player-card">
+              <div key={player._id} className="all-player-card">
                 <div className="player-card-header">
                   <div className="player-avatar-container">
                     <div className="player-avatar-wrapper">

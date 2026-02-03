@@ -7,7 +7,7 @@ export default function EveDrop({ drop }) {
     return (
         <>
             {drop.map((item, index) =>
-                <div className={`evt-sort-wrapper ${item.class ?? ''}`} onClick={() => {
+                <div key={index} className={`evt-sort-wrapper ${item.class ?? ''}`} onClick={() => {
                     setOpen(prev => (prev === item.class ? '' : item.class))
                 }}>
                     <div className="evt-sort">
@@ -28,9 +28,10 @@ export default function EveDrop({ drop }) {
                                     <ul className='sort-select'>
                                         {item.list.map((li, index) =>
                                             <>
-                                                <li className={
-                                                    item.selected === li ? 'selected' : ''
-                                                } onClick={()=> item.setSelected(li)}>{li}</li>
+                                                <li key={index}
+                                                    className={
+                                                        item.selected === li ? 'selected' : ''
+                                                    } onClick={() => item.setSelected(li)} >{li}</li>
                                             </>
                                         )}
                                     </ul>
