@@ -122,8 +122,8 @@ export default function Ranking() {
                                     <div className="ranking-player">
                                         <div className="player-name">
                                             <h3>
-                                                <span className='player-name-first'>DANIYAL</span>
-                                                <span className='player-name-last'>ASIF</span>
+                                                <span className='player-name-first'>PLAYER</span>
+                                                <span className='player-name-last'>NAME</span>
                                             </h3>
                                         </div>
                                     </div>
@@ -145,8 +145,8 @@ export default function Ranking() {
                                     </div>
                                     <div className="ranking-player">
                                         <div className="player-name"><h3>
-                                            <span className='player-name-first'>DANIYAL</span>
-                                            <span className='player-name-last'>ASIF</span>
+                                            <span className='player-name-first'>PLAYER</span>
+                                            <span className='player-name-last'>NAME</span>
                                         </h3></div>
                                     </div>
                                 </div>
@@ -166,8 +166,8 @@ export default function Ranking() {
                                     </div>
                                     <div className="ranking-player">
                                         <div className="player-name"><h3>
-                                            <span className='player-name-first'>DANIYAL</span>
-                                            <span className='player-name-last'>ASIF</span>
+                                            <span className='player-name-first'>PLAYER</span>
+                                            <span className='player-name-last'>NAME</span>
                                         </h3></div>
                                     </div>
                                 </div>
@@ -194,8 +194,8 @@ export default function Ranking() {
                                     <div className="ranking-player">
                                         <div className="player-name">
                                             <h3>
-                                                <span className='player-name-first'>DANIYAL</span>
-                                                <span className='player-name-last'>ASIF</span>
+                                                <span className='player-name-first'>PLAYER</span>
+                                                <span className='player-name-last'>NAME</span>
                                             </h3>
                                         </div>
                                     </div>
@@ -217,8 +217,8 @@ export default function Ranking() {
                                     </div>
                                     <div className="ranking-player">
                                         <div className="player-name"><h3>
-                                            <span className='player-name-first'>DANIYAL</span>
-                                            <span className='player-name-last'>ASIF</span>
+                                            <span className='player-name-first'>PLAYER</span>
+                                            <span className='player-name-last'>NAME</span>
                                         </h3></div>
                                     </div>
                                 </div>
@@ -238,8 +238,8 @@ export default function Ranking() {
                                     </div>
                                     <div className="ranking-player">
                                         <div className="player-name"><h3>
-                                            <span className='player-name-first'>DANIYAL</span>
-                                            <span className='player-name-last'>ASIF</span>
+                                            <span className='player-name-first'>PLAYER</span>
+                                            <span className='player-name-last'>NAME</span>
                                         </h3></div>
                                     </div>
                                 </div>
