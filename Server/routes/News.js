@@ -3,6 +3,8 @@ import News from '../models/news.js'
 
 import multer from 'multer'
 
+import { allowAdmin } from '../middlewares/auth.middleware.js';
+
 import { cloudinary, createCloudinaryStorage, deleteCloudinaryImage } from '../cloudConfig.js'
 
 const createUserStorage = createCloudinaryStorage({
@@ -16,7 +18,7 @@ import { createNewsSchema } from '../Validators/NewsValidators.js'
 const router = express.Router()
 
 
-router.post('/admin/create', upload.single('newsImage'), async (req, res) => {
+router.post('/admin/create', allowAdmin, upload.single('newsImage'), async (req, res) => {
     try {
         const parseData = {
             ...req.body
@@ -97,7 +99,7 @@ router.get('/all-news', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', allowAdmin, async (req, res) => {
     try {
         const news = await News.findById(req.params.id)
 
@@ -118,7 +120,7 @@ router.get('/:id', async (req, res) => {
 })
 
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', allowAdmin, async (req, res) => {
     try {
         const news = await News.findById(req.params.id)
 
@@ -148,7 +150,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 })
 
-router.put('/admin/edit/:id', upload.single('newsImage'), async (req, res) => {
+router.put('/admin/edit/:id', allowAdmin, upload.single('newsImage'), async (req, res) => {
     const updateNews = { ...req.body }
 
     try {

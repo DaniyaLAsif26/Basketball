@@ -4,6 +4,9 @@ import User from "../models/user.js"
 
 import { cloudinary, createCloudinaryStorage, deleteCloudinaryImage } from '../cloudConfig.js'
 
+import { allowUserOrAdmin , allowAdmin} from '../middlewares/auth.middleware.js';
+
+
 const createUserStorage = createCloudinaryStorage({
     folder: "users",
 })
@@ -14,7 +17,7 @@ const router = express.Router()
 
 import { createUserSchema } from "../Validators/UserValidators.js"
 
-router.put('/edit/:id', upload.single('profilePicture'), async (req, res) => {
+router.put('/edit/:id', allowUserOrAdmin , upload.single('profilePicture'), async (req, res) => {
 
     try {
         const updateUser = { ...req.body }
@@ -271,7 +274,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', allowAdmin , async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id)
 

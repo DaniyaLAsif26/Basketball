@@ -330,9 +330,8 @@ export default function ViewEvent() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-                {isUserLoggedIn && userData._id === event.hostedUser._id &&
+                {isUserLoggedIn && userData?._id === event.hostedUser?._id &&
 
                     (
                         <div className="event-page-edit-del">

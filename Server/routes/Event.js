@@ -4,6 +4,8 @@ import multer from 'multer'
 import Event from '../models/event.js'
 import jwt from "jsonwebtoken";
 
+import { allowUserOrAdmin, isOwner } from '../middlewares/auth.middleware.js';
+
 import { cloudinary, createCloudinaryStorage, deleteCloudinaryImage } from '../cloudConfig.js'
 
 const createUserStorage = createCloudinaryStorage({
@@ -16,7 +18,7 @@ import { createEventSchema } from '../Validators/EventValidator.js'
 
 const router = express.Router()
 
-router.post('/create', upload.single('tournamentImage'), async (req, res) => {
+router.post('/create', allowUserOrAdmin, upload.single('tournamentImage'), async (req, res) => {
 
     try {
 
@@ -144,7 +146,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
+router.put('/edit/:id', allowUserOrAdmin, isOwner, upload.single('tournamentImage'), async (req, res) => {
 
     try {
         const updateData = { ...req.body }
@@ -201,7 +203,7 @@ router.put('/edit/:id', upload.single('tournamentImage'), async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', allowUserOrAdmin, isOwner, async (req, res) => {
     try {
         const event = await Event.findById(req.params.id)
 

@@ -1,6 +1,5 @@
 import express from 'express'
 import Event from '../models/event.js'
-import { success } from 'zod';
 
 const router = express.Router()
 
