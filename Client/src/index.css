@@ -1010,6 +1010,11 @@ p {
   .modal img {
     max-width: 53rem;
   }
+
+  .detail-content-district {
+    min-height: auto;
+    max-height: auto;
+  }
 }
 
 @media screen and (max-width: 920px) {
@@ -1266,6 +1271,12 @@ p {
   .comic-button-2 {
     max-width: 7.5rem;
   }
+
+  .event-header {
+    min-height: 10rem;
+    max-height: 10.5rem;
+
+}
 }
 
 @media screen and (max-width: 775px) {
@@ -1477,8 +1488,8 @@ p {
   }
 
   .event-header {
-  max-height: 100%;
-}
+    max-height: 100%;
+  }
 
 }
 

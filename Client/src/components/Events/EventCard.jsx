@@ -119,7 +119,7 @@ export default function EventCard({ event }) {
                 <div className="detail-icon">
                   <FaMapPin />
                 </div>
-                <div className="detail-content">
+                <div className="detail-content detail-content-district">
                   <span className="detail-label">DISTRICT</span>
                   <span className="detail-value">{event.district}</span>
                   <span className="detail-value"></span>
