@@ -13,8 +13,8 @@ export const LoginProvider = ({ children }) => {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [userData, setUserData] = useState(null)
-    const [isUserLoading, setIsUserLoading] = useState(true)
-    const [oAuthLoading , setOAuthLoading] = useState(false)
+    const [isUserLoading, setIsUserLoading] = useState(false)
+    const [oAuthLoading, setOAuthLoading] = useState(false)
 
     const verifyAdminLogin = async () => {
         try {
@@ -41,6 +41,7 @@ export const LoginProvider = ({ children }) => {
     }
 
     const verifyUserLogin = async () => {
+        setIsUserLoading(true)
         try {
             const res = await fetch(`${BackEndRoute}/api/login/verify/user`, {
                 method: "GET",
