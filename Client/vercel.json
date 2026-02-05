@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/:path*",
+      "destination": "https://basketball-production-5e4e.up.railway.app/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

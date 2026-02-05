@@ -15,7 +15,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const getCookieOptions = (maxAge) => ({
     httpOnly: true,
     secure: isProduction, // true in production (HTTPS), false in development
-    sameSite: isProduction ? "none" : "lax", // "none" for cross-origin, "lax" for same-origin
+    // sameSite: isProduction ? "none" : "lax", // "none" for cross-origin, "lax" for same-origin
+    sameSite: 'lax',
     maxAge: maxAge,
 });
 
@@ -115,12 +116,12 @@ router.get('/verify/user', async (req, res) => {
 
         const user = await User.findById(decode.id)
 
-        if(!user){
-           return res.json(
-            {
-                success: false,
-            }
-        ) 
+        if (!user) {
+            return res.json(
+                {
+                    success: false,
+                }
+            )
         }
 
         res.json(

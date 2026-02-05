@@ -14,7 +14,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const getCookieOptions = (maxAge) => ({
     httpOnly: true,
     secure: isProduction, // true in production (HTTPS), false in development
-    sameSite: isProduction ? "none" : "lax", // "none" for cross-origin, "lax" for same-origin
+    // sameSite: isProduction ? "none" : "lax", // "none" for cross-origin, "lax" for same-origin
+    sameSite: 'lax',
     maxAge: maxAge,
 });
 
