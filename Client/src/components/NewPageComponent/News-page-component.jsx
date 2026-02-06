@@ -1,5 +1,6 @@
 import './news-page-component.css'
 import { useState, useEffect } from 'react'
+import logo from '../../assets/red.png'
 
 const BackEndRoute = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
@@ -32,6 +33,19 @@ export default function NewsPageComponent() {
         }
         getHomeNews()
     }, [])
+
+        if (loading) {
+        return (
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh'
+            }}>
+                <img src={logo} alt="" />
+            </div>
+        )
+    }
 
 
     return (

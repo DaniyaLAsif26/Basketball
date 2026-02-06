@@ -1,4 +1,5 @@
 import './all-players.css'
+import logo from '../../assets/red.png'
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +16,7 @@ export default function AllPlayers() {
   const [allPlayersLoaded, setAllPlayersLoaded] = useState(false);
 
   const getAllPlayers = async (searchQuery = '') => {
-
+    setAllPlayersLoaded(true)
     try {
       const res = await fetch(`${BackEndRoute}/api/user/all-users?q=${searchQuery}`)
 
@@ -34,7 +35,7 @@ export default function AllPlayers() {
       setAllPlayers([])
     }
     finally {
-      setAllPlayersLoaded(true)
+      setAllPlayersLoaded(false)
     }
   }
 
@@ -61,6 +62,19 @@ export default function AllPlayers() {
 
   }
 
+  if (allPlayersLoaded) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh'
+      }}>
+        <img src={logo} alt="" />
+      </div>
+    )
+  }
+
   return (
     <div className="users-gallery-container">
       <div className="search-filter-section">
@@ -81,7 +95,7 @@ export default function AllPlayers() {
       </div>
 
       <div className="players-grid-container">
-        {allPlayersLoaded && (
+        {!allPlayersLoaded && (
           <div className="players-grid">
             {allPlayers.map((player) => (
               <div key={player._id} className="all-player-card">
